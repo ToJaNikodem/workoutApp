@@ -26,7 +26,7 @@ require './src/php/databaseLogin.php';
                 echo "Database error";
             }
 
-            $qr = "SELECT * FROM workout_list ";
+            $qr = "SELECT * FROM workout_list;";
 
             $result = $conn->query($qr);
             while ($row = $result->fetch_assoc()) {
@@ -35,10 +35,10 @@ require './src/php/databaseLogin.php';
             ?>
         </section>
         <section id="exerciseList">
-            <h2>Lista wszystkich ćwiczeń</h2>
+            <h2 id="exerciseListHeader">Lista wszystkich ćwiczeń</h2>
             <div id="exerciseContainer">
                 <?php
-                $qr = "SELECT exercise_name FROM exercise_list ";
+                $qr = "SELECT exercise_name FROM exercise_list;"; 
 
                 $result = $conn->query($qr);
                 while ($row = $result->fetch_assoc()) {
@@ -46,8 +46,21 @@ require './src/php/databaseLogin.php';
                 }
                 ?>
             </div>
+            <div id="addExerciseButton">
+                <span></span>
+                <span></span>
+            </div>
         </section>
     </main>
+    <div id="exerciseAddForm">
+        <h5>Dodaj nowe ćwiczenie</h5>
+        <form action="./src/php/exerciseAdd.php" method="POST">
+            <label for="exerciseName">Nazwa ćwiczenia: </label><input id="exerciseName" type="text" name="exerciseName" require><br>
+            <label for="category">Kategoria ćwiczenia: </label><input id="category" type="text" name="category" require><br>
+            <label for="description">Opis ćwiczenia: </label><input id="description" type="text" name="description" require><br>
+            <input type="submit" value="Dodaj">
+        </form>
+    </div>
     <script src="src/js/script.js"></script>
 </body>
 

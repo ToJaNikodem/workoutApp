@@ -15,6 +15,14 @@ WHERE we.`workout_id` = $workoutId;
 
 $result = $conn->query($qr);
 
+$qr = "SELECT workout_name FROM workout_list WHERE id=$workoutId";
+
+$nameResult = $conn->query($qr);
+
+while ($row = $nameResult->fetch_assoc()) {
+    $workoutName = $row['workout_name'];
+}
+
 if ($result->num_rows > 0) {
     // Fetch the data and store it in an array
     $data = '';
@@ -25,8 +33,13 @@ if ($result->num_rows > 0) {
     // Close the database connection
     $conn->close();
 
-    header('Content-Type: text/plain');
-    echo $data;
+    $dataReturn = array(
+        'divs' => $data,
+        'workoutName' => $workoutName
+    );
+
+    header('Content-Type: application/json');
+    echo json_encode($dataReturn);
 } else {
     $conn->close();
     echo "No data found";
