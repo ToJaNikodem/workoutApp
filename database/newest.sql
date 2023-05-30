@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2023 at 09:04 AM
+-- Generation Time: May 30, 2023 at 01:42 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -43,7 +43,16 @@ INSERT INTO `exercise_list` (`id`, `exercise_name`, `muscle_worked`, `descriptio
 (2, 'Push-ups', 'Chest, Arms', 'Do push-ups to work your chest and arm muscles.'),
 (3, 'Crunches', 'Abdominals', 'Perform crunches to strengthen your abdominal muscles.'),
 (4, 'Bicep Curls', 'Biceps', 'Do bicep curls to target your bicep muscles.'),
-(5, 'Lunges', 'Legs, Glutes', 'Perform lunges to work your leg and glute muscles.');
+(5, 'Lunges', 'Legs, Glutes', 'Perform lunges to work your leg and glute muscles.'),
+(6, '123123', '123', '123'),
+(7, '123123', '123', '123'),
+(8, '123123', '123', '123'),
+(9, '123123', '123', '123'),
+(10, '123123', '123', '123'),
+(11, '123', '123', '123'),
+(12, '123', '123', '123'),
+(13, '123', '123', '123'),
+(14, '123', '123', '123');
 
 -- --------------------------------------------------------
 
@@ -116,7 +125,7 @@ ALTER TABLE `workout_list`
 -- AUTO_INCREMENT for table `exercise_list`
 --
 ALTER TABLE `exercise_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `workout_list`
