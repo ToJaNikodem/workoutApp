@@ -27,10 +27,11 @@ SET time_zone = "+00:00";
 -- Struktura tabeli dla tabeli `exerciselist`
 --
 
-CREATE TABLE `exerciselist` (
+CREATE TABLE `exercise_list` (
   `id` int(11) NOT NULL,
   `exerciseName` varchar(64) NOT NULL,
-  `muscleWorked` varchar(32) DEFAULT NULL
+  `muscleWorked` varchar(32) DEFAULT NULL,
+  `description` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -39,8 +40,8 @@ CREATE TABLE `exerciselist` (
 -- Struktura tabeli dla tabeli `workout1`
 --
 
-CREATE TABLE `workout1` (
-  `id` int(11) NOT NULL,
+CREATE TABLE `workout_exercise` (
+  `workout_id` int(11) NOT NULL,
   `exercise_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -50,7 +51,7 @@ CREATE TABLE `workout1` (
 -- Struktura tabeli dla tabeli `workoutlist`
 --
 
-CREATE TABLE `workoutlist` (
+CREATE TABLE `workout_list` (
   `id` int(11) NOT NULL,
   `workout_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -62,22 +63,15 @@ CREATE TABLE `workoutlist` (
 --
 -- Indeksy dla tabeli `exerciselist`
 --
-ALTER TABLE `exerciselist`
+ALTER TABLE `exercise_list`
   ADD PRIMARY KEY (`id`);
 
---
--- Indeksy dla tabeli `workout1`
---
-ALTER TABLE `workout1`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `exercise_id` (`exercise_id`);
 
 --
 -- Indeksy dla tabeli `workoutlist`
 --
-ALTER TABLE `workoutlist`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `workout_id` (`workout_id`);
+ALTER TABLE `workout_list`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -86,36 +80,16 @@ ALTER TABLE `workoutlist`
 --
 -- AUTO_INCREMENT for table `exerciselist`
 --
-ALTER TABLE `exerciselist`
+ALTER TABLE `exercise_list`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `workout1`
---
-ALTER TABLE `workout1`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `workoutlist`
 --
-ALTER TABLE `workoutlist`
+ALTER TABLE `workout_list`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `workout1`
---
-ALTER TABLE `workout1`
-  ADD CONSTRAINT `workout1_ibfk_1` FOREIGN KEY (`exercise_id`) REFERENCES `exerciselist` (`id`);
-
---
--- Constraints for table `workoutlist`
---
-ALTER TABLE `workoutlist`
-  ADD CONSTRAINT `workoutlist_ibfk_1` FOREIGN KEY (`workout_id`) REFERENCES `workout1` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
