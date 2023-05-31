@@ -18,7 +18,7 @@ require './src/php/databaseLogin.php';
     </header>
     <main>
         <section id="workoutList">
-            <h2>Lista planów treningowych</h2>
+            <h2>Lista planów treningowych </h2>
             <?php
             try {
                 $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbname);
