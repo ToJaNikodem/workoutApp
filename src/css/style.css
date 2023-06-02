@@ -5,7 +5,7 @@
     font-family: 'Inter', sans-serif;
 }
 
-:root{
+:root {
     --font: #0E0201;
     --background: #FEF6F6;
     --SecondaryBg: #F5EBEE;
@@ -15,7 +15,7 @@
 }
 
 
-body{
+body {
     background-color: var(--background);
 }
 
@@ -24,18 +24,18 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-  }
-  
-  .box {
+}
+
+.box {
     width: 25vw;
     height: 55vh;
     padding: 20px;
     background-color: var(--WindowBg);
     box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-  }
+}
 
-  .box h1{
+.box h1 {
     padding: 20px;
     color: var(--MainDetail);
     font-weight: 700;
@@ -43,20 +43,20 @@ body{
     font-weight: 700;
     font-size: 40px;
     line-height: 48px;
-  }
-  
-  .login {
+}
+
+.login {
     margin-bottom: 20px;
-  }
-  
-  form {
+}
+
+form {
     display: flex;
     flex-direction: column;
-  }
-  
-  input[type="text"],
-  input[type="password"],
-  p {
+}
+
+input[type="text"],
+input[type="password"],
+p {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -65,18 +65,18 @@ body{
     font-size: 16px;
     line-height: 24px;
     color: rgba(14, 7, 9, 0.7);
-  }
+}
 
-  
 
-  .login input{
+
+.login input {
     border: none;
     background: rgba(255, 176, 132, 0.6);
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-  }
-  
-  input[type="submit"] {
+}
+
+input[type="submit"] {
     width: 50%;
     margin-top: 25px;
     margin-left: auto;
@@ -90,20 +90,5 @@ body{
     font-size: 25px;
     -webkit-box-shadow: 18px 18px 10px -15px rgba(66, 68, 90, 1);
     -moz-box-shadow: 18px 18px 10px -15px rgba(66, 68, 90, 1);
-    box-shadow: 18px 18px 10px -15px rgba(66, 68, 90, 1);
-  }
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-    
+    box-shadow: 4px 4px 0px 0px var(--font);
+}
