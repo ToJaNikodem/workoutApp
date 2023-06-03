@@ -1,7 +1,4 @@
 -- Add UNSIGNED
--- Add new tables from dbdiagram
--- Check if good
-
 CREATE TABLE `users` (
     `id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `username` CHARACTER SET latin1 COLLATE latin1_bin varchar(32) UNIQUE NOT NULL,
