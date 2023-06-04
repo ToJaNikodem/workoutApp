@@ -1,28 +1,7 @@
-Light theme standard:
-    Primary: #0e0201 (RGB: 14, 2, 1)
-    Secondary: #fef6f6 (RGB: 254, 246, 246)
-    Primary Button: #d21312 (RGB: 210, 19, 18)
-    Secondary Button: #fbddda (RGB: 251, 221, 218)
-    Accent: #ffb084 (RGB: 255, 176, 132)
-
-Dark theme standard:
-    Primary: #f5ebee (RGB: 245, 235, 238)
-    Secondary: #0e0709 (RGB: 14, 7, 9)
-    Primary Button: #d21312 (RGB: 210, 19, 18)
-    Secondary Button: #fbddda (RGB: 251, 221, 218)
-    Accent: #ffb084 (RGB: 255, 176, 132)
-
-
-Light theme with pink:
-    Primary: #ffffff (RGB: 255, 255, 255)
-    Secondary: #040101 (RGB: 4, 1, 1)
-    Primary Button: #fa3379 (RGB: 250, 51, 121)
-    Secondary Button: #140605 (RGB: 20, 6, 5)
-    Accent: #1f6d70 (RGB: 31, 109, 112)
-
-Dark theme with pink:
-    Primary: #0b0e0d (RGB: 11, 14, 13)
-    Secondary: #e2e9e6 (RGB: 226, 233, 230)
-    Primary Button: #fa3379 (RGB: 250, 51, 121)
-    Secondary Button: #d7dbe0 (RGB: 215, 219, 224)
-    Accent: #21252b (RGB: 33, 37, 43)
+Light theme:
+    Font: #0E0201
+    Background: #FEF6F6
+    Secondary Background: #F5EBEE
+    Window Background: #FFFFFF
+    Main Detail: #D21312
+    Secondary Detail: #FFB084
