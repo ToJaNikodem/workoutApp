@@ -133,11 +133,9 @@ CREATE TABLE `set_logs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Table for storing superset logs
-CREATE TABLE `superset_logs` (
-    `id` int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `session_id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE `superset_strength_exercise_logs` (
     `superset_id` int(11) UNSIGNED NOT NULL,
-    `user_id` int(11) UNSIGNED NOT NULL DEFAULT 0
+    `strength_exercise_log_id` int(11) UNSIGNED NOT NULL
 );
 
 -- Table for associating strength exercises with muscles
@@ -153,8 +151,8 @@ CREATE TABLE `variant_exercises` (
 );
 
 -- Table for associating superset exercises with exercises
-CREATE TABLE `superset_exercises` (
-    `exercise_id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE `superset_strength_exercises` (
+    `strength_exercise_id` int(11) UNSIGNED NOT NULL,
     `superset_id` int(11) UNSIGNED NOT NULL
 );
 
@@ -205,12 +203,20 @@ ALTER TABLE `strength_exercise_properties`
 ADD FOREIGN KEY (`exercise_id`) REFERENCES `exercises` (`id`) ON DELETE CASCADE;
 
 -- Add foreign key constraint to relate superset exercises with exercises
-ALTER TABLE `superset_exercises`
-ADD FOREIGN KEY (`exercise_id`) REFERENCES `exercises` (`id`) ON DELETE CASCADE;
+ALTER TABLE `superset_strength_exercises`
+ADD FOREIGN KEY (`strength_exercise_id`) REFERENCES `strength_exercise_properties` (`id`) ON DELETE CASCADE;
+
+-- Add foreign key constraint to relate superset exercises with exercises
+ALTER TABLE `superset_strength_exercises`
+ADD FOREIGN KEY (`superset_id`) REFERENCES `supersets` (`id`) ON DELETE CASCADE;
 
 -- Add foreign key constraint to relate variant exercises with exercises
 ALTER TABLE `variant_exercises`
 ADD FOREIGN KEY (`exercise_id`) REFERENCES `exercises` (`id`) ON DELETE CASCADE;
+
+-- Add foreign key constraint to relate variant exercises with exercises
+ALTER TABLE `variant_exercises`
+ADD FOREIGN KEY (`variant_id`) REFERENCES `workout_variants` (`id`) ON DELETE CASCADE;
 
 -- Add foreign key constraint to relate exercises with exercise names
 ALTER TABLE `exercises`
@@ -236,17 +242,21 @@ ADD FOREIGN KEY (`exercise_id`) REFERENCES `exercises` (`id`) ON DELETE CASCADE;
 ALTER TABLE `strength_exercise_logs`
 ADD FOREIGN KEY (`exercise_id`) REFERENCES `exercises` (`id`) ON DELETE CASCADE;
 
+-- Add foreign key constraint to relate strength exercise logs with exercises
+ALTER TABLE `strength_exercise_logs`
+ADD FOREIGN KEY (`session_id`) REFERENCES `variant_session_logs` (`id`) ON DELETE CASCADE;
+
 -- Add foreign key constraint to relate set logs with strength exercise logs
 ALTER TABLE `set_logs`
 ADD FOREIGN KEY (`strength_exercise_log_id`) REFERENCES `strength_exercise_logs` (`id`) ON DELETE CASCADE;
 
 -- Add foreign key constraint to relate superset logs with supersets
-ALTER TABLE `superset_logs`
+ALTER TABLE `superset_strength_exercise_logs`
 ADD FOREIGN KEY (`superset_id`) REFERENCES `supersets` (`id`) ON DELETE CASCADE;
 
 -- Add foreign key constraint to relate superset logs with variant session logs
-ALTER TABLE `superset_logs`
-ADD FOREIGN KEY (`session_id`) REFERENCES `variant_session_logs` (`id`) ON DELETE CASCADE;
+ALTER TABLE `superset_strength_exercise_logs`
+ADD FOREIGN KEY (`strength_exercise_log_id`) REFERENCES `strength_exercise_logs` (`id`) ON DELETE CASCADE;
 
 
 -- Indexes
@@ -282,9 +292,9 @@ ALTER TABLE `cardio_logs` ADD INDEX `idx_exercise_id` (`exercise_id`);
 -- Add index to improve performance on the 'set_logs' table
 ALTER TABLE `set_logs` ADD INDEX `idx_strength_exercise_log_id` (`strength_exercise_log_id`);
 
--- Add indexes to improve performance on the 'superset_logs' table
-ALTER TABLE `superset_logs` ADD INDEX `idx_session_id` (`session_id`);
-ALTER TABLE `superset_logs` ADD INDEX `idx_superset_id` (`superset_id`);
+-- Add indexes to improve performance on the 'superset_strength_exercise_logs' table
+ALTER TABLE `superset_strength_exercise_logs` ADD INDEX `idx_strength_exercise_log_id` (`strength_exercise_log_id`);
+ALTER TABLE `superset_strength_exercise_logs` ADD INDEX `idx_superset_id` (`superset_id`);
 
 -- Add index to improve performance on the 'strength_exercise_muscles' table
 ALTER TABLE `strength_exercise_muscles` ADD INDEX `idx_muscle_id` (`muscle_id`);
@@ -292,8 +302,8 @@ ALTER TABLE `strength_exercise_muscles` ADD INDEX `idx_muscle_id` (`muscle_id`);
 -- Add index to improve performance on the 'variant_exercises' table
 ALTER TABLE `variant_exercises` ADD INDEX `idx_exercise_id` (`exercise_id`);
 
--- Add index to improve performance on the 'superset_exercises' table
-ALTER TABLE `superset_exercises` ADD INDEX `idx_exercise_id` (`exercise_id`);
+-- Add index to improve performance on the 'superset_strength_exercises' table
+ALTER TABLE `superset_strength_exercises` ADD INDEX `idx_strength_exercise_id` (`strength_exercise_id`);
 
 -- Add index to improve performance on the 'custom_timers' table
 ALTER TABLE `custom_timers` ADD INDEX `idx_user_id` (`user_id`);
