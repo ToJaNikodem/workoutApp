@@ -1,16 +1,99 @@
+:root {
+    --font: rgba(14, 2, 1, 1);
+    --font70: rgba(14, 2, 1, 0.7);
+    --background: rgba(254, 246, 246, 1);
+    --secondaryBackground: rgba(245, 235, 238, 1);
+    --WindowBackground: rgba(255, 255, 255, 1);
+    --mainDetail: rgba(210, 19, 18, 1);
+    --secondaryDetail: rgba(255, 176, 132, 0.6);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
+    text-rendering: optimizeLegibility;
 }
 
-:root {
-    --font: #0E0201;
-    --background: #FEF6F6;
-    --secondaryBackground: #F5EBEE;
-    --WindowBackground: #FFFFFF;
-    --mainDetail: #D21312;
-    --secondaryDetail: #FFB084;
+body {
+    background-color: var(--background);
+    width: 100%;
+    height: 100%;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    max-height: 100vh;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    margin: auto;
+}
+
+.whiteWindow {
+    border-radius: var(--borderRadius);
+    box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.25);
+    background-color: var(--WindowBackground);
+}
+
+.authorizationBox {
+    width: 28%;
+    height: 57%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    /* make media for other screen resolutions */
+}
+
+.authorizationBox h2 {
+    color: var(--mainDetail);
+    font-size: var(--fontSize40);
+}
+
+.standardInput {
+    background-color: var(--secondaryDetail);
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: var(--borderRadius);
+    width: var(--standardInputWidth);
+    height: calc(var(--standardInputWidth) * 0.14);
+}
+
+.textLabel {
+    color: var(--font70);
+    font-size: var(--fontSize20);
+}
+
+.textLabel a {
+    color: var(--mainDetail);
+}
+
+.submitButton {
+    background-color: var(--mainDetail);
+    border-radius: calc(var(--borderRadius) * 0.8);
+    font-size: var(--fontSize32);
+    color: white;
+    text-align: center;
+    height: var(--mainButtonHeight);
+    padding: 0 calc(var(--mainButtonHeight) * 0.5);
+    box-shadow: 3px 3px 0 0 var(--font);
+}
+
+.submitButton:hover {
+    cursor: pointer;
+}
+
+.authorizationForm {
+    display: block;
+    margin: auto;
+    width: min-content;
 }

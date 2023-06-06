@@ -1,6 +1,6 @@
 CREATE TABLE `users` (
     `user_id` int UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `username` varchar(32) UNIQUE NOT NULL CHECK (username >= 4),
+    `username` varchar(32) UNIQUE NOT NULL,
     `email` varchar(256) UNIQUE NOT NULL CHECK (email REGEXP '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$'),
     `hashed_password` varchar(96) NOT NULL,
     `language` ENUM('pol', 'eng') NOT NULL DEFAULT 'eng'
@@ -24,7 +24,7 @@ CREATE TABLE `workout_variants` (
     `workout_variant_id` int UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `workout_id` int UNSIGNED NOT NULL,
     `workout_variant_name_id` int UNSIGNED NOT NULL,
-    `workout_variant_notes` varchar(512)
+    `workout_variant_notes` varchar(1024)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `workout_variant_names` (
@@ -38,7 +38,7 @@ CREATE TABLE `strength_exercises` (
     `strength_exercise_id` int UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `strength_exercise_name_id` int UNSIGNED NOT NULL,
     `user_id` int UNSIGNED NOT NULL,
-    `strength_exercise_notes` varchar(512)
+    `strength_exercise_notes` varchar(1024)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `strength_exercise_names` (
@@ -61,7 +61,7 @@ CREATE TABLE `sets` (
     `set_number` smallint UNSIGNED NOT NULL,
     `rep_count` smallint UNSIGNED NOT NULL,
     `weight` decimal(6, 2) COMMENT 'in kg' CHECK (weight >= 0),
-    `set_notes` varchar(512),
+    `set_notes` varchar(1024),
     `dropset` bool NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -72,7 +72,7 @@ CREATE TABLE `cardio_exercises` (
     `duration` smallint UNSIGNED COMMENT 'in sec',
     `distance` smallint UNSIGNED COMMENT 'in m',
     `speed` decimal(3, 1) COMMENT 'in km/h' CHECK (speed >= 0),
-    `cardio_exercise_notes` varchar(512)
+    `cardio_exercise_notes` varchar(1024)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `cardio_exercise_names` (
@@ -93,7 +93,7 @@ CREATE TABLE `other_exercises` (
     `other_exercise_id` int UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `other_exercise_name_id` int UNSIGNED NOT NULL,
     `user_id` int UNSIGNED NOT NULL,
-    `other_exercise_notes` varchar(512)
+    `other_exercise_notes` varchar(1024)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `other_exercise_names` (
@@ -113,7 +113,8 @@ CREATE TABLE `other_exercise_workout_variant` (
 CREATE TABLE `supersets` (
     `superset_id` int UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `workout_variant_id` int UNSIGNED NOT NULL,
-    `superset_notes` varchar(512)
+    `user_id` int UNSIGNED NOT NULL,
+    `superset_notes` varchar(1024)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `superset_strength_exercise` (
@@ -156,14 +157,14 @@ CREATE TABLE `workout_session_logs` (
     `workout_session_log_id` int UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `user_id` int UNSIGNED NOT NULL,
     `date` date NOT NULL,
-    `workout_session_log_notes` varchar(512)
+    `workout_session_log_notes` varchar(1024)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `strength_execise_logs` (
     `strength_exercise_log_id` int UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `strength_exercise_id` int UNSIGNED NOT NULL,
     `workout_session_log_id` int UNSIGNED NOT NULL,
-    `strength_execise_log_notes` varchar(512)
+    `strength_execise_log_notes` varchar(1024)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `set_logs` (
@@ -172,7 +173,7 @@ CREATE TABLE `set_logs` (
     `set_number` smallint UNSIGNED NOT NULL,
     `rep_count` smallint UNSIGNED NOT NULL,
     `weight` decimal(6, 2) COMMENT 'in kg' CHECK (weight >= 0),
-    `set_log_notes` varchar(512),
+    `set_log_notes` varchar(1024),
     `dropset` bool NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -183,20 +184,20 @@ CREATE TABLE `cardio_exercise_logs` (
     `duration` smallint UNSIGNED COMMENT 'in sec',
     `distance` smallint UNSIGNED COMMENT 'in m',
     `speed` decimal(3, 1) COMMENT 'in km/h' CHECK (speed >= 0),
-    `cardio_exercise_log_notes` varchar(512)
+    `cardio_exercise_log_notes` varchar(1024)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `other_execise_logs` (
     `other_exercise_log_id` int UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `other_exercise_id` int UNSIGNED NOT NULL,
     `workout_session_log_id` int UNSIGNED NOT NULL,
-    `other_execise_log_notes` varchar(512)
+    `other_execise_log_notes` varchar(1024)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `superset_logs` (
     `superset_log_id` int UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `workout_session_log_id` int UNSIGNED NOT NULL,
-    `superset_log_notes` varchar(512)
+    `superset_log_notes` varchar(1024)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `superset_log_strength_exercise_log` (
@@ -300,6 +301,11 @@ ALTER TABLE
     `supersets`
 ADD
     FOREIGN KEY (`workout_variant_id`) REFERENCES `workout_variants` (`workout_variant_id`) ON DELETE CASCADE;
+
+ALTER TABLE
+    `supersets`
+ADD
+    FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
 
 ALTER TABLE
     `custom_timers`
