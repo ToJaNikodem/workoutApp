@@ -2,7 +2,7 @@ CREATE TABLE `users` (
     `user_id` int UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `username` varchar(32) UNIQUE NOT NULL CHECK (username >= 4),
     `email` varchar(256) UNIQUE NOT NULL CHECK (email REGEXP '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$'),
-    `hashed_password` varchar(96) NOT NULL,
+    `hashed_password` varchar(256) NOT NULL,
     `language` ENUM('pol', 'eng') NOT NULL DEFAULT 'eng'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

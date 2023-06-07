@@ -1,3 +1,3 @@
 <?php
-	header('Location: pages/signIn.php');
+	header('Location: /pages/eng/signIn.php');
 ?>
