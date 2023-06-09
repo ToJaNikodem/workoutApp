@@ -1,8 +1,8 @@
 <?php
 session_start();
 if (isset($_SESSION['signedIn'])) {
-	header('Location: /pages/'. $_SESSION['lang'] . '/mainPage.php');
-	exit;
+    header('Location: /pages/' . $_SESSION['lang'] . '/mainPage.php');
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ if (isset($_SESSION['signedIn'])) {
                     <p class="textLabel">Password
                         <span class="informationBox password">
                             <img src="/src/img/information.svg" alt="information icon" class="informationIcon">
-                        </span> 
+                        </span>
                     </p>
                     <input type="password" name="password" class="standardInput" maxlength="64" minlength="8">
                 </div>
@@ -88,9 +88,11 @@ if (isset($_SESSION['signedIn'])) {
                 </p>
             </div>
             <p class="sendFeedback">Send feedback</p>
-            <p class="signOut">Sign out
-                <img src="/src/img/exit.svg" alt="exit icon" class="signOutIcon">
-            </p>
+            <a href="/src/php/signOut.php">
+                <p class="signOut">Sign out
+                    <img src="/src/img/exit.svg" alt="exit icon" class="signOutIcon">
+                </p>
+            </a>
         </div>
     </aside>
     <div class="menuButton">

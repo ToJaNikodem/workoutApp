@@ -1,8 +1,8 @@
 <?php
 session_start();
 if (isset($_SESSION['signedIn'])) {
-	header('Location: /pages/'. $_SESSION['lang'] . '/mainPage.php');
-	exit;
+    header('Location: /pages/' . $_SESSION['lang'] . '/mainPage.php');
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -76,9 +76,11 @@ if (isset($_SESSION['signedIn'])) {
                 </p>
             </div>
             <p class="sendFeedback">Send feedback</p>
-            <p class="signOut">Sign out
-                <img src="/src/img/exit.svg" alt="exit icon" class="signOutIcon">
-            </p>
+            <a href="/src/php/signOut.php">
+                <p class="signOut">Sign out
+                    <img src="/src/img/exit.svg" alt="exit icon" class="signOutIcon">
+                </p>
+            </a>
         </div>
     </aside>
     <div class="menuButton">

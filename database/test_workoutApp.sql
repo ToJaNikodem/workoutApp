@@ -2,8 +2,7 @@ CREATE TABLE `users` (
     `user_id` int UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `username` varchar(32) UNIQUE NOT NULL CHECK (LENGTH(username) >= 4),
     `email` varchar(256) UNIQUE NOT NULL CHECK (email REGEXP '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$'),
-    `hashed_password` varchar(100) NOT NULL,
-    `language` ENUM('pl', 'en') NOT NULL DEFAULT 'en'
+    `hashed_password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `workouts` (
