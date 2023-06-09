@@ -209,7 +209,7 @@ a {
 }
 
 .informationBox.password:hover::before {
-    content: "Min 8, Max 128";
+    content: "Min 8, Max 64";
 }
 
 /* dimmer */

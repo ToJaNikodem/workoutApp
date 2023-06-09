@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION['signedIn'])) {
+	header('Location: /pages/'. $_SESSION['lang'] . '/mainPage.php');
+	exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +23,7 @@
     <div class="dimmer"></div>
     <div class="container">
         <main class="authorizationBox whiteWindow">
-            <form action="" method="post" class="authorizationForm">
+            <form action="/src/php/signUpValidator.php" method="post" class="authorizationForm">
                 <h2>Sign Up</h2>
                 <div class="inputBox">
                     <p class="textLabel">Username
@@ -36,7 +43,7 @@
                             <img src="/src/img/information.svg" alt="information icon" class="informationIcon">
                         </span> 
                     </p>
-                    <input type="password" name="password" class="standardInput" maxlength="128" minlength="8">
+                    <input type="password" name="password" class="standardInput" maxlength="64" minlength="8">
                 </div>
 
                 <input type="submit" value="Continue" class="submitButton">
@@ -55,12 +62,14 @@
                 </p>
             </div>
             <div class="languageButtons">
-                <div id="pol" class="insideMenuButton language">
-                    <img src="/src/img/poland.png" alt="Poland flag" class="flagIcon">
-                    <p>
-                        PL
-                    </p>
-                </div>
+                <a href="/pages/pl/signUp.php">
+                    <div id="pol" class="insideMenuButton language">
+                        <img src="/src/img/poland.png" alt="Poland flag" class="flagIcon">
+                        <p>
+                            PL
+                        </p>
+                    </div>
+                </a>
                 <div id="eng" class="insideMenuButton language selectedLanguage">
                     <img src="/src/img/united-kingdom.png" alt="United Kingdom flag" class="flagIcon">
                     <p>

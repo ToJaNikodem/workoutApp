@@ -6,7 +6,7 @@ if (isset($_SESSION['signedIn'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
@@ -16,7 +16,7 @@ if (isset($_SESSION['signedIn'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>Sign in</title>
+    <title>Zaloguj się</title>
 </head>
 
 <body>
@@ -24,19 +24,19 @@ if (isset($_SESSION['signedIn'])) {
     <div class="container">
         <main class="authorizationBox whiteWindow">
             <form action="/src/php/signInValidator.php" method="post" class="authorizationForm">
-                <h2>Sign in</h2>
+                <h2>Zaloguj się</h2>
                 <div class="inputBox">
-                    <p class="textLabel">Username or email</p>
+                    <p class="textLabel">Nazwa użytkownika lub email</p>
                     <input type="text" name="usernameOrEmail" class="standardInput" maxlength="32" minlength="4">
                 </div>
                 <div class="inputBox">
-                    <p class="textLabel">Password</p>
+                    <p class="textLabel">Hasło</p>
                     <input type="password" name="password" class="standardInput" maxlength="64" minlength="8">
                 </div>
 
-                <input type="submit" value="Continue" class="submitButton">
+                <input type="submit" value="Kontynuuj" class="submitButton">
             </form>
-            <p class="textLabel authorizationFooter">No account? &nbsp;<a href="signUp.php">Sign Up</a></p>
+            <p class="textLabel authorizationFooter">Nie masz konta? &nbsp;<a href="signUp.php">Zajerestruj się</a></p>
         </main>
     </div>
     <aside class="menu">
@@ -44,39 +44,39 @@ if (isset($_SESSION['signedIn'])) {
             <h3>Menu</h3>
             <hr>
             <div class="signState">
-                <p>Logged in as</p>
+                <p>Zalogowany jako</p>
                 <p class="username"><?php ?>Nikodem Buczkowski
                     <img src="/src/img/edit.svg" alt="edit icon" class="editNameIcon">
                 </p>
             </div>
             <div class="languageButtons">
-                <a href="/pages/pl/signIn.php">
-                    <div id="pol" class="insideMenuButton language">
-                        <img src="/src/img/poland.png" alt="Poland flag" class="flagIcon">
+                <div id="pol" class="insideMenuButton language selectedLanguage">
+                    <img src="/src/img/poland.png" alt="Poland flag" class="flagIcon">
+                    <p>
+                        PL
+                    </p>
+                </div>
+                <a href="/pages/en/signIn.php">
+                    <div id="eng" class="insideMenuButton language">
+                        <img src="/src/img/united-kingdom.png" alt="United Kingdom flag" class="flagIcon">
                         <p>
-                            PL
+                            ENG
                         </p>
                     </div>
                 </a>
-                <div id="eng" class="insideMenuButton language selectedLanguage">
-                    <img src="/src/img/united-kingdom.png" alt="United Kingdom flag" class="flagIcon">
-                    <p>
-                        ENG
-                    </p>
-                </div>
             </div>
             <div class="insideMenuButton exportButton">
-                <p>Export workouts
+                <p>Eksportuj treningi
                     <img src="/src/img/file.svg" alt="file icon" class="exportIcon">
                 </p>
             </div>
             <div class="insideMenuButton deleteAccountButton">
-                <p>Delete account
+                <p>Usuń konto
                     <img src="/src/img/bin.svg" alt="bin icon" class="binIcon">
                 </p>
             </div>
-            <p class="sendFeedback">Send feedback</p>
-            <p class="signOut">Sign out
+            <p class="sendFeedback">Wyślij opinię</p>
+            <p class="signOut">Wyloguj się
                 <img src="/src/img/exit.svg" alt="exit icon" class="signOutIcon">
             </p>
         </div>

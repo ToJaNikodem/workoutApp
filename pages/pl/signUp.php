@@ -6,7 +6,7 @@ if (isset($_SESSION['signedIn'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
@@ -16,27 +16,39 @@ if (isset($_SESSION['signedIn'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>Sign in</title>
+    <title>Zajerestruj się</title>
 </head>
 
 <body>
     <div class="dimmer"></div>
     <div class="container">
         <main class="authorizationBox whiteWindow">
-            <form action="/src/php/signInValidator.php" method="post" class="authorizationForm">
-                <h2>Sign in</h2>
+            <form action="/src/php/signUpValidator.php" method="post" class="authorizationForm">
+                <h2>Zajerestruj się</h2>
                 <div class="inputBox">
-                    <p class="textLabel">Username or email</p>
-                    <input type="text" name="usernameOrEmail" class="standardInput" maxlength="32" minlength="4">
+                    <p class="textLabel">Nazwa użytkownika
+                        <span class="informationBox username">
+                            <img src="/src/img/information.svg" alt="information icon" class="informationIcon">
+                        </span>
+                    </p>
+                    <input type="text" name="username" class="standardInput" maxlength="32" minlength="4">
                 </div>
                 <div class="inputBox">
-                    <p class="textLabel">Password</p>
+                    <p class="textLabel">Email</p>
+                    <input type="email" name="email" class="standardInput">
+                </div>
+                <div class="inputBox">
+                    <p class="textLabel">Hasło
+                        <span class="informationBox password">
+                            <img src="/src/img/information.svg" alt="information icon" class="informationIcon">
+                        </span> 
+                    </p>
                     <input type="password" name="password" class="standardInput" maxlength="64" minlength="8">
                 </div>
 
-                <input type="submit" value="Continue" class="submitButton">
+                <input type="submit" value="Kontynuuj" class="submitButton">
             </form>
-            <p class="textLabel authorizationFooter">No account? &nbsp;<a href="signUp.php">Sign Up</a></p>
+            <p class="textLabel authorizationFooter">Posiadasz już konto? &nbsp;<a href="signIn.php">Zaloguj się</a></p>
         </main>
     </div>
     <aside class="menu">
@@ -44,39 +56,39 @@ if (isset($_SESSION['signedIn'])) {
             <h3>Menu</h3>
             <hr>
             <div class="signState">
-                <p>Logged in as</p>
+                <p>Zalogowany jako</p>
                 <p class="username"><?php ?>Nikodem Buczkowski
                     <img src="/src/img/edit.svg" alt="edit icon" class="editNameIcon">
                 </p>
             </div>
             <div class="languageButtons">
-                <a href="/pages/pl/signIn.php">
-                    <div id="pol" class="insideMenuButton language">
-                        <img src="/src/img/poland.png" alt="Poland flag" class="flagIcon">
+                <div id="pol" class="insideMenuButton language selectedLanguage">
+                    <img src="/src/img/poland.png" alt="Poland flag" class="flagIcon">
+                    <p>
+                        PL
+                    </p>
+                </div>
+                <a href="/pages/en/signUp.php">
+                    <div id="eng" class="insideMenuButton language">
+                        <img src="/src/img/united-kingdom.png" alt="United Kingdom flag" class="flagIcon">
                         <p>
-                            PL
+                            ENG
                         </p>
                     </div>
                 </a>
-                <div id="eng" class="insideMenuButton language selectedLanguage">
-                    <img src="/src/img/united-kingdom.png" alt="United Kingdom flag" class="flagIcon">
-                    <p>
-                        ENG
-                    </p>
-                </div>
             </div>
             <div class="insideMenuButton exportButton">
-                <p>Export workouts
+                <p>Eksportuj treningi
                     <img src="/src/img/file.svg" alt="file icon" class="exportIcon">
                 </p>
             </div>
             <div class="insideMenuButton deleteAccountButton">
-                <p>Delete account
+                <p>Usuń konto
                     <img src="/src/img/bin.svg" alt="bin icon" class="binIcon">
                 </p>
             </div>
-            <p class="sendFeedback">Send feedback</p>
-            <p class="signOut">Sign out
+            <p class="sendFeedback">Wyślij opinie</p>
+            <p class="signOut">Zaloguj się
                 <img src="/src/img/exit.svg" alt="exit icon" class="signOutIcon">
             </p>
         </div>
