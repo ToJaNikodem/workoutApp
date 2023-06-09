@@ -49,9 +49,10 @@ a {
     background-color: var(--WindowBackground);
 }
 
+/* authorization box */
 .authorizationBox {
     width: 26.5rem;
-    height: 31rem;
+    /* height: 31rem; */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -115,9 +116,10 @@ a {
 }
 
 .authorizationFooter {
-    margin-left: 2.2em;
+    margin: 0 0 2em 2.2em;
 }
 
+/* menu button */
 .menuButton {
     position: absolute;
     height: 3.8em;
@@ -174,6 +176,43 @@ a {
     rotate: -45deg;
 }
 
+.informationIcon {
+    width: 1em;
+    height: 1em;
+    opacity: 0.7;
+    margin: 0 0 -0.1em 0.2em;
+}
+
+.informationBox {
+    position: relative;
+}
+
+.informationBox:hover::before {
+    box-sizing: border-box;
+    content: "";
+    height: 1.5rem;
+    width: 8.5rem;
+    padding: 0.3rem 0.9rem;
+    background-color: var(--secondaryBackground);
+    display: inline-block;
+    position: absolute;
+    top: -2rem;
+    left: -0.5rem;
+    font-size: calc(var(--fontSize20) * 0.8);
+    border-radius: 0.4rem;
+    box-shadow: 0.1rem 0.1rem 0 0 var(--font);
+    text-align: center;
+}
+
+.informationBox.username:hover::before {
+    content: "Min 4, Max 32";
+}
+
+.informationBox.password:hover::before {
+    content: "Min 8, Max 128";
+}
+
+/* dimmer */
 .dimmer {
     opacity: 0;
     position: absolute;
@@ -191,6 +230,7 @@ a {
     opacity: 1;
 }
 
+/* menu */
 .menu {
     position: absolute;
     background-color: var(--background);
@@ -201,10 +241,12 @@ a {
     top: 0;
     right: 0;
     transition: 0.4s ease-in-out;
+    opacity: 0;
 }
 
 .menu.active {
     left: 70vw;
+    opacity: 1;
 }
 
 .menu::before {
@@ -233,25 +275,27 @@ a {
 .signOutIcon {
     height: 2em;
     width: 2em;
-    margin-left: 1em;
+    margin: 0 0 -0.2em 1em;
 }
 
 .menuInside .binIcon,
 .menuInside .exportIcon {
     height: 1.75em;
     width: 1.75em;
+    margin: 0 0 -0.5rem 0.5rem;
 }
 
 .flagIcon {
     height: 3rem;
     width: 3rem;
-    padding-top: 0.25rem;
+    margin-right: 0.7em;
 }
 
 .editNameIcon {
     height: 1.5em;
     width: 1.5em;
-    margin-left: 0.5em;
+    margin: 0 0 -0.1em 0.5em;
+    cursor: pointer;
 }
 
 .insideMenuButton {
@@ -262,6 +306,11 @@ a {
     box-shadow: 0.1em 0.1em 0 0 var(--font);
     width: fit-content;
     padding: 0 1rem;
+    cursor: pointer;
+}
+
+.insideMenuButton:hover {
+    box-shadow: inset 0px 0.15rem 0.15rem rgba(0, 0, 0, 0.25);
 }
 
 .insideMenuButton p {
@@ -298,11 +347,13 @@ a {
     position: absolute;
     bottom: 1.5em;
     right: -1em;
+    cursor: pointer;
 }
 
 .sendFeedback {
     opacity: 0.7;
-    margin: 3rem 0 0 8rem;
+    margin: 3rem 0 0 15.3rem;
+    cursor: pointer;
 }
 
 .selectedLanguage {
@@ -322,17 +373,22 @@ a {
     flex-direction: row;
     justify-content: space-between;
     width: 17.5em;
-    margin: 3rem 0 0 8rem;
+    margin: 4rem 0 0 10rem;
 }
 
 .exportButton {
     width: 17.5rem;
     text-align: center;
-    margin: 2rem 0 0 8rem;
+    margin: 2rem 0 0 10rem;
 }
 
 .deleteAccountButton {
     width: 16rem;
     text-align: center;
-    margin: 2rem 0 0 8rem;
+    margin: 2rem 0 0 10.75rem;
+}
+
+.insideMenuButton.language {
+    display: flex;
+    align-items: center;
 }

@@ -17,19 +17,31 @@
     <div class="container">
         <main class="authorizationBox whiteWindow">
             <form action="" method="post" class="authorizationForm">
-                <h2>Sign in</h2>
+                <h2>Sign Up</h2>
                 <div class="inputBox">
-                    <p class="textLabel">Username or email</p>
+                    <p class="textLabel">Username
+                        <span class="informationBox username">
+                            <img src="/src/img/information.svg" alt="information icon" class="informationIcon">
+                        </span>
+                    </p>
                     <input type="text" name="username" class="standardInput" maxlength="32" minlength="4">
                 </div>
                 <div class="inputBox">
-                    <p class="textLabel">Password</p>
+                    <p class="textLabel">Email</p>
+                    <input type="email" name="email" class="standardInput">
+                </div>
+                <div class="inputBox">
+                    <p class="textLabel">Password
+                        <span class="informationBox password">
+                            <img src="/src/img/information.svg" alt="information icon" class="informationIcon">
+                        </span> 
+                    </p>
                     <input type="password" name="password" class="standardInput" maxlength="128" minlength="8">
                 </div>
 
                 <input type="submit" value="Continue" class="submitButton">
             </form>
-            <p class="textLabel authorizationFooter">No account? &nbsp;<a href="signUp.php">Sign Up</a></p>
+            <p class="textLabel authorizationFooter">Have an account? &nbsp;<a href="signIn.php">Sign in</a></p>
         </main>
     </div>
     <aside class="menu">
@@ -43,15 +55,15 @@
                 </p>
             </div>
             <div class="languageButtons">
-                <div id="pol" class="insideMenuButton">
+                <div id="pol" class="insideMenuButton language">
+                    <img src="/src/img/poland.png" alt="Poland flag" class="flagIcon">
                     <p>
-                        <img src="/src/img/poland.png" alt="Poland flag" class="flagIcon">
                         PL
                     </p>
                 </div>
-                <div id="eng" class="insideMenuButton selectedLanguage">
+                <div id="eng" class="insideMenuButton language selectedLanguage">
+                    <img src="/src/img/united-kingdom.png" alt="United Kingdom flag" class="flagIcon">
                     <p>
-                        <img src="/src/img/united-kingdom.png" alt="United Kingdom flag" class="flagIcon">
                         ENG
                     </p>
                 </div>
