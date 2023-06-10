@@ -119,6 +119,11 @@ a {
     margin: 0 0 2em 2.2em;
 }
 
+.errorMessage {
+    text-align: center;
+    color: var(--mainDetail);
+}
+
 /* menu button */
 .menuButton {
     position: absolute;

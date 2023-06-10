@@ -1,8 +1,16 @@
 <?php
+$language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+
 session_start();
-if (isset($_SESSION['signedIn'])) {
-    header('Location: /pages/' . $_SESSION['lang'] . '/mainPage.php');
-    exit;
+
+if (isset($_SESSION['signedIn'])) { 
+    if ($language == 'pl') {
+		header('Location: /pages/pl/mainPage.php');
+		exit();
+	} else {
+		header('Location: /pages/en/mainPage.php');
+		exit();
+	}
 }
 ?>
 <!DOCTYPE html>
@@ -45,7 +53,7 @@ if (isset($_SESSION['signedIn'])) {
                     </p>
                     <input type="password" name="password" class="standardInput" maxlength="64" minlength="8">
                 </div>
-
+                <div class="errorMessage"></div>
                 <input type="submit" value="Kontynuuj" class="submitButton">
             </form>
             <p class="textLabel authorizationFooter">Posiadasz już konto? &nbsp;<a href="signIn.php">Zaloguj się</a></p>
@@ -55,12 +63,6 @@ if (isset($_SESSION['signedIn'])) {
         <div class="menuInside">
             <h3>Menu</h3>
             <hr>
-            <div class="signState">
-                <p>Zalogowany jako</p>
-                <p class="username"><?php ?>Nikodem Buczkowski
-                    <img src="/src/img/edit.svg" alt="edit icon" class="editNameIcon">
-                </p>
-            </div>
             <div class="languageButtons">
                 <div id="pol" class="insideMenuButton language selectedLanguage">
                     <img src="/src/img/poland.png" alt="Poland flag" class="flagIcon">
@@ -77,16 +79,6 @@ if (isset($_SESSION['signedIn'])) {
                     </div>
                 </a>
             </div>
-            <div class="insideMenuButton exportButton">
-                <p>Eksportuj treningi
-                    <img src="/src/img/file.svg" alt="file icon" class="exportIcon">
-                </p>
-            </div>
-            <div class="insideMenuButton deleteAccountButton">
-                <p>Usuń konto
-                    <img src="/src/img/bin.svg" alt="bin icon" class="binIcon">
-                </p>
-            </div>
             <p class="sendFeedback">Wyślij opinie</p>
             <a href="/src/php/signOut.php">
                 <p class="signOut">Wyloguj się
@@ -101,6 +93,7 @@ if (isset($_SESSION['signedIn'])) {
         <span></span>
     </div>
     <script src="/src/js/style.js"></script>
+    <script src="/src/js/signUpErrorHandler.js"></script>
 </body>
 
 </html>

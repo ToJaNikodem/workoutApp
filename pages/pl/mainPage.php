@@ -2,12 +2,12 @@
 session_start();
 if (!isset($_SESSION['signedIn'])) {
     header('Location: /index.php');
-    exit;
+    exit();
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
@@ -31,7 +31,7 @@ if (!isset($_SESSION['signedIn'])) {
             <hr>
             <div class="signState">
                 <p>Zalogowany jako</p>
-                <p class="username"><?php ?>Nikodem Buczkowski
+                <p class="username"><?=$_SESSION['username'] ?>
                     <img src="/src/img/edit.svg" alt="edit icon" class="editNameIcon">
                 </p>
             </div>
@@ -42,7 +42,7 @@ if (!isset($_SESSION['signedIn'])) {
                         PL
                     </p>
                 </div>
-                <a href="/pages/en/signIn.php">
+                <a href="/pages/en/mainPage.php">
                     <div id="eng" class="insideMenuButton language">
                         <img src="/src/img/united-kingdom.png" alt="United Kingdom flag" class="flagIcon">
                         <p>

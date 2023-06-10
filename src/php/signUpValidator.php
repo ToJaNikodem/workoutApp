@@ -1,6 +1,8 @@
 <?php
 require "database.php";
 
+$language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+
 if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -13,26 +15,43 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
             exit();
         }
 
-        if ($stmt = $conn->prepare('SELECT user_id FROM users WHERE username = ? OR email = ?')) {
-            $stmt->bind_param('ss', $username, $email);
+        if ($stmt = $conn->prepare('SELECT user_id FROM users WHERE username = ?')) {
+            $stmt->bind_param('s', $username);
             $stmt->execute();
             $stmt->store_result();
             if ($stmt->num_rows > 0) {
-                echo 'Username or email exist, please choose another!';
-            } else {
-                if ($stmt = $conn->prepare('INSERT INTO users (username, hashed_password, email) VALUES (?, ?, ?)')) {
-                    $hashedPassword = password_hash($password, PASSWORD_ARGON2ID);
-                    $stmt->bind_param('sss', $username, $hashedPassword, $email);
-                    $stmt->execute();
-                    $stmt->close();
-                    echo 'You have successfully registered! You can now login!';
+                if ($language == 'pl') {
+                    header('Location: /pages/pl/signUp.php?re=11');
+                    exit();
                 } else {
-                    echo 'Could not prepare statement!';
+                    header('Location: /pages/en/signUp.php?re=01');
+                    exit();
+                }
+            } else {
+                if ($stmt = $conn->prepare('SELECT user_id FROM users WHERE email = ?')) {
+                    $stmt->bind_param('s', $email);
+                    $stmt->execute();
+                    $stmt->store_result();
+                    if ($stmt->num_rows > 0) {
+                        if ($language == 'pl') {
+                            header('Location: /pages/pl/signUp.php?re=12');
+                            exit();
+                        } else {
+                            header('Location: /pages/en/signUp.php?re=02');
+                            exit();
+                        }
+                    } else {
+                        if ($stmt = $conn->prepare('INSERT INTO users (username, hashed_password, email) VALUES (?, ?, ?)')) {
+                            $hashedPassword = password_hash($password, PASSWORD_ARGON2ID);
+                            $stmt->bind_param('sss', $username, $hashedPassword, $email);
+                            $stmt->execute();
+                            $stmt->close();
+                            // sucesss message
+                        }
+                    }
                 }
             }
             $conn->close();
-        } else {
-            echo "Invalid data";
         }
     }
 }

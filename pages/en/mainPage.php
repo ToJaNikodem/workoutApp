@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION['signedIn'])) {
     header('Location: /index.php');
-    exit;
+    exit();
 }
 ?>
 
@@ -31,12 +31,12 @@ if (!isset($_SESSION['signedIn'])) {
             <hr>
             <div class="signState">
                 <p>Logged in as</p>
-                <p class="username"><?php ?>Nikodem Buczkowski
+                <p class="username"><?=$_SESSION['username'] ?>
                     <img src="/src/img/edit.svg" alt="edit icon" class="editNameIcon">
                 </p>
             </div>
             <div class="languageButtons">
-                <a href="/pages/pl/signIn.php">
+                <a href="/pages/pl/mainPage.php">
                     <div id="pol" class="insideMenuButton language">
                         <img src="/src/img/poland.png" alt="Poland flag" class="flagIcon">
                         <p>

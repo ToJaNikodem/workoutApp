@@ -1,8 +1,16 @@
 <?php
+$language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+
 session_start();
+
 if (isset($_SESSION['signedIn'])) {
-    header('Location: /pages/' . $_SESSION['lang'] . '/mainPage.php');
-    exit;
+    if ($language == 'pl') {
+		header('Location: /pages/pl/mainPage.php');
+		exit();
+	} else {
+		header('Location: /pages/en/mainPage.php');
+		exit();
+	}
 }
 ?>
 <!DOCTYPE html>
@@ -45,7 +53,7 @@ if (isset($_SESSION['signedIn'])) {
                     </p>
                     <input type="password" name="password" class="standardInput" maxlength="64" minlength="8">
                 </div>
-
+                <div class="errorMessage"></div>
                 <input type="submit" value="Continue" class="submitButton">
             </form>
             <p class="textLabel authorizationFooter">Have an account? &nbsp;<a href="signIn.php">Sign in</a></p>
@@ -55,12 +63,6 @@ if (isset($_SESSION['signedIn'])) {
         <div class="menuInside">
             <h3>Menu</h3>
             <hr>
-            <div class="signState">
-                <p>Logged in as</p>
-                <p class="username"><?php ?>Nikodem Buczkowski
-                    <img src="/src/img/edit.svg" alt="edit icon" class="editNameIcon">
-                </p>
-            </div>
             <div class="languageButtons">
                 <a href="/pages/pl/signUp.php">
                     <div id="pol" class="insideMenuButton language">
@@ -77,16 +79,6 @@ if (isset($_SESSION['signedIn'])) {
                     </p>
                 </div>
             </div>
-            <div class="insideMenuButton exportButton">
-                <p>Export workouts
-                    <img src="/src/img/file.svg" alt="file icon" class="exportIcon">
-                </p>
-            </div>
-            <div class="insideMenuButton deleteAccountButton">
-                <p>Delete account
-                    <img src="/src/img/bin.svg" alt="bin icon" class="binIcon">
-                </p>
-            </div>
             <p class="sendFeedback">Send feedback</p>
             <a href="/src/php/signOut.php">
                 <p class="signOut">Sign out
@@ -101,6 +93,7 @@ if (isset($_SESSION['signedIn'])) {
         <span></span>
     </div>
     <script src="/src/js/style.js"></script>
+    <script src="/src/js/signUpErrorHandler.js"></script>
 </body>
 
 </html>

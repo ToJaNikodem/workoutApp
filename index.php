@@ -3,8 +3,10 @@
 
 	if ($language == 'pl') {
 		header('Location: /pages/pl/signIn.php');
+		exit();
 	} else {
 		header('Location: /pages/en/signIn.php');
+		exit();
 	}
 
 ?>

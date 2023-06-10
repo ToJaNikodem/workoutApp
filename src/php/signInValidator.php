@@ -1,6 +1,8 @@
 <?php
 require "database.php";
 
+$language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+
 session_start();
 
 if (isset($_POST['usernameOrEmail']) && isset($_POST['password'])) {
@@ -13,28 +15,38 @@ if (isset($_POST['usernameOrEmail']) && isset($_POST['password'])) {
         exit();
     }
 
-    if ($stmt = $conn->prepare('SELECT user_id, username, hashed_password, language FROM users WHERE username = ? OR email = ?')) {
+    if ($stmt = $conn->prepare('SELECT user_id, username, hashed_password FROM users WHERE username = ? OR email = ?')) {
         $stmt->bind_param('ss', $usernameOrEmail, $usernameOrEmail);
         $stmt->execute();
         $stmt->store_result();
         
         if ($stmt->num_rows > 0) {
-            $stmt->bind_result($user_id, $username, $hashedPassword, $language);
+            $stmt->bind_result($user_id, $username, $hashedPassword);
             $stmt->fetch();
             if (password_verify($password, $hashedPassword)) {
                 session_regenerate_id();
                 $_SESSION['signedIn'] = TRUE;
                 $_SESSION['user_id'] = $user_id;
                 $_SESSION['username'] = $username;
-                $_SESSION['lang'] = $language;
-                header('Location: /pages/' . $_SESSION['lang'] . '/mainPage.php');
+                header('Location: /index.php');
             } else {
-                echo 'Incorrect username and/or password!';
+                if ($language == 'pl') {
+                    header('Location: /pages/pl/signIn.php?le=11');
+                    exit();
+                } else {
+                    header('Location: /pages/en/signIn.php?le=01');
+                    exit();
+                }
             }
         } else {
-            echo 'Incorrect username and/or password!';
+            if ($language == 'pl') {
+                header('Location: /pages/pl/signIn.php?le=11');
+                exit();
+            } else {
+                header('Location: /pages/en/signIn.php?le=01');
+                exit();
+            }
         }
-
         $stmt->close();
         $conn->close();
     }
