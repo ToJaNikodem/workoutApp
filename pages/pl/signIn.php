@@ -42,6 +42,7 @@ if (isset($_SESSION['signedIn'])) {
                     <input type="password" name="password" class="standardInput" maxlength="64" minlength="8">
                 </div>
                 <div class="errorMessage"></div>
+                <div class="codeMessage"></div>
                 <input type="submit" value="Kontynuuj" class="submitButton">
             </form>
             <p class="textLabel authorizationFooter">Nie masz konta? &nbsp;<a href="signUp.php">Zajerestruj się</a></p>

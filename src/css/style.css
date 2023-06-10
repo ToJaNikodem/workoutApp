@@ -124,6 +124,10 @@ a {
     color: var(--mainDetail);
 }
 
+.codeMessage {
+    text-align: center;
+}
+
 /* menu button */
 .menuButton {
     position: absolute;

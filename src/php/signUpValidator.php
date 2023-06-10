@@ -46,7 +46,13 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
                             $stmt->bind_param('sss', $username, $hashedPassword, $email);
                             $stmt->execute();
                             $stmt->close();
-                            // sucesss message
+                            if ($language == 'pl') {
+                                header('Location: /pages/pl/signIn.php?rc=11');
+                                exit();
+                            } else {
+                                header('Location: /pages/en/signIn.php?rc=01');
+                                exit();
+                            }
                         }
                     }
                 }
