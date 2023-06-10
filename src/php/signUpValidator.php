@@ -21,10 +21,10 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
             $stmt->store_result();
             if ($stmt->num_rows > 0) {
                 if ($language == 'pl') {
-                    header('Location: /pages/pl/signUp.php?re=11');
+                    header('Location: /pages/pl/signUp.php?er=12');
                     exit();
                 } else {
-                    header('Location: /pages/en/signUp.php?re=01');
+                    header('Location: /pages/en/signUp.php?er=02');
                     exit();
                 }
             } else {
@@ -34,10 +34,10 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
                     $stmt->store_result();
                     if ($stmt->num_rows > 0) {
                         if ($language == 'pl') {
-                            header('Location: /pages/pl/signUp.php?re=12');
+                            header('Location: /pages/pl/signUp.php?er=13');
                             exit();
                         } else {
-                            header('Location: /pages/en/signUp.php?re=02');
+                            header('Location: /pages/en/signUp.php?er=03');
                             exit();
                         }
                     } else {
@@ -47,10 +47,10 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
                             $stmt->execute();
                             $stmt->close();
                             if ($language == 'pl') {
-                                header('Location: /pages/pl/signIn.php?rc=11');
+                                header('Location: /pages/pl/signIn.php?co=11');
                                 exit();
                             } else {
-                                header('Location: /pages/en/signIn.php?rc=01');
+                                header('Location: /pages/en/signIn.php?co=01');
                                 exit();
                             }
                         }

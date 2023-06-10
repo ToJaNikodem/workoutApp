@@ -31,19 +31,19 @@ if (isset($_POST['usernameOrEmail']) && isset($_POST['password'])) {
                 header('Location: /index.php');
             } else {
                 if ($language == 'pl') {
-                    header('Location: /pages/pl/signIn.php?le=11');
+                    header('Location: /pages/pl/signIn.php?er=11');
                     exit();
                 } else {
-                    header('Location: /pages/en/signIn.php?le=01');
+                    header('Location: /pages/en/signIn.php?er=01');
                     exit();
                 }
             }
         } else {
             if ($language == 'pl') {
-                header('Location: /pages/pl/signIn.php?le=11');
+                header('Location: /pages/pl/signIn.php?er=11');
                 exit();
             } else {
-                header('Location: /pages/en/signIn.php?le=01');
+                header('Location: /pages/en/signIn.php?er=01');
                 exit();
             }
         }

@@ -31,7 +31,7 @@ if (!isset($_SESSION['signedIn'])) {
             <hr>
             <div class="signState">
                 <p>Logged in as</p>
-                <p class="username"><?=$_SESSION['username'] ?>
+                <p class="username"><?= $_SESSION['username'] ?>
                     <img src="/src/img/edit.svg" alt="edit icon" class="editNameIcon">
                 </p>
             </div>
@@ -69,12 +69,49 @@ if (!isset($_SESSION['signedIn'])) {
             </a>
         </div>
     </aside>
+    <div class="warningMessage whiteWindow">
+        <div class="closeButton">
+            <span></span>
+            <span></span>
+        </div>
+        <p class="mainText">Are you sure?</p>
+        <p>You can't reverse that</p>
+        <p class="information">Delete your account</p>
+        <a href="/src/php/deleteAccount.php">
+            <div class="submitButton deleteAccountSubmitButton">
+                Confirm
+            </div>
+        </a>
+    </div>
+    <div class="changeNameBox whiteWindow">
+        <div class="closeButton">
+            <span></span>
+            <span></span>
+        </div>
+        <form action="/src/php/changeUsername.php" method="post">
+            <p class="mainText">Change username</p>
+            <input type="text" class="standardInput" name="username" max="32" min="4">
+            <input type="submit" value="Confirm" class="submitButton deleteAccountSubmitButton">
+        </form>
+    </div>
+    <div class="whiteWindow messages">
+        <div class="closeButton">
+            <span></span>
+            <span></span>
+        </div>
+        <p class="mainText">Alert</p>
+        <div class="errorMessage"></div>
+        <div class="codeMessage"></div>
+    </div>
     <div class="menuButton">
         <span></span>
         <span></span>
         <span></span>
     </div>
     <script src="/src/js/style.js"></script>
+    <script src="/src/js/deleteAccountHandler.js"></script>
+    <script src="/src/js/changeUsernameHandler.js"></script>
+    <script src="/src/js/errorAndCodeHandler.js"></script>
 </body>
 
 </html>

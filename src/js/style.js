@@ -6,8 +6,6 @@ const dimmer = document.querySelector(".dimmer");
 window.addEventListener("resize", variableResize);
 menuButton.addEventListener("click", toggleMenu);
 
-console.log(menuButton);
-
 variableResize();
 
 // function that defines css variables on the website

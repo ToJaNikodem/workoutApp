@@ -80,11 +80,6 @@ if (isset($_SESSION['signedIn'])) {
                 </div>
             </div>
             <p class="sendFeedback">Send feedback</p>
-            <a href="/src/php/signOut.php">
-                <p class="signOut">Sign out
-                    <img src="/src/img/exit.svg" alt="exit icon" class="signOutIcon">
-                </p>
-            </a>
         </div>
     </aside>
     <div class="menuButton">
@@ -93,7 +88,7 @@ if (isset($_SESSION['signedIn'])) {
         <span></span>
     </div>
     <script src="/src/js/style.js"></script>
-    <script src="/src/js/signUpErrorHandler.js"></script>
+    <script src="/src/js/errorAndCodeHandler.js"></script>
 </body>
 
 </html>

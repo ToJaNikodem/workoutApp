@@ -49,6 +49,37 @@ a {
     background-color: var(--WindowBackground);
 }
 
+.whiteWindow.messages {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 16em;
+    opacity: 0;
+}
+
+.whiteWindow.messages.active {
+    opacity: 1;
+}
+
+.messages .closeButton {
+    top: 1em;
+    left: 11.5em;
+}
+
+.messages .mainText {
+    font-size: calc(var(--fontSize20) * 2);
+    color: var(--mainDetail);
+    margin: 1em 0 0 1em;
+}
+
+.messages .errorMessage,
+.messages .codeMessage {
+    font-size: calc(var(--fontSize20) * 1.2);
+    padding: 0 1em;
+    margin: 2em 0 2em 0;
+}
+
 /* authorization box */
 .authorizationBox {
     width: 26.5rem;
@@ -237,6 +268,105 @@ a {
 
 .dimmer.active {
     opacity: 1;
+}
+
+/* change name box */
+.changeNameBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -100% -50%;
+    height: fit-content;
+    width: 32.5rem;
+    z-index: 1;
+    opacity: 0;
+    transition: 0.4s ease-in-out;
+}
+
+.changeNameBox.active {
+    opacity: 1;
+}
+
+.changeNameBox .standardInput {
+    margin: 2.5rem 0 0 6rem;
+}
+
+.changeNameBox .mainText {
+    font-size: calc(var(--fontSize20) * 2);
+    color: var(--mainDetail);
+    margin: 2rem 0 0 3rem;
+}
+
+/* warning message */
+.warningMessage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -100% -50%;
+    height: fit-content;
+    width: 32.5rem;
+    z-index: 1;
+    opacity: 0;
+    transition: 0.4s ease-in-out;
+}
+
+.warningMessage.active {
+    opacity: 1;
+}
+
+.deleteAccountSubmitButton {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+.closeButton {
+    position: absolute;
+    top: 1.5em;
+    left: 27.5em;
+    width: 3.5em;
+    height: 3em;
+    cursor: pointer;
+}
+
+.closeButton span {
+    position: absolute;
+    background-color: var(--mainDetail);
+    box-shadow: 0.1em 0.1em 0 0 var(--font);
+    height: 0.65em;
+    width: 3.75em;
+    display: block;
+    border-radius: 0.4rem;
+}
+
+.closeButton:hover span {
+    box-shadow: inset 0px 0.15em 0.15em rgba(0, 0, 0, 0.25);
+}
+
+.closeButton span:nth-child(1) {
+    rotate: -45deg;
+    top: 1.2em;
+}
+
+.closeButton span:nth-child(2) {
+    rotate: 45deg;
+    top: 1.2em;
+}
+
+.warningMessage .mainText {
+    font-size: calc(var(--fontSize20) * 2);
+    color: var(--mainDetail);
+    margin: 2rem 0 0 3rem;
+}
+
+.warningMessage p {
+    font-size: calc(var(--fontSize20) * 1.2);
+    margin: 1rem 0 0 3.5rem;
+}
+
+.warningMessage .information {
+    color: var(--font70);
+    margin: 1rem 0 0 4rem;
 }
 
 /* menu */
