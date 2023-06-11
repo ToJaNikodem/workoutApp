@@ -19,21 +19,22 @@ if (isset($_POST['username'])) {
             $stmt->store_result();
             if ($stmt->num_rows > 0) {
                 if ($language == 'pl') {
-                    header('Location: /pages/pl/mainPage.php?er=12');
+                    header('Location: /pages/pl/mainPage.php?er=14');
                     exit();
                 } else {
-                    header('Location: /pages/en/mainPage.php?er=02');
+                    header('Location: /pages/en/mainPage.php?er=04');
                     exit();
                 }
             } else {
                 if ($stmt = $conn->prepare('UPDATE users SET username = ? WHERE user_id = ?')) {
                     $stmt->bind_param('ss', $username, $_SESSION['user_id']);
                     $stmt->execute();
+                    $_SESSION['username'] = $username;
                     if ($language == 'pl') {
-                        header('Location: /pages/pl/mainPage.php?co=14');
+                        header('Location: /pages/pl/mainPage.php?co=13');
                         exit();
                     } else {
-                        header('Location: /pages/en/mainPage.php?co=04');
+                        header('Location: /pages/en/mainPage.php?co=03');
                         exit();
                     }
                 }

@@ -3,6 +3,7 @@ const errorMessage = document.querySelector('.errorMessage');
 const codeMessage = document.querySelector('.codeMessage');
 const code = urlParams.get('co');
 const error = urlParams.get('er');
+const messages = document.querySelector(".messages");
 
 switch (error) {
   case '01':
@@ -50,9 +51,11 @@ switch (code) {
     break;
   case '03':
     codeMessage.innerHTML = 'Username changed successfully';
+    messages.classList.toggle("active");
     break;
   case '13':
     codeMessage.innerHTML = 'Nazwa użytkownika zmieniona pomyślnie';
+    messages.classList.toggle("active");
     break;
 
   default:

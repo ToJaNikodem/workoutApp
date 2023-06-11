@@ -2,7 +2,7 @@ const changeNameCloseButton = document.querySelector(".changeNameBox .closeButto
 const changeNameBox = document.querySelector(".changeNameBox");
 const editNameIcon = document.querySelector(".editNameIcon");
 const alertCloseButton = document.querySelector(".messages .closeButton");
-const messages = document.querySelector(".messages");
+const messagesBox = document.querySelector(".messages");
 
 editNameIcon.addEventListener("click", toggleChangeNameBox);
 changeNameCloseButton.addEventListener("click", toggleChangeNameBox);
