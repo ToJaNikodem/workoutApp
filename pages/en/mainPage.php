@@ -51,17 +51,21 @@ if (!isset($_SESSION['signedIn'])) {
                     </p>
                 </div>
             </div>
-            <div class="insideMenuButton exportButton">
-                <p>Export workouts
-                    <img src="/src/img/file.svg" alt="file icon" class="exportIcon">
-                </p>
-            </div>
+            <a href="/src/php/export.php">
+                <div class="insideMenuButton exportButton">
+                    <p>Export workouts
+                        <img src="/src/img/file.svg" alt="file icon" class="exportIcon">
+                    </p>
+                </div>
+            </a>
             <div class="insideMenuButton deleteAccountButton">
                 <p>Delete account
                     <img src="/src/img/bin.svg" alt="bin icon" class="binIcon">
                 </p>
             </div>
-            <p class="sendFeedback">Send feedback</p>
+            <p class="sendFeedback">
+                Send feedback
+            </p>
             <a href="/src/php/signOut.php">
                 <p class="signOut">Sign out
                     <img src="/src/img/exit.svg" alt="exit icon" class="signOutIcon">
@@ -90,8 +94,26 @@ if (!isset($_SESSION['signedIn'])) {
         </div>
         <form action="/src/php/changeUsername.php" method="post">
             <p class="mainText">Change username</p>
-            <input type="text" class="standardInput" name="username" max="32" min="4">
+            <input type="text" class="standardInput" name="username" maxlength="32" minlength="4">
             <input type="submit" value="Confirm" class="submitButton deleteAccountSubmitButton">
+        </form>
+    </div>
+    <div class="sendFeedbackBox whiteWindow">
+        <div class="closeButton">
+            <span></span>
+            <span></span>
+        </div>
+        <form action="/src/php/feedback.php" method="post">
+            <p class="mainText">Send feedback</p>
+            <div class="inputBox">
+                <p class="textLabel">Subject</p>
+                <input type="text" class="standardInput subject" name="subject" maxlength="128" minlength="4" required>
+            </div>
+            <div class="inputBox">
+                <p class="textLabel">Content</p>
+                <textarea class="standardInput" name="body" cols="30" rows="10" maxlength="10240" required></textarea>
+            </div>
+            <input type="submit" value="Send" class="submitButton">
         </form>
     </div>
     <div class="whiteWindow messages">
@@ -112,6 +134,7 @@ if (!isset($_SESSION['signedIn'])) {
     <script src="/src/js/deleteAccountHandler.js"></script>
     <script src="/src/js/changeUsernameHandler.js"></script>
     <script src="/src/js/errorAndCodeHandler.js"></script>
+    <script src="/src/js/sendFeedbackHandler.js"></script>
 </body>
 
 </html>

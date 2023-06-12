@@ -57,6 +57,14 @@ switch (code) {
     codeMessage.innerHTML = 'Nazwa użytkownika zmieniona pomyślnie';
     messages.classList.toggle("active");
     break;
+    case '04':
+    codeMessage.innerHTML = 'Feedback send successfully';
+    messages.classList.toggle("active");
+    break;
+    case '14':
+    codeMessage.innerHTML = 'Opinia wysłana pomyślnie';
+    messages.classList.toggle("active");
+    break;
 
   default:
     break;

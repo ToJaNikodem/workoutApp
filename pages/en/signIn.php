@@ -5,12 +5,12 @@ session_start();
 
 if (isset($_SESSION['signedIn'])) {
     if ($language == 'pl') {
-		header('Location: /pages/pl/mainPage.php');
-		exit();
-	} else {
-		header('Location: /pages/en/mainPage.php');
-		exit();
-	}
+        header('Location: /pages/pl/mainPage.php');
+        exit();
+    } else {
+        header('Location: /pages/en/mainPage.php');
+        exit();
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -68,7 +68,6 @@ if (isset($_SESSION['signedIn'])) {
                     </p>
                 </div>
             </div>
-            <p class="sendFeedback">Send feedback</p>
         </div>
     </aside>
     <div class="menuButton">

@@ -17,6 +17,12 @@
     text-rendering: optimizeLegibility;
     font-size: var(--fontSize20);
     color: var(--font);
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
 }
 
 body {
@@ -33,6 +39,11 @@ input {
 
 a {
     text-decoration: none;
+}
+
+textarea {
+    border: none;
+    outline: none;
 }
 
 .container {
@@ -55,11 +66,11 @@ a {
     left: 50%;
     translate: -50% -50%;
     width: 16em;
-    opacity: 0;
+    display: none;
 }
 
 .whiteWindow.messages.active {
-    opacity: 1;
+    display: block;
 }
 
 .messages .closeButton {
@@ -77,7 +88,7 @@ a {
 .messages .codeMessage {
     font-size: calc(var(--fontSize20) * 1.2);
     padding: 0 1em;
-    margin: 2em 0 2em 0;
+    margin: 0 0 2em 0;
 }
 
 /* authorization box */
@@ -279,12 +290,12 @@ a {
     height: fit-content;
     width: 32.5rem;
     z-index: 1;
-    opacity: 0;
+    display: none   ;
     transition: 0.4s ease-in-out;
 }
 
 .changeNameBox.active {
-    opacity: 1;
+    display: block;
 }
 
 .changeNameBox .standardInput {
@@ -306,12 +317,12 @@ a {
     height: fit-content;
     width: 32.5rem;
     z-index: 1;
-    opacity: 0;
+    display: none;
     transition: 0.4s ease-in-out;
 }
 
 .warningMessage.active {
-    opacity: 1;
+    display: block;
 }
 
 .deleteAccountSubmitButton {
@@ -368,6 +379,55 @@ a {
     color: var(--font70);
     margin: 1rem 0 0 4rem;
 }
+
+/* send feedback box */
+
+.sendFeedbackBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -100% -50%;
+    height: fit-content;
+    width: 42.5rem;
+    z-index: 1;
+    display: none;
+    transition: 0.4s ease-in-out;
+}
+
+.sendFeedbackBox.active {
+    display: block;
+}
+
+.sendFeedbackBox .mainText {
+    font-size: calc(var(--fontSize20) * 2);
+    color: var(--mainDetail);
+    margin: 2rem 0 0 3rem;
+}
+
+.standardInput.body {
+    height: 10em;
+}
+
+.sendFeedbackBox .closeButton {
+    left: 37.5rem;
+}
+
+.sendFeedbackBox .inputBox {
+    margin: 1em 0 0 3em;
+}
+
+.inputBox textarea {
+    width: 28em;
+    height: 10em;
+    min-height: 10em;
+    max-width: 28em;
+    min-width: 28em;
+}
+
+.sendFeedbackBox .inputBox .standardInput {
+    width: 28em;
+}
+
 
 /* menu */
 .menu {
@@ -466,7 +526,7 @@ a {
 .menuInside hr {
     position: absolute;
     left: 2em;
-    width: 32em;
+    width: 108%;
 }
 
 .signState .username {

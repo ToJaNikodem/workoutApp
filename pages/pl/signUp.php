@@ -24,7 +24,7 @@ if (isset($_SESSION['signedIn'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>Zajerestruj się</title>
+    <title>Zarejestruj się</title>
 </head>
 
 <body>
@@ -32,7 +32,7 @@ if (isset($_SESSION['signedIn'])) {
     <div class="container">
         <main class="authorizationBox whiteWindow">
             <form action="/src/php/signUpValidator.php" method="post" class="authorizationForm">
-                <h2>Zajerestruj się</h2>
+                <h2>Zarejestruj się</h2>
                 <div class="inputBox">
                     <p class="textLabel">Nazwa użytkownika
                         <span class="informationBox username">
@@ -79,7 +79,6 @@ if (isset($_SESSION['signedIn'])) {
                     </div>
                 </a>
             </div>
-            <p class="sendFeedback">Wyślij opinie</p>
         </div>
     </aside>
     <div class="menuButton">

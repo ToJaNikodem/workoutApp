@@ -46,6 +46,7 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
                             $stmt->bind_param('sss', $username, $hashedPassword, $email);
                             $stmt->execute();
                             $stmt->close();
+                            $conn->close();
                             if ($language == 'pl') {
                                 header('Location: /pages/pl/signIn.php?co=11');
                                 exit();
@@ -53,11 +54,16 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
                                 header('Location: /pages/en/signIn.php?co=01');
                                 exit();
                             }
+                        } else {
+                            echo 'nigger';
                         }
                     }
+                } else {
+                    echo 'nigger';
                 }
             }
-            $conn->close();
         }
+    } else {
+        echo 'nigger';
     }
 }

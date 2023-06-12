@@ -79,7 +79,6 @@ if (isset($_SESSION['signedIn'])) {
                     </p>
                 </div>
             </div>
-            <p class="sendFeedback">Send feedback</p>
         </div>
     </aside>
     <div class="menuButton">

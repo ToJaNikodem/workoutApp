@@ -11,7 +11,7 @@ variableResize();
 // function that defines css variables on the website
 function variableResize() {
     var containerWidth = document.querySelector("div.container").clientWidth;
-    root.style.setProperty('--fontSize20', (containerWidth * 0.01) + "px");
+    root.style.setProperty('--fontSize20', (containerWidth * 0.008) + "px");
 }
 
 

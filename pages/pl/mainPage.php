@@ -12,7 +12,7 @@ if (!isset($_SESSION['signedIn'])) {
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/src/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,11 +51,13 @@ if (!isset($_SESSION['signedIn'])) {
                     </div>
                 </a>
             </div>
-            <div class="insideMenuButton exportButton">
-                <p>Eksportuj treningi
-                    <img src="/src/img/file.svg" alt="file icon" class="exportIcon">
-                </p>
-            </div>
+            <a href="/src/php/export.php">
+                <div class="insideMenuButton exportButton">
+                    <p>Eksportuj treningi
+                        <img src="/src/img/file.svg" alt="file icon" class="exportIcon">
+                    </p>
+                </div>
+            </a>
             <div class="insideMenuButton deleteAccountButton">
                 <p>Usuń konto
                     <img src="/src/img/bin.svg" alt="bin icon" class="binIcon">
@@ -90,8 +92,26 @@ if (!isset($_SESSION['signedIn'])) {
         </div>
         <form action="/src/php/changeUsername.php" method="post">
             <p class="mainText">Zmień nazwę użytkownika</p>
-            <input type="text" class="standardInput" name="username" max="32" min="4">
+            <input type="text" class="standardInput" name="username" maxlength="32" minlength="4">
             <input type="submit" value="Zatwierdź" class="submitButton deleteAccountSubmitButton">
+        </form>
+    </div>
+    <div class="sendFeedbackBox whiteWindow">
+        <div class="closeButton">
+            <span></span>
+            <span></span>
+        </div>
+        <form action="/src/php/feedback.php" method="post">
+            <p class="mainText">Wyślij opinie</p>
+            <div class="inputBox">
+                <p class="textLabel">Temat</p>
+                <input type="text" class="standardInput subject" name="subject" maxlength="128" minlength="4" required>
+            </div>
+            <div class="inputBox">
+                <p class="textLabel">Zawartość</p>
+                <textarea class="standardInput" name="body" cols="30" rows="10" required></textarea>
+            </div>
+            <input type="submit" value="Send" class="submitButton">
         </form>
     </div>
     <div class="whiteWindow messages">
@@ -111,6 +131,7 @@ if (!isset($_SESSION['signedIn'])) {
     <script src="/src/js/style.js"></script>
     <script src="/src/js/deleteAccountHandler.js"></script>
     <script src="/src/js/errorAndCodeHandler.js"></script>
+    <script src="/src/js/sendFeedbackHandler.js"></script>
 </body>
 
 </html>

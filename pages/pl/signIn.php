@@ -45,7 +45,7 @@ if (isset($_SESSION['signedIn'])) {
                 <div class="codeMessage"></div>
                 <input type="submit" value="Kontynuuj" class="submitButton">
             </form>
-            <p class="textLabel authorizationFooter">Nie masz konta? &nbsp;<a href="signUp.php">Zajerestruj się</a></p>
+            <p class="textLabel authorizationFooter">Nie masz konta? &nbsp;<a href="signUp.php">Zarejestruj się</a></p>
         </main>
     </div>
     <aside class="menu">
@@ -68,7 +68,6 @@ if (isset($_SESSION['signedIn'])) {
                     </div>
                 </a>
             </div>
-            <p class="sendFeedback">Wyślij opinię</p>
         </div>
     </aside>
     <div class="menuButton">
