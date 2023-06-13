@@ -1,5 +1,6 @@
 <?php
 require "database.php";
+require "queries.php";
 
 $language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
@@ -13,7 +14,7 @@ if (isset($_POST['username'])) {
             echo "Failed to connect to the database: " . $conn->connect_error;
             exit();
         }
-        if ($stmt = $conn->prepare('SELECT user_id FROM users WHERE username = ?')) {
+        if ($stmt = $conn->prepare($usernameAvailabilityQuery)) {
             $stmt->bind_param('s', $username);
             $stmt->execute();
             $stmt->store_result();
@@ -26,7 +27,7 @@ if (isset($_POST['username'])) {
                     exit();
                 }
             } else {
-                if ($stmt = $conn->prepare('UPDATE users SET username = ? WHERE user_id = ?')) {
+                if ($stmt = $conn->prepare($changeUsernameQuery)) {
                     $stmt->bind_param('ss', $username, $_SESSION['user_id']);
                     $stmt->execute();
                     $_SESSION['username'] = $username;

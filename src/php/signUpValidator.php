@@ -1,5 +1,6 @@
 <?php
 require "database.php";
+require "queries.php";
 
 $language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
@@ -15,7 +16,7 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
             exit();
         }
 
-        if ($stmt = $conn->prepare('SELECT user_id FROM users WHERE username = ?')) {
+        if ($stmt = $conn->prepare($usernameAvailabilityQuery)) {
             $stmt->bind_param('s', $username);
             $stmt->execute();
             $stmt->store_result();
@@ -28,7 +29,7 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
                     exit();
                 }
             } else {
-                if ($stmt = $conn->prepare('SELECT user_id FROM users WHERE email = ?')) {
+                if ($stmt = $conn->prepare($emailAvailabilityQuery)) {
                     $stmt->bind_param('s', $email);
                     $stmt->execute();
                     $stmt->store_result();
@@ -41,7 +42,7 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
                             exit();
                         }
                     } else {
-                        if ($stmt = $conn->prepare('INSERT INTO users (username, hashed_password, email) VALUES (?, ?, ?)')) {
+                        if ($stmt = $conn->prepare($signUpQuery)) {
                             $hashedPassword = password_hash($password, PASSWORD_ARGON2ID);
                             $stmt->bind_param('sss', $username, $hashedPassword, $email);
                             $stmt->execute();
@@ -54,16 +55,10 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
                                 header('Location: /pages/en/signIn.php?co=01');
                                 exit();
                             }
-                        } else {
-                            echo 'nigger';
                         }
                     }
-                } else {
-                    echo 'nigger';
                 }
             }
         }
-    } else {
-        echo 'nigger';
     }
 }

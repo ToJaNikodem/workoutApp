@@ -1,5 +1,6 @@
 <?php
 require "database.php";
+require "queries.php";
 
 session_start();
 
@@ -10,7 +11,7 @@ if ($conn->connect_errno) {
     echo "Failed to connect to the database: " . $conn->connect_error;
     exit();
 }
-if ($stmt = $conn->prepare('DELETE FROM users WHERE user_id = ?')) {
+if ($stmt = $conn->prepare($deleteAccountQuery)) {
     $stmt->bind_param('s', $_SESSION['user_id']);
     $stmt->execute();
     session_destroy();

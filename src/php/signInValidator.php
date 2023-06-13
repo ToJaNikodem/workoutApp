@@ -1,5 +1,6 @@
 <?php
 require "database.php";
+require "queries.php";
 
 $language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
@@ -15,7 +16,7 @@ if (isset($_POST['usernameOrEmail']) && isset($_POST['password'])) {
         exit();
     }
 
-    if ($stmt = $conn->prepare('SELECT user_id, username, hashed_password FROM users WHERE username = ? OR email = ?')) {
+    if ($stmt = $conn->prepare($signInQuery)) {
         $stmt->bind_param('ss', $usernameOrEmail, $usernameOrEmail);
         $stmt->execute();
         $stmt->store_result();
