@@ -5,6 +5,13 @@ CREATE TABLE `users` (
     `hashed_password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `reset_tokens` (
+  `reset_token_id` int UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `user_id` int UNSIGNED NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `expiry_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 CREATE TABLE `workouts` (
     `workout_id` int UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `user_id` int UNSIGNED NOT NULL,
@@ -379,6 +386,11 @@ ALTER TABLE
     `superset_log_strength_exercise_log`
 ADD
     FOREIGN KEY (`strength_exercise_log_id`) REFERENCES `strength_execise_logs` (`strength_exercise_log_id`) ON DELETE CASCADE;
+
+ALTER TABLE
+    `reset_tokens`
+ADD
+    FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
 
 -- Indexes
 

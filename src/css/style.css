@@ -125,6 +125,16 @@ textarea {
     color: var(--mainDetail);
 }
 
+.textLabel p {
+    position: relative;
+}
+
+.textLabel span {
+    color: var(--mainDetail);
+    position: absolute;
+    right: 3.2em;
+}
+
 .submitButton {
     background-color: var(--mainDetail);
     border-radius: 0.4rem;
@@ -168,6 +178,14 @@ textarea {
 
 .codeMessage {
     text-align: center;
+}
+
+.resetPassword .closeButton {
+    left: 21.5em;
+}
+
+.changePassword .closeButton {
+    left: 21.5em;
 }
 
 /* menu button */
@@ -253,6 +271,7 @@ textarea {
     border-radius: 0.4rem;
     box-shadow: 0.1rem 0.1rem 0 0 var(--font);
     text-align: center;
+    color: var(--font);
 }
 
 .informationBox.username:hover::before {
@@ -261,6 +280,11 @@ textarea {
 
 .informationBox.password:hover::before {
     content: "Min 8, Max 64";
+}
+
+.informationBox {
+    position: relative !important;
+    right: unset !important;
 }
 
 /* dimmer */

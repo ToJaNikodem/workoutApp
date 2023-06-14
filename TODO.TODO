@@ -1,3 +1,24 @@
+make session check into a funcion
+
+add advance error checking
 add headers to all php/*.php files
-make session check into a funcion ???
-add change password option
+
+check max length in sign in
+
+save language in session and change headers respectivly
+
+add required to all forms
+
+change file structure (add more subfolders)
+
+change ifs to better code structure
+
+make new types of alerts (in the corner)
+
+fix the transitions on the menu  (tabbing)
+
+make chnging languages work when setting new password
+
+add numrow ifs for export.php and maybe other files
+
+optimize css

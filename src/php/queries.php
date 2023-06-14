@@ -21,3 +21,11 @@ $strengthExerciseDataQuery = 'SELECT strength_exercises.strength_exercise_id, st
 $setsDataQuery = 'SELECT sets.strength_exercise_id, sets.set_number, sets.rep_count, sets.weight, sets.set_notes, sets.dropset FROM sets INNER JOIN strength_exercises ON sets.strength_exercise_id = strength_exercises.strength_exercise_id WHERE sets.strength_exercise_id = ?';
 $cardioExerciseDataQuery = 'SELECT cardio_exercises.cardio_exercise_id, cardio_exercise_names.default_cardio_exercise_name_en, cardio_exercise_names.default_cardio_exercise_name_pl, cardio_exercise_names.user_cardio_exercise_name, cardio_exercises.duration, cardio_exercises.distance, cardio_exercises.speed, cardio_exercises.cardio_exercise_notes, cardio_exercise_workout_variant.exercise_order FROM cardio_exercises INNER JOIN cardio_exercise_names ON cardio_exercises.cardio_exercise_name_id = cardio_exercise_names.cardio_exercise_name_id INNER JOIN cardio_exercise_workout_variant ON cardio_exercise_workout_variant.cardio_exercise_id = cardio_exercises.cardio_exercise_id WHERE cardio_exercise_workout_variant.workout_variant_id = ?';
 $otherExerciseDataQuery = 'SELECT other_exercises.other_exercise_id, other_exercise_names.default_other_exercise_name_en, other_exercise_names.default_other_exercise_name_pl, other_exercise_names.user_other_exercise_name, other_exercises.other_exercise_notes, other_exercise_workout_variant.exercise_order FROM other_exercise_workout_variant INNER JOIN other_exercises ON other_exercise_workout_variant.other_exercise_id = other_exercises.other_exercise_id INNER JOIN other_exercise_names ON other_exercises.other_exercise_name_id = other_exercise_names.other_exercise_name_id WHERE other_exercise_workout_variant.workout_variant_id = ?';
+
+// resetPasswordValidator.php
+$tokenQuery = 'INSERT INTO reset_tokens (user_id, token, expiry_date) VALUES (?, ?, ?)';
+
+// changePasswordValidator.php
+$changePassword = 'UPDATE users SET hashed_password = ? WHERE user_id = ?';
+$validateToken = 'SELECT user_id, expiry_date FROM reset_tokens WHERE token = ?';
+
