@@ -52,18 +52,7 @@ while ($stmt->fetch()) {
 
         $workouts[] = $workout;
 
-        foreach ($workouts as $workout) {
-            if (!empty($workout["defaultWorkoutNameEN"])) {
-                $data .= $workout["defaultWorkoutNameEN"];
-            }
-            if (!empty($workout["defaultWorkoutNamePL"])) {
-                $data .= "; " . $workout["defaultWorkoutNamePL"];
-            }
-            if (!empty($workout["userWorkoutName"])) {
-                $data .= "; " . $workout["userWorkoutName"];
-            }
-            $data .= "\n";
-        }
+        $data .= addWorkouts($workouts);
         unset($workouts);
 
         if (!$stmt3 = $conn->prepare($workoutVariantDataQuery)) {
@@ -89,22 +78,9 @@ while ($stmt->fetch()) {
             $strengthExercises = array();
             $cardioExercises = array();
             $otherExercises = array();
+            $sets = array();
 
-            foreach ($workoutVariants as $workoutVariant) {
-                if (!empty($workoutVariant["defaultWorkoutVariantNameEN"])) {
-                    $data .= "   - " . $workoutVariant["defaultWorkoutVariantNameEN"];
-                }
-                if (!empty($workoutVariant["defaultWorkoutVariantNamePL"])) {
-                    $data .= "; " . $workoutVariant["defaultWorkoutVariantNamePL"];
-                }
-                if (!empty($workoutVariant["userWorkoutVariantName"])) {
-                    $data .= "; " . $workoutVariant["userWorkoutVariantName"];
-                }
-                if (!empty($workoutVariant["workoutVariantNotes"])) {
-                    $data .= "   Notes: " . $workoutVariant["workoutVariantNotes"];
-                }
-                $data .= "\n";
-            }
+            $data .= addWorkoutVariants($workoutVariants);
             unset($workoutVariants);
 
 
@@ -221,50 +197,100 @@ while ($stmt->fetch()) {
                 return $orderA - $orderB;
             });
 
-            foreach ($exercises as $exercise) {
-                if (!empty($exercise["exerciseOrder"])) {
-                    $data .= "      " . $exercise["exerciseOrder"] . ". ";
-                }
-                if (!empty($exercise["exerciseNameEN"])) {
-                    $data .= $exercise["exerciseNameEN"];
-                }
-                if (!empty($exercise["exerciseNamePL"])) {
-                    $data .= "; " . $exercise["exerciseNamePL"];
-                }
-                if (!empty($exercise["userExerciseName"])) {
-                    $data .= "; " . $exercise["userExerciseName"];
-                }
-                $data .= "   ";
-                if (!empty($exercise["distance"])) {
-                    $data .= "distance: " . $exercise["distance"];
-                }
-                if (!empty($exercise["duration"])) {
-                    $data .= "; duration: " . $exercise["duration"];
-                }
-                if (!empty($exercise["speed"])) {
-                    $data .= "; speed: " . $exercise["speed"];
-                }
-                if (!empty($exercise["exerciseNotes"])) {
-                    $data .= "  Notes: " . $exercise["exerciseNotes"];
-                }
-                $data .= "\n";
-                foreach ($sets as $set) {
-                    if (!empty($exercise["strengthExerciseId"])) {
-                        if ($set["exerciseId"] == $exercise["strengthExerciseId"] && $exercise["isStrengthExercise"] == 1) {
-                            $data .= "         ";
-                            $data .= "set " . $set["setNumber"] . ". reps: " . $set["repCount"] . "; weight: " . $set["weight"] . "; ";
-                            if ($set["dropset"] == 1) {
-                                $data .= "dropset ";
-                            }
-                            $data .= "   Notes: " . $set["setNotes"] . "\n";
-                        }
-                    }
-                }
-            }
+            $data .= addExercises($exercises, $sets);
+            unset($sets);
             unset($exercises);
             $data .= "\n\n";
         }
     }
+}
+
+function addWorkouts($workouts) {
+    $data = '';
+    foreach ($workouts as $workout) {
+        if (!empty($workout["defaultWorkoutNameEN"])) {
+            $data .= $workout["defaultWorkoutNameEN"];
+        }
+        if (!empty($workout["defaultWorkoutNamePL"])) {
+            $data .= "; " . $workout["defaultWorkoutNamePL"];
+        }
+        if (!empty($workout["userWorkoutName"])) {
+            $data .= "; " . $workout["userWorkoutName"];
+        }
+        $data .= "\n";
+    }
+    return $data;
+}
+
+function addWorkoutVariants($workoutVariants) {
+    $data = '';
+    foreach ($workoutVariants as $workoutVariant) {
+        if (!empty($workoutVariant["defaultWorkoutVariantNameEN"])) {
+            $data .= "   - " . $workoutVariant["defaultWorkoutVariantNameEN"];
+        }
+        if (!empty($workoutVariant["defaultWorkoutVariantNamePL"])) {
+            $data .= "; " . $workoutVariant["defaultWorkoutVariantNamePL"];
+        }
+        if (!empty($workoutVariant["userWorkoutVariantName"])) {
+            $data .= "; " . $workoutVariant["userWorkoutVariantName"];
+        }
+        if (!empty($workoutVariant["workoutVariantNotes"])) {
+            $data .= "   Notes: " . $workoutVariant["workoutVariantNotes"];
+        }
+        $data .= "\n";
+    }
+    return $data;
+}
+
+function addExercises($exercises, $sets) {
+    $data = '';
+    foreach ($exercises as $exercise) {
+        if (!empty($exercise["exerciseOrder"])) {
+            $data .= "      " . $exercise["exerciseOrder"] . ". ";
+        }
+        if (!empty($exercise["exerciseNameEN"])) {
+            $data .= $exercise["exerciseNameEN"];
+        }
+        if (!empty($exercise["exerciseNamePL"])) {
+            $data .= "; " . $exercise["exerciseNamePL"];
+        }
+        if (!empty($exercise["userExerciseName"])) {
+            $data .= "; " . $exercise["userExerciseName"];
+        }
+        $data .= "   ";
+        if (!empty($exercise["distance"])) {
+            $data .= "distance: " . $exercise["distance"];
+        }
+        if (!empty($exercise["duration"])) {
+            $data .= "; duration: " . $exercise["duration"];
+        }
+        if (!empty($exercise["speed"])) {
+            $data .= "; speed: " . $exercise["speed"];
+        }
+        if (!empty($exercise["exerciseNotes"])) {
+            $data .= "  Notes: " . $exercise["exerciseNotes"];
+        }
+        $data .= "\n";
+        $data .= addSets($sets, $exercise);
+    }
+    return $data;
+}
+
+function addSets($sets, $exercise) {
+    $data = '';
+    foreach ($sets as $set) {
+        if (!empty($exercise["strengthExerciseId"])) {
+            if ($set["exerciseId"] == $exercise["strengthExerciseId"] && $exercise["isStrengthExercise"] == 1) {
+                $data .= "         ";
+                $data .= "set " . $set["setNumber"] . ". reps: " . $set["repCount"] . "; weight: " . $set["weight"] . "; ";
+                if ($set["dropset"] == 1) {
+                    $data .= "dropset ";
+                }
+                $data .= "   Notes: " . $set["setNotes"] . "\n";
+            }
+        }
+    }
+    return $data;
 }
 
 $conn->close();

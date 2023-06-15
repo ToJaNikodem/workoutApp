@@ -25,6 +25,7 @@ signedIn();
         <main class="authorizationBox whiteWindow">
             <form action="/src/php/authorization/signInValidator" method="post" class="authorizationForm">
                 <h2>Sign in</h2>
+                <input type="hidden" name="language" value="<?= substr($_SERVER['PHP_SELF'],7,2); ?>">
                 <div class="inputBox">
                     <p class="textLabel">Username or email</p>
                     <input type="text" name="usernameOrEmail" class="standardInput" maxlength="32" minlength="4" required>

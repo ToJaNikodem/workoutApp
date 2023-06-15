@@ -1,15 +1,8 @@
-change variable names in export
+make export.php better
 
-change signIn language to link (not browser)
-
-change ifs to better code structure
-add numrow ifs for export.php and maybe also for other files
 add headers to all php/*.php files
 add advance error checking
 
 make new types of alerts (in the corner)
 
 rewrite css
-
-fix the transitions on the menu  (tabbing)
-add outline when tabbing

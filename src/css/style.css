@@ -22,7 +22,11 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none; 
+    user-select: none;
+}
+
+*:focus {
+    outline: calc(var(--fontSize20) * 0.05) var(--font) solid;
 }
 
 body {
@@ -237,6 +241,7 @@ textarea {
 }
 
 .menuButton.active span:nth-child(2) {
+    visibility: hidden;
     opacity: 0;
 }
 
@@ -289,6 +294,7 @@ textarea {
 
 /* dimmer */
 .dimmer {
+    visibility: hidden;
     opacity: 0;
     position: absolute;
     width: 100%;
@@ -302,6 +308,7 @@ textarea {
 }
 
 .dimmer.active {
+    visibility: visible;
     opacity: 1;
 }
 
@@ -314,7 +321,7 @@ textarea {
     height: fit-content;
     width: 32.5rem;
     z-index: 1;
-    display: none   ;
+    display: none;
     transition: 0.4s ease-in-out;
 }
 
@@ -464,11 +471,13 @@ textarea {
     top: 0;
     right: 0;
     transition: 0.4s ease-in-out;
+    visibility: hidden;
     opacity: 0;
 }
 
 .menu.active {
     left: 70vw;
+    visibility: visible;
     opacity: 1;
 }
 

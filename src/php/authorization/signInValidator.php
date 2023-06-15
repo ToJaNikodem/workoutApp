@@ -3,17 +3,16 @@ $rootDirectory = $_SERVER['DOCUMENT_ROOT'];
 require $rootDirectory . "/src/php/database/database.php";
 require $rootDirectory . "/src/php/database/queries.php";
 
-$language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-
 session_start();
 
-if (!isset($_POST['usernameOrEmail']) && !isset($_POST['password'])) {
+if (!isset($_POST['usernameOrEmail']) && !isset($_POST['password']) && !isset($_POST['language'])) {
     echo "post error";
     exit;
 }
 
 $usernameOrEmail = $_POST['usernameOrEmail'];
 $password = $_POST['password'];
+$language = $_POST['language'];
 
 if (!(strlen($usernameOrEmail) >= 4 && strlen($usernameOrEmail) <= 256 && strlen($password) >= 8 && strlen($password) <= 64)) {
     echo "validation error";
