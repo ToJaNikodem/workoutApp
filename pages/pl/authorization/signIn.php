@@ -1,17 +1,9 @@
 <?php
-$language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+$rootDirectory = $_SERVER['DOCUMENT_ROOT'];
+require $rootDirectory . '/src/php/session/sessionFunciotns.php';
 
 session_start();
-
-if (isset($_SESSION['signedIn'])) { 
-    if ($language == 'pl') {
-		header('Location: /pages/pl/mainPage.php');
-		exit();
-	} else {
-		header('Location: /pages/en/mainPage.php');
-		exit();
-	}
-}
+signedIn();
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -24,39 +16,28 @@ if (isset($_SESSION['signedIn'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>Zarejestruj się</title>
+    <title>Zaloguj się</title>
 </head>
 
 <body>
     <div class="dimmer"></div>
     <div class="container">
         <main class="authorizationBox whiteWindow">
-            <form action="/src/php/signUpValidator.php" method="post" class="authorizationForm">
-                <h2>Zarejestruj się</h2>
+            <form action="/src/php/authorization/signInValidator" method="post" class="authorizationForm">
+                <h2>Zaloguj się</h2>
                 <div class="inputBox">
-                    <p class="textLabel">Nazwa użytkownika
-                        <span class="informationBox username">
-                            <img src="/src/img/information.svg" alt="information icon" class="informationIcon">
-                        </span>
-                    </p>
-                    <input type="text" name="username" class="standardInput" maxlength="32" minlength="4">
+                    <p class="textLabel">Nazwa użytkownika lub email</p>
+                    <input type="text" name="usernameOrEmail" class="standardInput" maxlength="32" minlength="4" required>
                 </div>
                 <div class="inputBox">
-                    <p class="textLabel">Email</p>
-                    <input type="email" name="email" class="standardInput">
-                </div>
-                <div class="inputBox">
-                    <p class="textLabel">Hasło
-                        <span class="informationBox password">
-                            <img src="/src/img/information.svg" alt="information icon" class="informationIcon">
-                        </span>
-                    </p>
-                    <input type="password" name="password" class="standardInput" maxlength="64" minlength="8">
+                    <p class="textLabel">Hasło<a tabindex="-1" href="/pages/pl/other/resetPassword"><span>Zresetuj hasło</span></a></p>
+                    <input type="password" name="password" class="standardInput" maxlength="64" minlength="8" required>
                 </div>
                 <div class="errorMessage"></div>
+                <div class="codeMessage"></div>
                 <input type="submit" value="Kontynuuj" class="submitButton">
             </form>
-            <p class="textLabel authorizationFooter">Posiadasz już konto? &nbsp;<a href="signIn.php">Zaloguj się</a></p>
+            <p class="textLabel authorizationFooter">Nie masz konta? &nbsp;<a href="signUp">Zarejestruj się</a></p>
         </main>
     </div>
     <aside class="menu">
@@ -70,7 +51,7 @@ if (isset($_SESSION['signedIn'])) {
                         PL
                     </p>
                 </div>
-                <a href="/pages/en/signUp.php">
+                <a href="/pages/en/authorization/signIn">
                     <div id="eng" class="insideMenuButton language">
                         <img src="/src/img/united-kingdom.png" alt="United Kingdom flag" class="flagIcon">
                         <p>

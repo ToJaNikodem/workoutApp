@@ -1,8 +1,8 @@
 <?php
 $rootDirectory = $_SERVER['DOCUMENT_ROOT'];
-require "database.php";
-require "queries.php";
-require "smtpCredentials.php";
+require $rootDirectory . "/src/php/database/database.php";
+require $rootDirectory . "/src/php/database/queries.php";
+require $rootDirectory . "/src/php/mail/smtpCredentials.php";
 require $rootDirectory . '/src/PHPMailer/src/PHPMailer.php';
 require $rootDirectory . '/src/PHPMailer/src/SMTP.php';
 

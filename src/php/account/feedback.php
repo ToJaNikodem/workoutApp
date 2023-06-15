@@ -1,6 +1,6 @@
 <?php
 $rootDirectory = $_SERVER['DOCUMENT_ROOT'];
-require "smtpCredentials.php";
+require $rootDirectory . '/src/php/mail/smtpCredentials.php';
 require $rootDirectory . '/src/PHPMailer/src/PHPMailer.php';
 require $rootDirectory . '/src/PHPMailer/src/SMTP.php';
 
@@ -11,7 +11,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 if (isset($_POST['subject']) && isset($_POST['body'])) {
     $subject = $_POST['subject'];
     $body = $_POST['body'];
-    
     
     $mail = new PHPMailer();
     
@@ -26,7 +25,7 @@ if (isset($_POST['subject']) && isset($_POST['body'])) {
     $mail->setFrom('feedbackmail@host795037.xce.pl');
     $mail->addAddress('feedbackmail@host795037.xce.pl');
     
-    $mail->Subject = 'WorkoutApp Feedback: ' . $subject;
+    $mail->Subject = 'Feedback from: ' . $_SESSION['user_id'] . ' : ' . $_SESSION['username'] . ' Subject: ' . $subject;
     $mail->Body = $body;
     
     $mail->send();

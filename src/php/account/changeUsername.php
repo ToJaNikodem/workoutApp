@@ -1,6 +1,7 @@
 <?php
-require "database.php";
-require "queries.php";
+$rootDirectory = $_SERVER['DOCUMENT_ROOT'];
+require $rootDirectory . "/src/php/database/database.php";
+require $rootDirectory . "/src/php/database/queries.php";
 
 $language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 

@@ -1,6 +1,7 @@
 <?php
-require "database.php";
-require "queries.php";
+$rootDirectory = $_SERVER['DOCUMENT_ROOT'];
+require $rootDirectory . "/src/php/database/database.php";
+require $rootDirectory . "/src/php/database/queries.php";
 
 $language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
@@ -9,6 +10,8 @@ session_start();
 if (isset($_POST['usernameOrEmail']) && isset($_POST['password'])) {
     $usernameOrEmail = $_POST['usernameOrEmail'];
     $password = $_POST['password'];
+
+    if (strlen($usernameOrEmail) >= 4 && strlen($usernameOrEmail) <= 256 && strlen($password) >= 8 && strlen($password) <= 64)
 
     $conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
     if ($conn->connect_errno) {
@@ -29,6 +32,7 @@ if (isset($_POST['usernameOrEmail']) && isset($_POST['password'])) {
                 $_SESSION['signedIn'] = TRUE;
                 $_SESSION['user_id'] = $user_id;
                 $_SESSION['username'] = $username;
+                $_SESSION['language'] = $language;
                 header('Location: /index.php');
             } else {
                 if ($language == 'pl') {

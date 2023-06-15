@@ -1,6 +1,7 @@
 <?php
-require "database.php";
-require "queries.php";
+$rootDirectory = $_SERVER['DOCUMENT_ROOT'];
+require $rootDirectory . "/src/php/database/database.php";
+require $rootDirectory . "/src/php/database/queries.php";
 
 $language = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"], 0, 2);
 
@@ -8,23 +9,25 @@ session_start();
 
 $conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 if ($conn->connect_errno) {
-    $data .= "Failed to connect to the database: " . $conn->connect_error;
+    echo "Failed to connect to the database: " . $conn->connect_error;
     exit();
 }
 
-$user_id = $_SESSION["user_id"];
+$currentTime = new DateTime();
+$currentTime = $currentTime->format('Y-m-d_H-i-s');
 
-$file = $user_id . "export.txt";
+$user_id = $_SESSION['user_id'];
+
+$file = $currentTime . "export.txt";
 $fileHandle = fopen($file, "w");
 
-$data = "";
+$data = '';
 
 if ($stmt = $conn->prepare($workoutIdQuery)) {
     $stmt->bind_param("s", $user_id);
     $stmt->execute();
     $stmt->store_result();
     $stmt->bind_result($workoutId);
-
     while ($stmt->fetch()) {
         if ($stmt2 = $conn->prepare($workoutDataQuery)) {
             $stmt2->bind_param("s", $workoutId);
@@ -135,6 +138,8 @@ if ($stmt = $conn->prepare($workoutIdQuery)) {
                                             return $orderA - $orderB;
                                         });
                                     }
+                                } else {
+                                    echo 'stmt7 fail';
                                 }
                             }
                             if ($stmt5 = $conn->prepare($cardioExerciseDataQuery)) {
@@ -219,7 +224,7 @@ if ($stmt = $conn->prepare($workoutIdQuery)) {
                                                     if ($set["exerciseId"] == $exercise["strengthExerciseId"] && $exercise["isStrengthExercise"] == 1) {
                                                         $data .= "      ";
                                                         $data .= "set " . $set["setNumber"] . ". reps: " . $set["repCount"] . "; weight: " . $set["weight"] . "; ";
-                                                        if ($set["dropset"] == 1){
+                                                        if ($set["dropset"] == 1) {
                                                             $data .= "dropset ";
                                                         }
                                                         $data .= "   Notes: " . $set["setNotes"] . "\n";
@@ -229,18 +234,30 @@ if ($stmt = $conn->prepare($workoutIdQuery)) {
                                         }
                                         $data .= "\n\n";
                                     }
+                                } else {
+                                    echo 'stmt6 fail';
                                 }
+                            } else {
+                                echo 'stmt5 fail';
                             }
+                        } else {
+                            echo 'stmt4 fail';
                         }
                         unset($results3);
                         unset($results4);
                         unset($results5);
                         unset($exercises);
                     }
+                } else {
+                    echo 'stmt3 fail';
                 }
             }
+        } else {
+            echo 'stmt2 fail';
         }
     }
+} else {
+    echo 'stmt fail';
 }
 $conn->close();
 
@@ -254,5 +271,3 @@ header("Content-Length: " . filesize($file));
 
 readfile($file);
 unlink($file);
-
-header("Location: /index.php");
