@@ -56,7 +56,7 @@ signedIn();
             <h3>Menu</h3>
             <hr>
             <div class="languageButtons">
-                <a href="/pages/pl/authorization/signUp">
+                <a href="/src/php/session/changeLanguage">
                     <div id="pol" class="insideMenuButton language">
                         <img src="/src/img/poland.png" alt="Poland flag" class="flagIcon">
                         <p>

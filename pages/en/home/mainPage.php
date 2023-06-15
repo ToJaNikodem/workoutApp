@@ -36,7 +36,7 @@ notSignedIn();
                 </p>
             </div>
             <div class="languageButtons">
-                <a href="/pages/pl/home/mainPage">
+                <a href="/src/php/session/changeLanguage">
                     <div id="pol" class="insideMenuButton language">
                         <img src="/src/img/poland.png" alt="Poland flag" class="flagIcon">
                         <p>

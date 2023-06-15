@@ -12,11 +12,10 @@ function notSignedIn() {
 }
 
 function userLanguage() {
-    if (isset($_SESSION['language'])) {
-        return $_SESSION['language'];
-    } else {
-        return substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+    if (!isset($_SESSION['language'])) {
+        $_SESSION['language'] = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
     }
+    return $_SESSION['language'];
 }
 
 function universalHeader($lang, $link1, $link2) {

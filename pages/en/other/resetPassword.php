@@ -42,34 +42,6 @@ signedIn();
             </form>
         </main>
     </div>
-    <aside class="menu">
-        <div class="menuInside">
-            <h3>Menu</h3>
-            <hr>
-            <div class="languageButtons">
-                <a href="/pages/pl/other/resetPassword">
-                    <div id="pol" class="insideMenuButton language">
-                        <img src="/src/img/poland.png" alt="Poland flag" class="flagIcon">
-                        <p>
-                            PL
-                        </p>
-                    </div>
-                </a>
-                <div id="eng" class="insideMenuButton language selectedLanguage">
-                    <img src="/src/img/united-kingdom.png" alt="United Kingdom flag" class="flagIcon">
-                    <p>
-                        ENG
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </aside>
-    <div class="menuButton">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
     <script src="/src/js/style.js"></script>
     <script src="/src/js/errorAndCodeHandler.js"></script>
 </body>
