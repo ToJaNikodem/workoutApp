@@ -1,6 +1,5 @@
 <?php
 # server side errors
-$serverError = '000';
 $databaseError = '001';
 
 # user side errors
