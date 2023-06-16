@@ -15,7 +15,7 @@ if (currentLink.includes('/pl/')) {
         case '105':
             // invalid token (alert)
             break;
-        case '502':
+        case '501':
             codeMessage.innerHTML = "Konto stworzone pomyślnie, możesz się teraz zalogować"
             break;
         case '502':
@@ -39,7 +39,7 @@ if (currentLink.includes('/pl/')) {
         case '105':
             // invalid token (alert)
             break;
-        case '502':
+        case '501':
             codeMessage.innerHTML = "Account created successfully, you can sign in now"
             break;
         case '502':

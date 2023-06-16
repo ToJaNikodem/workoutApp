@@ -78,10 +78,10 @@ $mail->addAddress($email);
 
 if ($_SESSION['language'] == 'pl') {
     $mail->Subject = 'Simple Workout Reset Hasła';
-    $mail->Body = 'Twój link resetowania hasła' . 'localhost/pages/pl/';
+    $mail->Body = 'Twój link resetowania hasła' . 'localhost/pages/pl/other/changePassword?token=' . $token;
 } else {
     $mail->Subject = 'Simple Workout Password Reset';
-    $mail->Body = 'Your password reset link: ' . 'localhost/pages/en/changePassword.php?token=' . $token;
+    $mail->Body = 'Your password reset link: ' . 'localhost/pages/en/other/changePassword?token=' . $token;
 }
 
 $mail->send();

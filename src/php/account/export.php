@@ -295,10 +295,6 @@ function addSets($sets, $exercise) {
     return $data;
 }
 
-function fetchVariants() {
-    
-}
-
 $conn->close();
 
 fwrite($fileHandle, $data);

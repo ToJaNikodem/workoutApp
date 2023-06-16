@@ -22,7 +22,7 @@ signedIn();
     <div class="dimmer"></div>
     <div class="container">
         <main class="authorizationBox whiteWindow changePassword">
-            <form action="/src/php/authorization/changePasswordValidator" method="post" class="authorizationForm">
+            <form action="/src/php/account/changePasswordValidator" method="post" class="authorizationForm">
                 <h2>Set password</h2>
                 <div class="inputBox">
                     <input type="hidden" name="token" value="<?= $_GET['token']; ?>">

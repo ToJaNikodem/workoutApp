@@ -28,7 +28,7 @@ signedIn();
                     <span></span>
                 </div>
             </a>
-            <form action="/src/php/authorization/resetPasswordValidator" method="post" class="authorizationForm">
+            <form action="/src/php/account/resetPasswordValidator" method="post" class="authorizationForm">
                 <h2>Reset password</h2>
                 <div class="inputBox">
                     <p class="textLabel">Email</p>
