@@ -13,7 +13,8 @@ signedIn();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/src/css/style.css">
+    <link rel="stylesheet" href="/src/css/desktop/main.css">
+    <link rel="stylesheet" href="/src/css/desktop/authorizationPages.css">
     <title>Zresetuj hasło</title>
 </head>
 
@@ -21,7 +22,7 @@ signedIn();
     <div class="dimmer"></div>
     <div class="container">
         <main class="authorizationBox whiteWindow resetPassword">
-            <a href="/pages/en/authorization/signIn">
+            <a href="/pages/pl/authorization/signIn">
                 <div class="closeButton">
                     <span></span>
                     <span></span>

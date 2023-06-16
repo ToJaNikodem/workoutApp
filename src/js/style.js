@@ -8,18 +8,15 @@ variableResize();
 window.onbeforeunload = function () {
     variableResize();
 };
+
 window.addEventListener("resize", variableResize);
 menuButton.addEventListener("click", toggleMenu);
 
-
-// function that defines css variables on the website
 function variableResize() {
     var containerWidth = document.querySelector("div.container").clientWidth;
     root.style.setProperty('--fontSize20', (containerWidth * 0.008) + "px");
 }
 
-
-// function that toggle the menu
 function toggleMenu() {
     menu.classList.toggle("active");
     menuButton.classList.toggle("active");

@@ -12,7 +12,8 @@ signedIn();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/css/style.css">
+    <link rel="stylesheet" href="/src/css/desktop/main.css">
+    <link rel="stylesheet" href="/src/css/desktop/authorizationPages.css">
     <title>Sign in</title>
 </head>
 
@@ -25,11 +26,11 @@ signedIn();
                 <input type="hidden" name="language" value="<?= substr($_SERVER['PHP_SELF'],7,2); ?>">
                 <div class="inputBox">
                     <p class="textLabel">Username or email</p>
-                    <input type="text" name="usernameOrEmail" class="standardInput" maxlength="32" minlength="4" required>
+                    <input type="text" name="usernameOrEmail" class="standardInput" autocomplete="username" maxlength="32" minlength="4" required>
                 </div>
                 <div class="inputBox">
                     <p class="textLabel">Password <a tabindex="-1" href="/pages/en/other/resetPassword"><span>Reset password</span></a></p>
-                    <input type="password" name="password" class="standardInput" maxlength="64" minlength="8" required>
+                    <input type="password" name="password" class="standardInput" autocomplete="current-password" maxlength="64" minlength="8" required>
                 </div>
                 <div class="errorMessage"></div>
                 <div class="codeMessage"></div>

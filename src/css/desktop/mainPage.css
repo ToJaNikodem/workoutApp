@@ -1,0 +1,107 @@
+.changeNameBox {
+    translate: -100% -50%;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    visibility: hidden;
+    opacity: 0;
+    width: 35rem;
+    height: fit-content;
+    transition: 0.4s ease-in-out;
+}
+
+.changeNameBox.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.changeNameBox .standardInput {
+    margin: 2.5rem 0 0 6rem;
+}
+
+.changeNameBox .mainText {
+    margin: 2rem 0 0 3rem;
+    font-size: calc(var(--fontSize20) * 2);
+    color: var(--mainDetail);
+}
+
+.warningMessage {
+    translate: -100% -50%;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    visibility: hidden;
+    opacity: 0;
+    width: 35rem;
+    height: fit-content;
+    transition: 0.4s ease-in-out;
+}
+
+.warningMessage.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.deleteAccountSubmitButton {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+.warningMessage .mainText {
+    margin: 2rem 0 0 3rem;
+    font-size: calc(var(--fontSize20) * 2);
+    color: var(--mainDetail);
+}
+
+.warningMessage p {
+    margin: 1rem 0 0 3.5rem;
+    font-size: calc(var(--fontSize20) * 1.2);
+}
+
+.warningMessage .information {
+    margin: 1rem 0 0 4rem;
+    color: var(--font70);
+}
+
+.sendFeedbackBox {
+    translate: -100% -50%;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    visibility: hidden;
+    opacity: 0;
+    width: 42.5rem;
+    height: fit-content;
+    transition: 0.4s ease-in-out;
+}
+
+.sendFeedbackBox.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.sendFeedbackBox .mainText {
+    margin: 2rem 0 0 3rem;
+    font-size: calc(var(--fontSize20) * 2);
+    color: var(--mainDetail);
+}
+
+.sendFeedbackBox .inputBox .standardInput {
+    width: 28em;
+}
+
+.sendFeedbackBox .inputBox {
+    margin: 1em 0 0 3em;
+}
+
+.inputBox textarea {
+    width: 28em;
+    min-width: 28em;
+    max-width: 28em;
+    height: 10em;
+    min-height: 10em;
+}

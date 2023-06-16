@@ -1,0 +1,392 @@
+:root {
+    --font: rgba(14, 2, 1, 1);
+    --font70: rgba(14, 2, 1, 0.7);
+    --background: rgba(254, 246, 246, 1);
+    --secondaryBackground: rgba(245, 235, 238, 1);
+    --WindowBackground: rgba(255, 255, 255, 1);
+    --mainDetail: rgba(210, 19, 18, 1);
+    --secondaryDetail: rgba(255, 176, 132, 0.6);
+}
+
+@font-face {
+    font-display: swap;
+    src: url('/src/fonts/Inter-Bold.ttf') format('truetype');
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+}
+
+* {
+    text-rendering: optimizeLegibility;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: var(--fontSize20);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: var(--font);
+}
+
+*:focus {
+    outline: calc(var(--fontSize20) * 0.15) var(--font) solid;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background);
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+textarea {
+    outline: none;
+    border: none;
+}
+
+.container {
+    aspect-ratio: 16 / 8;
+    position: relative;
+    overflow: hidden;
+    max-height: 100vh;
+    margin: auto;
+}
+
+.whiteWindow {
+    box-shadow: 0px 0px 0.3em 0.3em rgba(0, 0, 0, 0.25);
+    background-color: var(--WindowBackground);
+    border-radius: 0.5rem;
+}
+
+.standardInput {
+    box-shadow: inset 0px 0.15em 0.15em rgba(0, 0, 0, 0.25);
+    width: 15.7em;
+    height: 2em;
+    padding: 0 0.8em;
+    background-color: var(--secondaryDetail);
+    border-radius: 0.5rem;
+    font-size: calc(var(--fontSize20) * 1.3);
+}
+
+.textLabel {
+    color: var(--font70);
+}
+
+.textLabel a {
+    color: var(--mainDetail);
+}
+
+
+.textLabel p {
+    position: relative;
+}
+
+.textLabel span {
+    position: absolute;
+    right: 3.2em;
+    color: var(--mainDetail);
+}
+
+.submitButton {
+    box-shadow: 0.1em 0.1em 0 0 var(--font);
+    display: block;
+    height: 2.1em;
+    margin: 2.3em auto 1.8em auto;
+    padding: 0 1.5em;
+    background-color: var(--mainDetail);
+    border-radius: 0.4rem;
+    font-size: calc(var(--fontSize20) * 1.6);
+    color: white;
+    text-align: center;
+}
+
+.submitButton:hover {
+    box-shadow: inset 0px 0.15em 0.15em rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.menuButton {
+    position: absolute;
+    z-index: 1;
+    top: 1em;
+    right: 1em;
+    width: 4.8em;
+    height: 3.8em;
+}
+
+.menuButton:hover {
+    cursor: pointer;
+}
+
+.menuButton:hover span {
+    box-shadow: inset 0px 0.15em 0.15em rgba(0, 0, 0, 0.25);
+}
+
+.menuButton span {
+    box-shadow: 0.1em 0.1em 0 0 var(--font);
+    display: block;
+    position: absolute;
+    width: 4.75em;
+    height: 0.8em;
+    transition: 0.4s ease-in-out;
+    background-color: var(--mainDetail);
+    border-radius: 0.4em;
+}
+
+.menuButton span:nth-child(1) {
+    z-index: 1;
+    top: 0;
+}
+
+.menuButton span:nth-child(2) {
+    top: 1.3em;
+}
+
+.menuButton span:nth-child(3) {
+    z-index: 0;
+    top: 2.6em;
+}
+
+.menuButton.active span:nth-child(1) {
+    rotate: 45deg;
+    top: 1.3em;
+}
+
+.menuButton.active span:nth-child(2) {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.menuButton.active span:nth-child(3) {
+    rotate: -45deg;
+    top: 1.3em;
+}
+
+.dimmer {
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.4s ease-in-out;
+    background-color: rgba(14, 2, 1, 0.5);
+}
+
+.dimmer.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.closeButton {
+    position: absolute;
+    top: 1.5em;
+    right: 1.5em;
+    width: 3.5em;
+    height: 3em;
+    cursor: pointer;
+}
+
+.closeButton span {
+    box-shadow: 0.1em 0.1em 0 0 var(--font);
+    display: block;
+    position: absolute;
+    width: 3.75em;
+    height: 0.65em;
+    background-color: var(--mainDetail);
+    border-radius: 0.4rem;
+}
+
+.closeButton:hover span {
+    box-shadow: inset 0px 0.15em 0.15em rgba(0, 0, 0, 0.25);
+}
+
+.closeButton span:nth-child(1) {
+    rotate: -45deg;
+    top: 1.2em;
+}
+
+.closeButton span:nth-child(2) {
+    rotate: 45deg;
+    top: 1.2em;
+}
+
+.menu {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 105vw;
+    right: 0;
+    visibility: hidden;
+    opacity: 0;
+    width: 30vw;
+    height: 100vh;
+    transition: 0.4s ease-in-out;
+    background-color: var(--background);
+}
+
+.menu.active {
+    left: 70vw;
+    visibility: visible;
+    opacity: 1;
+}
+
+.menu::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -4.95vw;
+    width: 0;
+    height: 0;
+    border-right: 5vw solid var(--background);
+    border-bottom: 100vh solid transparent;
+}
+
+.menuInside {
+    position: absolute;
+    left: -5vw;
+    width: 100%;
+    height: 100%;
+}
+
+.menuInside hr {
+    height: 0;
+    border-top: 0.15em solid var(--mainDetail);
+}
+
+.signOutIcon {
+    width: 2em;
+    height: 2em;
+    margin: 0 0 -0.2em 1em;
+}
+
+.menuInside .binIcon,
+.menuInside .exportIcon {
+    width: 1.75em;
+    height: 1.75em;
+    margin: 0 0 -0.5rem 0.5rem;
+}
+
+.flagIcon {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 0.7em;
+}
+
+.editNameIcon {
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0 0 -0.1em 0.5em;
+    cursor: pointer;
+}
+
+.insideMenuButton {
+    box-shadow: 0.1em 0.1em 0 0 var(--font);
+    width: fit-content;
+    height: 3.5rem;
+    padding: 0 1rem;
+    background-color: var(--secondaryBackground);
+    cursor: pointer;
+    border-radius: 0.5rem;
+    line-height: 3.5rem;
+}
+
+.insideMenuButton:hover {
+    box-shadow: inset 0px 0.15rem 0.15rem rgba(0, 0, 0, 0.25);
+}
+
+.insideMenuButton p {
+    font-size: calc(var(--fontSize20) * 1.2);
+}
+
+.menuInside h3 {
+    margin: 0.5em 0 0.3em 1.5em;
+    font-size: calc(var(--fontSize20) * 3);
+    color: var(--font);
+    text-shadow: 0.1rem 0.1rem 0 var(--mainDetail);
+}
+
+.menuInside hr {
+    position: absolute;
+    left: 2em;
+    width: 108%;
+}
+
+.signState .username {
+    opacity: 0.7;
+    margin: 0.8em 0 0 1em;
+    font-size: calc(var(--fontSize20) * 1.6);
+}
+
+.deleteAccountButton p {
+    font-size: var(--fontSize20);
+    color: var(--mainDetail);
+}
+
+.signOut {
+    position: absolute;
+    bottom: 1.5em;
+    right: -1em;
+    cursor: pointer;
+    font-size: calc(var(--fontSize20) * 1.6);
+    color: var(--mainDetail);
+}
+
+.sendFeedback {
+    opacity: 0.7;
+    margin: 3rem 0 0 15.3rem;
+    cursor: pointer;
+}
+
+.selectedLanguage {
+    box-shadow: 0.1em 0.1em 0 0 var(--mainDetail);
+}
+
+.signState {
+    margin: 3em 0 0 4em;
+}
+
+.signState p {
+    font-size: calc(var(--fontSize20) * 1.8);
+}
+
+.languageButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 17.5em;
+    margin: 4rem 0 0 10rem;
+}
+
+.exportButton {
+    width: 17.5rem;
+    margin: 2rem 0 0 10rem;
+    text-align: center;
+}
+
+.deleteAccountButton {
+    width: 16rem;
+    margin: 2rem 0 0 10.75rem;
+    text-align: center;
+}
+
+.insideMenuButton.language {
+    display: flex;
+    align-items: center;
+}

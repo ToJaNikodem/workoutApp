@@ -2,7 +2,6 @@ const urlParams = new URLSearchParams(window.location.search);
 const code = urlParams.get('co');
 const errorMessage = document.querySelector('.errorMessage');
 const currentLink = window.location.href;
-console.log(currentLink);
 
 if (currentLink.includes('/pl/')) {
     switch (code) {

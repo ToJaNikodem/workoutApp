@@ -1,0 +1,82 @@
+.authorizationBox {
+    translate: -50% -50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 26.5rem;
+}
+
+.authorizationBox h2 {
+    margin: 0.8em 0 1.8em;
+    font-size: calc(var(--fontSize20) * 2);
+    color: var(--mainDetail);
+}
+
+.authorizationForm {
+    display: block;
+    width: min-content;
+    margin: auto;
+}
+
+.authorizationForm .inputBox {
+    margin-bottom: 1.8em;
+}
+
+.authorizationFooter {
+    margin: 0 0 2em 2.2em;
+}
+
+.errorMessage {
+    color: var(--mainDetail);
+    text-align: center;
+}
+
+.codeMessage {
+    text-align: center;
+}
+
+.informationIcon {
+    opacity: 0.7;
+    width: 1em;
+    height: 1em;
+    margin: 0 0 -0.1em 0.2em;
+}
+
+.informationBox {
+    position: relative;
+}
+
+.informationBox:hover::before {
+    box-shadow: 0.1rem 0.1rem 0 0 var(--font);
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: -2rem;
+    left: -0.5rem;
+    box-sizing: border-box;
+    width: 8.5rem;
+    height: 1.5rem;
+    padding: 0.3rem 0.9rem;
+    background-color: var(--secondaryBackground);
+    border-radius: 0.4rem;
+    font-size: calc(var(--fontSize20) * 0.8);
+    color: var(--font);
+    text-align: center;
+}
+
+.informationBox.username:hover::before {
+    content: "Min 4, Max 32";
+}
+
+.informationBox.password:hover::before {
+    content: "Min 8, Max 64";
+}
+
+.informationBox {
+    position: relative !important;
+    right: unset !important;
+}
+
+.inputBox p {
+    margin: 0.3em 0;
+}
