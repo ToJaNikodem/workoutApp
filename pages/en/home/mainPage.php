@@ -111,7 +111,7 @@ notSignedIn();
             </div>
             <div class="inputBox">
                 <p class="textLabel">Content</p>
-                <textarea class="standardInput" name="body" cols="30" rows="10" maxlength="10240" required></textarea>
+                <textarea class="standardInput" name="body" cols="30" rows="10" maxlength="10240" minlength="4" required></textarea>
             </div>
             <input type="submit" value="Send" class="submitButton">
         </form>

@@ -2,12 +2,14 @@
 $rootDirectory = $_SERVER['DOCUMENT_ROOT'];
 require $rootDirectory . "/src/php/database/database.php";
 require $rootDirectory . "/src/php/database/queries.php";
+require $rootDirectory . "/src/php/session/sessionFunciotns.php";
+require $rootDirectory . "/src/php/session/codes.php";
 
 session_start();
 
 $conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 if ($conn->connect_errno) {
-    echo "Failed to connect to the database: " . $conn->connect_error;
+    mainPageHeader($databaseError);
     exit();
 }
 
@@ -22,7 +24,7 @@ $fileHandle = fopen($file, "w");
 $data = '';
 
 if (!$stmt = $conn->prepare($workoutIdQuery)) {
-    echo "stmt error";
+    mainPageHeader($databaseError);
     exit;
 }
 
@@ -33,7 +35,7 @@ $stmt->bind_result($workoutId);
 
 while ($stmt->fetch()) {
     if (!$stmt2 = $conn->prepare($workoutDataQuery)) {
-        echo "stmt2 error";
+        mainPageHeader($databaseError);
         exit;
     }
 
@@ -56,7 +58,7 @@ while ($stmt->fetch()) {
         unset($workouts);
 
         if (!$stmt3 = $conn->prepare($workoutVariantDataQuery)) {
-            echo "stmt3 error";
+            mainPageHeader($databaseError);
             exit;
         }
 
@@ -85,7 +87,7 @@ while ($stmt->fetch()) {
 
 
             if (!$stmt4 = $conn->prepare($strengthExerciseDataQuery)) {
-                echo "stmt4 error";
+                mainPageHeader($databaseError);
                 exit;
             }
 
@@ -109,7 +111,7 @@ while ($stmt->fetch()) {
 
 
                 if (!$stmt7 = $conn->prepare($setsDataQuery)) {
-                    echo "stmt7 error";
+                    mainPageHeader($databaseError);
                     exit;
                 }
 
@@ -139,7 +141,7 @@ while ($stmt->fetch()) {
             }
 
             if (!$stmt5 = $conn->prepare($cardioExerciseDataQuery)) {
-                echo "stmt5 error";
+                mainPageHeader($databaseError);
                 exit;
             }
 
@@ -164,7 +166,7 @@ while ($stmt->fetch()) {
             }
 
             if (!$stmt6 = $conn->prepare($otherExerciseDataQuery)) {
-                echo "stmt6 error";
+                mainPageHeader($databaseError);
             }
 
             $stmt6->bind_param("s", $workoutVariantId);
@@ -291,6 +293,10 @@ function addSets($sets, $exercise) {
         }
     }
     return $data;
+}
+
+function fetchVariants() {
+    
 }
 
 $conn->close();

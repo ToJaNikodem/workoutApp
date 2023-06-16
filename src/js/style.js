@@ -3,10 +3,14 @@ const menu = document.querySelector(".menu");
 const menuButton = document.querySelector(".menuButton");
 const dimmer = document.querySelector(".dimmer");
 
+variableResize();
+
+window.onbeforeunload = function () {
+    variableResize();
+};
 window.addEventListener("resize", variableResize);
 menuButton.addEventListener("click", toggleMenu);
 
-variableResize();
 
 // function that defines css variables on the website
 function variableResize() {

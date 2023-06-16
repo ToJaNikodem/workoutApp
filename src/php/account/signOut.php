@@ -4,4 +4,4 @@ require $rootDirectory . '/src/php/session/sessionFunciotns.php';
 
 session_start();
 session_destroy();
-signInHeader();
+signInHeader(0);

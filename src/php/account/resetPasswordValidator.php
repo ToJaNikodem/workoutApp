@@ -5,30 +5,32 @@ require $rootDirectory . "/src/php/database/queries.php";
 require $rootDirectory . "/src/php/mail/smtpCredentials.php";
 require $rootDirectory . '/src/PHPMailer/src/PHPMailer.php';
 require $rootDirectory . '/src/PHPMailer/src/SMTP.php';
+require $rootDirectory . "/src/php/session/sessionFunciotns.php";
+require $rootDirectory . "/src/php/session/codes.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 
 if (!isset($_POST['email'])) {
-    echo "post error";
+    resetPasswordHeader($invalidDate);
     exit;
 }
 
 $email = $_POST['email'];
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo "validation error";
+    resetPasswordHeader($invalidDate);
     exit;
 }
 
 $conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 
 if ($conn->connect_errno) {
-    echo "Failed to connect to the database: " . $conn->connect_error;
+    resetPasswordHeader($databaseError);
     exit;
 }
 
 if (!$stmt = $conn->prepare($emailAvailabilityQuery)) {
-    echo "stmt error";
+    resetPasswordHeader($databaseError);
     exit;
 }
 
@@ -40,7 +42,7 @@ $stmt->fetch();
 $userId = $userId;
 
 if (!$stmt->num_rows > 0) {
-    echo "email doesn't exist in the database";
+    resetPasswordHeader($accountDoesntExist);
     exit;
 }
 
@@ -51,7 +53,7 @@ $expiryDate = date_add($currentTime, new DateInterval('P1D'));
 $expiryDate = $expiryDate->format('Y-m-d H:i:s');
 
 if (!$stmt2 = $conn->prepare($tokenQuery)) {
-    echo "stmt2 error";
+    resetPasswordHeader($databaseError);
     exit;
 }
 
@@ -84,7 +86,7 @@ if ($_SESSION['language'] == 'pl') {
 
 $mail->send();
 
-header("Location: /index.php");
+resetPasswordHeader($emailSendSuccessfully);
 
 function generateToken($length = 64) {
     $token = bin2hex(random_bytes($length / 2));

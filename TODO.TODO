@@ -1,8 +1,10 @@
-make export.php better
-
 add headers to all php/*.php files
 add advance error checking
 
-make new types of alerts (in the corner)
+fix change name
 
-rewrite css
+reset/change password design fix
+make new types of alerts (in the corner)
+rewrite css (check css on polish version)
+
+make export.php better

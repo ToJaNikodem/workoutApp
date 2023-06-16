@@ -2,9 +2,11 @@
 $rootDirectory = $_SERVER['DOCUMENT_ROOT'];
 require $rootDirectory . "/src/php/database/database.php";
 require $rootDirectory . "/src/php/database/queries.php";
+require $rootDirectory . "/src/php/session/sessionFunciotns.php";
+require $rootDirectory . "/src/php/session/codes.php";
 
 if (!isset($_POST['password']) && !isset($_POST['token'])) {
-    echo "post error";
+    signInHeader($invalidToken);
     exit;
 }
 
@@ -12,7 +14,7 @@ $password = $_POST['password'];
 $token = $_POST['token'];
 
 if (!(strlen($password) >= 8 && strlen($password) <= 64)) {
-    echo "validation error";
+    changePasswordHeader($invalidData, $token);
     exit;
 }
 
@@ -20,12 +22,12 @@ $hashedPassword = password_hash($password, PASSWORD_ARGON2ID);
 $conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 
 if ($conn->connect_errno) {
-    echo "Failed to connect to the database: " . $conn->connect_error;
+    changePasswordHeader($databaseError, $token);
     exit;
 }
 
 if (!$stmt = $conn->prepare($validateToken)) {
-    echo "stmt error";
+    changePasswordHeader($databaseError, $token);
     exit;
 }
 
@@ -35,7 +37,7 @@ $stmt->store_result();
 $stmt->bind_result($userId, $expiryDate);
 
 if (!$stmt->num_rows() > 0) {
-    echo "invalid token";
+    signInHeader($invalidToken);
     exit;
 }
 
@@ -48,12 +50,12 @@ $currentTime = new DateTime();
 $valid = $currentTime->diff($expiryDate);
 
 if (!$valid) {
-    echo "token expired";
+    signInHeader($invalidToken);
     exit;
 }
 
 if (!$stmt2 = $conn->prepare($changePassword)) {
-    echo "stmt2 error";
+    changePasswordHeader($databaseError, $token);
     exit;
 }
 
@@ -62,4 +64,4 @@ $stmt2->execute();
 $stmt2->close();
 $conn->close();
 
-header("Location: /index.php");
+signInHeader($passwordChangedSuccessfully);

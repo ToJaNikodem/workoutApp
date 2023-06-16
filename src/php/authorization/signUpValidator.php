@@ -2,11 +2,13 @@
 $rootDirectory = $_SERVER['DOCUMENT_ROOT'];
 require $rootDirectory . "/src/php/database/database.php";
 require $rootDirectory . "/src/php/database/queries.php";
+require $rootDirectory . "/src/php/session/sessionFunciotns.php";
+require $rootDirectory . "/src/php/session/codes.php";
 
 session_start();
 
 if (!isset($_POST['username']) && !isset($_POST['email']) && !isset($_POST['password'])) {
-    echo "post error";
+    signUpHeader($invalidData);
     exit;
 }
 
@@ -15,7 +17,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 if (!(strlen($username) >= 4 && strlen($username) <= 32 && strlen($password) >= 8 && strlen($password) <= 64 && filter_var($email, FILTER_VALIDATE_EMAIL))) {
-    echo "validation error";
+    signUpHeader($invalidData);
     exit;
 }
 
@@ -24,12 +26,12 @@ $hashedPassword = password_hash($password, PASSWORD_ARGON2ID);
 $conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 
 if ($conn->connect_errno) {
-    echo "Failed to connect to the database: " . $conn->connect_error;
+    signUpHeader($databaseError);
     exit;
 }
 
 if (!$stmt = $conn->prepare($usernameAvailabilityQuery)) {
-    echo "stmt error";
+    signUpHeader($databaseError);
     exit;
 }
 
@@ -38,14 +40,14 @@ $stmt->execute();
 $stmt->store_result();
 
 if ($stmt->num_rows > 0) {
-    echo "username already taken";
+    signUpHeader($usernameAlreadyExists);
     exit;
 }
 
 $stmt->close();
 
 if (!$stmt2 = $conn->prepare($emailAvailabilityQuery)) {
-    echo "stmt2 error";
+    signUpHeader($databaseError);
     exit;
 }
 
@@ -54,14 +56,14 @@ $stmt2->execute();
 $stmt2->store_result();
 
 if ($stmt2->num_rows > 0) {
-    echo "email already exist";
+    signUpHeader($emailAlreadyExists);
     exit;
 }
 
 $stmt2->close();
 
 if (!$stmt3 = $conn->prepare($signUpQuery)) {
-    echo "stmt3 error";
+    signUpHeader($databaseError);
     exit;
 }
 
@@ -70,10 +72,4 @@ $stmt3->execute();
 $stmt3->close();
 $conn->close();
 
-if ($_SESSION['language'] == 'pl') {
-    header('Location: /pages/pl/signIn.php?co=11');
-    exit;
-} else {
-    header('Location: /pages/en/signIn.php?co=01');
-    exit;
-}
+signInHeader($accountCreatedSuccessfully);

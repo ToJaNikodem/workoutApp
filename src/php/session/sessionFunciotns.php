@@ -1,13 +1,13 @@
 <?php
 function signedIn() {
     if (isset($_SESSION['signedIn']) && $_SESSION['signedIn'] == true) {
-        mainPageHeader();
+        mainPageHeader(NULL);
     }
 }
 
 function notSignedIn() {
     if ($_SESSION['signedIn'] == false) {
-        signInHeader();
+        signInHeader(NULL);
     }
 }
 
@@ -23,24 +23,57 @@ function universalHeader($lang, $link1, $link2) {
     header('Location: ' . $link1 . $lang . $link2);
 }
 
-function mainPageHeader() {
+function mainPageHeader($code) {
     $lang = userLanguage();
     if ($lang == 'pl') {
-        header('Location: /pages/pl/home/mainPage');
+        header('Location: /pages/pl/home/mainPage?co=' . $code);
         exit();
     } else {
-        header('Location: /pages/en/home/mainPage');
+        header('Location: /pages/en/home/mainPage?co=' . $code);
         exit();
     }
 }
 
-function signInHeader() {
+function signInHeader($code) {
     $lang = userLanguage();
     if ($lang == 'pl') {
-        header('Location: /pages/pl/authorization/signIn');
+        header('Location: /pages/pl/authorization/signIn?co=' . $code);
         exit();
     } else {
-        header('Location: /pages/en/authorization/signIn');
+        header('Location: /pages/en/authorization/signIn?co=' . $code);
+        exit();
+    }
+}
+
+function signUpHeader($code) {
+    $lang = userLanguage();
+    if ($lang == 'pl') {
+        header('Location: /pages/pl/authorization/signUp?co=' . $code);
+        exit();
+    } else {
+        header('Location: /pages/en/authorization/signUp?co=' . $code);
+        exit();
+    }
+}
+
+function resetPasswordHeader($code) {
+    $lang = userLanguage();
+    if ($lang == 'pl') {
+        header('Location: /pages/pl/other/resetPassword?co=' . $code);
+        exit();
+    } else {
+        header('Location: /pages/en/other/resetPassword?co=' . $code);
+        exit();
+    }
+}
+
+function changePasswordHeader($code, $token) {
+    $lang = userLanguage();
+    if ($lang == 'pl') {
+        header('Location: /pages/pl/other/changePassword?co=' . $code . '&token=' . $token);
+        exit();
+    } else {
+        header('Location: /pages/en/other/changePassword?co=' . $code . '&token=' . $token);
         exit();
     }
 }

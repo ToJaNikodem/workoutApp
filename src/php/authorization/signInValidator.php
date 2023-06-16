@@ -2,11 +2,13 @@
 $rootDirectory = $_SERVER['DOCUMENT_ROOT'];
 require $rootDirectory . "/src/php/database/database.php";
 require $rootDirectory . "/src/php/database/queries.php";
+require $rootDirectory . "/src/php/session/sessionFunciotns.php";
+require $rootDirectory . "/src/php/session/codes.php";
 
 session_start();
 
 if (!isset($_POST['usernameOrEmail']) && !isset($_POST['password']) && !isset($_POST['language'])) {
-    echo "post error";
+    signInHeader($invalidData);
     exit;
 }
 
@@ -15,19 +17,19 @@ $password = $_POST['password'];
 $language = $_POST['language'];
 
 if (!(strlen($usernameOrEmail) >= 4 && strlen($usernameOrEmail) <= 256 && strlen($password) >= 8 && strlen($password) <= 64)) {
-    echo "validation error";
+    signInHeader($invalidData);
     exit;
 }
 
 $conn = new mysqli($dbHost, $dbUser, $dbPassword, $dbName);
 
 if ($conn->connect_errno) {
-    echo "Failed to connect to the database: " . $conn->connect_error;
+    signInHeader($databaseError);
     exit;
 }
 
 if (!$stmt = $conn->prepare($signInQuery)) {
-    echo "stmt error";
+    signInHeader($databaseError);
     exit;
 }
 
@@ -36,7 +38,7 @@ $stmt->execute();
 $stmt->store_result();
 
 if (!$stmt->num_rows > 0) {
-    echo "invalid login data";
+    signInHeader($invalidData);
     exit;
 }
 
@@ -46,7 +48,7 @@ $stmt->close();
 $conn->close();
 
 if (!password_verify($password, $hashedPassword)) {
-    echo "invalid password";
+    signInHeader($invalidData);
     exit;
 }
 
@@ -56,4 +58,4 @@ $_SESSION['user_id'] = $user_id;
 $_SESSION['username'] = $username;
 $_SESSION['language'] = $language;
 
-header('Location: /index.php');
+mainPageHeader(NULL);

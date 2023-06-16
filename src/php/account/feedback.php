@@ -3,18 +3,26 @@ $rootDirectory = $_SERVER['DOCUMENT_ROOT'];
 require $rootDirectory . '/src/php/mail/smtpCredentials.php';
 require $rootDirectory . '/src/PHPMailer/src/PHPMailer.php';
 require $rootDirectory . '/src/PHPMailer/src/SMTP.php';
+require $rootDirectory . "/src/php/session/sessionFunciotns.php";
+require $rootDirectory . "/src/php/session/codes.php";
 
 session_start();
 
 use PHPMailer\PHPMailer\PHPMailer;
 
 if (!isset($_POST['subject']) && !isset($_POST['body'])) {
-    echo "post error";
+    mainPageHeader($feedbackInvalidData);
     exit;
 }
 
 $subject = $_POST['subject'];
 $body = $_POST['body'];
+
+if (!($subject >= 4 && $subject <= 128 && $body >= 4 && $body <= 10240)) {
+    mainPageHeader($feedbackInvalidData);
+    exit;
+}
+
 
 $mail = new PHPMailer();
 
@@ -34,10 +42,4 @@ $mail->Body = $body;
 
 $mail->send();
 
-if ($_SESSION['language'] == 'pl') {
-    header('Location: /pages/pl/mainPage.php?co=14');
-    exit;
-} else {
-    header('Location: /pages/en/mainPage.php?co=04');
-    exit;
-}
+mainPageHeader($feedbackSendSuccessfuly);
