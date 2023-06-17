@@ -21,7 +21,9 @@ notSignedIn();
 <body>
     <div class="dimmer"></div>
     <div class="container">
-
+        <div class="alert">
+            
+        </div>
     </div>
     <aside class="menu">
         <div class="menuInside">

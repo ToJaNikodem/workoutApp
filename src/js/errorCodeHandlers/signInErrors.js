@@ -1,8 +1,10 @@
-const urlParams = new URLSearchParams(window.location.search);
-const code = urlParams.get('co');
 const errorMessage = document.querySelector('.errorMessage');
 const codeMessage = document.querySelector('.codeMessage');
+const alertBox = document.querySelector('.alert');
 const currentLink = window.location.href;
+var urlParams = new URLSearchParams(window.location.search);
+var code = urlParams.get('co');
+
 
 if (currentLink.includes('/pl/')) {
     switch (code) {
@@ -13,7 +15,8 @@ if (currentLink.includes('/pl/')) {
             errorMessage.innerHTML = "Nieprawidłowe dane logowania";
             break;
         case '105':
-            // invalid token (alert)
+            alertBox.innerHTML = "Niepoprawny token odzyskiwania";
+            toggleAlert('e');
             break;
         case '501':
             codeMessage.innerHTML = "Konto stworzone pomyślnie, możesz się teraz zalogować"
@@ -37,7 +40,8 @@ if (currentLink.includes('/pl/')) {
             errorMessage.innerHTML = "Invalid login data";
             break;
         case '105':
-            // invalid token (alert)
+            alertBox.innerHTML = "Invalid recovery token";
+            toggleAlert('e');
             break;
         case '501':
             codeMessage.innerHTML = "Account created successfully, you can sign in now"
@@ -52,4 +56,19 @@ if (currentLink.includes('/pl/')) {
         default:
             break;
     }
+}
+
+function toggleAlert(type) {
+    if (type == 'e') {
+        alertBox.style.backgroundColor = 'var(--alertRed)';
+    } else {
+        alertBox.style.backgroundColor = 'var(--alertGreen)';
+    }
+    alertBox.classList.add("active");
+    setTimeout(function () {
+        alertBox.classList.remove("active");
+    }, 5000);
+    urlParams.set('co', '');
+    url.search = urlParams.toString();
+    window.history.replaceState(null, null, url.toString());
 }

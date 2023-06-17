@@ -20,10 +20,13 @@ signedIn();
 <body>
     <div class="dimmer"></div>
     <div class="container">
+        <div class="alert">
+
+        </div>
         <main class="authorizationBox whiteWindow">
             <form action="/src/php/authorization/signInValidator" method="post" class="authorizationForm">
                 <h2>Zaloguj się</h2>
-                <input type="hidden" name="language" value="<?= substr($_SERVER['PHP_SELF'],7,2); ?>">
+                <input type="hidden" name="language" value="<?= substr($_SERVER['PHP_SELF'], 7, 2); ?>">
                 <div class="inputBox">
                     <p class="textLabel">Nazwa użytkownika lub email</p>
                     <input type="text" name="usernameOrEmail" class="standardInput" autocomplete="username" maxlength="32" minlength="4" required>
