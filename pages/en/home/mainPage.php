@@ -122,7 +122,8 @@ notSignedIn();
         <span></span>
     </div>
     <script src="/src/js/style.js"></script>
-    <script src="/src/js/errorCodeHandlers/mainPageErrors.js"></script>
+    <script src="/src/js/errorCodeHandlers/messageMap.js"></script>
+    <script src="/src/js/errorCodeHandlers/alertsHandler.js"></script>
     <script src="/src/js/mainPageHandler.js"></script>
 </body>
 

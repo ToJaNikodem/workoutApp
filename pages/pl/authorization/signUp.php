@@ -43,7 +43,6 @@ signedIn();
                     </p>
                     <input type="password" name="password" class="standardInput" autocomplete="new-password" maxlength="64" minlength="8" required>
                 </div>
-                <div class="errorMessage"></div>
                 <input type="submit" value="Kontynuuj" class="submitButton">
             </form>
             <p class="textLabel authorizationFooter">Posiadasz już konto? &nbsp;<a href="signIn">Zaloguj się</a></p>
@@ -77,7 +76,8 @@ signedIn();
         <span></span>
     </div>
     <script src="/src/js/style.js"></script>
-    <script src="/src/js/errorCodeHandlers/signUpErrors.js"></script>
+    <script src="/src/js/errorCodeHandlers/messageMap.js"></script>
+    <script src="/src/js/errorCodeHandlers/alertsHandler.js"></script>
 </body>
 
 </html>

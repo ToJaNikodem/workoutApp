@@ -34,14 +34,13 @@ signedIn();
                     <p class="textLabel">Email</p>
                     <input type="email" name="email" class="standardInput" maxlength="256" minlength="6" required>
                 </div>
-                <div class="errorMessage"></div>
-                <div class="codeMessage"></div>
                 <input type="submit" value="Continue" class="submitButton">
             </form>
         </main>
     </div>
     <script src="/src/js/style.js"></script>
-    <script src="/src/js/errorCodeHandlers/resetPasswordErrors.js"></script>
+    <script src="/src/js/errorCodeHandlers/messageMap.js"></script>
+    <script src="/src/js/errorCodeHandlers/alertsHandler.js"></script>
 </body>
 
 </html>

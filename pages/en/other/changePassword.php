@@ -33,13 +33,13 @@ signedIn();
                     </p>
                     <input type="password" name="password" class="standardInput" autocomplete="new-password" maxlength="64" minlength="8" required>
                 </div>
-                <div class="errorMessage"></div>
                 <input type="submit" value="Continue" class="submitButton">
             </form>
         </main>
     </div>
     <script src="/src/js/style.js"></script>
-    <script src="/src/js/errorCodeHandlers/changePasswordErrors.js"></script>
+    <script src="/src/js/errorCodeHandlers/messageMap.js"></script>
+    <script src="/src/js/errorCodeHandlers/alertsHandler.js"></script>
 </body>
 
 </html>

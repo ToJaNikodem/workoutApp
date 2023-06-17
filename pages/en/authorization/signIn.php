@@ -35,8 +35,6 @@ signedIn();
                     <p class="textLabel">Password <a tabindex="-1" href="/pages/en/other/resetPassword"><span>Reset password</span></a></p>
                     <input type="password" name="password" class="standardInput" autocomplete="current-password" maxlength="64" minlength="8" required>
                 </div>
-                <div class="errorMessage"></div>
-                <div class="codeMessage"></div>
                 <input type="submit" value="Continue" class="submitButton">
             </form>
             <p class="textLabel authorizationFooter">No account? &nbsp;<a href="signUp">Sign Up</a></p>
@@ -70,7 +68,8 @@ signedIn();
         <span></span>
     </div>
     <script src="/src/js/style.js"></script>
-    <script src="/src/js/errorCodeHandlers/signInErrors.js"></script>
+    <script src="/src/js/errorCodeHandlers/messageMap.js"></script>
+    <script src="/src/js/errorCodeHandlers/alertsHandler.js"></script>
 </body>
 
 </html>
