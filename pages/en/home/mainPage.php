@@ -21,9 +21,17 @@ notSignedIn();
 <body>
     <div class="dimmer"></div>
     <div class="container">
-        <div class="alert">
-            
+        <div class="alert"></div>
+        <div class="buttons">
+
         </div>
+        <section class="workouts">
+            <h1>Your workouts</h1>
+            <div class="workoutsList">
+
+            </div>
+        </section>
+        <main></main>
     </div>
     <aside class="menu">
         <div class="menuInside">
@@ -122,9 +130,11 @@ notSignedIn();
         <span></span>
     </div>
     <script src="/src/js/style.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="/src/js/errorCodeHandlers/messageMap.js"></script>
     <script src="/src/js/errorCodeHandlers/alertsHandler.js"></script>
     <script src="/src/js/mainPageHandler.js"></script>
+    <script src="/src/js/contentHandler.js"></script>
 </body>
 
 </html>

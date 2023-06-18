@@ -29,3 +29,6 @@ $tokenQuery = 'INSERT INTO reset_tokens (user_id, token, expiry_date) VALUES (?,
 $changePassword = 'UPDATE users SET hashed_password = ? WHERE user_id = ?';
 $validateToken = 'SELECT user_id, expiry_date FROM reset_tokens WHERE token = ?';
 
+// workouts.php
+$workoutsDataQuery = 'SELECT workout_names.default_workout_name_en, workout_names.default_workout_name_pl, workout_names.user_workout_name, workouts.favorite, workouts.workout_id FROM workouts INNER JOIN workout_names ON workouts.workout_name_id = workout_names.workout_name_id INNER JOIN users ON workouts.user_id = users.user_id WHERE workouts.user_id = ? ORDER BY workouts.favorite DESC';
+
