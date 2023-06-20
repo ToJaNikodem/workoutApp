@@ -1,32 +1,34 @@
-const editNameIcon = document.querySelector(".editNameIcon");
-const changeNameCloseButton = document.querySelector(".changeNameBox .closeButton");
-const changeNameBox = document.querySelector(".changeNameBox");
+$(document).ready(function () {
+    const editNameIcon = $(".editNameIcon");
+    const changeNameCloseButton = $(".changeNameBox .closeButton");
+    const changeNameBox = $(".changeNameBox");
 
-const sendFeedbackCloseButton = document.querySelector(".sendFeedbackBox .closeButton");
-const sendFeedbackBox = document.querySelector(".sendFeedbackBox");
-const sendFeedbackBoxButton = document.querySelector(".sendFeedback");
+    const sendFeedbackCloseButton = $(".sendFeedbackBox .closeButton");
+    const sendFeedbackBox = $(".sendFeedbackBox");
+    const sendFeedbackBoxButton = $(".sendFeedback");
 
-const deleteAccountButton = document.querySelector(".deleteAccountButton");
-const warningMessageCloseButton = document.querySelector(".warningMessage .closeButton");
-const warningMessage = document.querySelector(".warningMessage");
+    const deleteAccountButton = $(".deleteAccountButton");
+    const warningMessageCloseButton = $(".warningMessage .closeButton");
+    const warningMessage = $(".warningMessage");
 
-editNameIcon.addEventListener("click", toggleChangeNameBox);
-changeNameCloseButton.addEventListener("click", toggleChangeNameBox);
+    editNameIcon.click(toggleChangeNameBox);
+    changeNameCloseButton.click(toggleChangeNameBox);
 
-function toggleChangeNameBox() {
-    changeNameBox.classList.toggle("active");
-}
+    function toggleChangeNameBox() {
+        changeNameBox.toggleClass("active");
+    }
 
-deleteAccountButton.addEventListener("click", toggleWarning);
-warningMessageCloseButton.addEventListener("click", toggleWarning);
+    deleteAccountButton.click(toggleWarning);
+    warningMessageCloseButton.click(toggleWarning);
 
-function toggleWarning() {
-    warningMessage.classList.toggle("active");
-}
+    function toggleWarning() {
+        warningMessage.toggleClass("active");
+    }
 
-sendFeedbackBoxButton.addEventListener("click", toggleBox);
-sendFeedbackCloseButton.addEventListener("click", toggleBox);
+    sendFeedbackBoxButton.click(toggleBox);
+    sendFeedbackCloseButton.click(toggleBox);
 
-function toggleBox() {
-    sendFeedbackBox.classList.toggle("active");
-}
+    function toggleBox() {
+        sendFeedbackBox.toggleClass("active");
+    }
+});

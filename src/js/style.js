@@ -1,42 +1,47 @@
-const root = document.documentElement;
-const menu = document.querySelector(".menu");
-const menuButton = document.querySelector(".menuButton");
-const dimmer = document.querySelector(".dimmer");
+$(document).ready(function () {
+    const root = document.documentElement;
+    const menu = $(".menu");
+    const menuButton = $(".menuButton");
+    const dimmer = $(".dimmer");
 
-variableResize();
-
-window.onbeforeunload = function () {
     variableResize();
-};
 
-window.addEventListener("resize", variableResize);
-menuButton.addEventListener("click", toggleMenu);
+    $(window).on("beforeunload", function () {
+        variableResize();
+    });
 
-function variableResize() {
-    var containerWidth = document.querySelector("div.container").clientWidth;
-    root.style.setProperty('--fontSize20', (containerWidth * 0.008) + "px");
-}
+    $(window).on("resize", variableResize);
+    menuButton.on("click", toggleMenu);
 
-function toggleMenu() {
-    menu.classList.toggle("active");
-    menuButton.classList.toggle("active");
-    dimmer.classList.toggle("active");
-}
-
-window.onclick = function (event) {
-    if (!event.target.matches(".menuButton") && !event.target.closest(".menuButton")) {
-        if (
-            menu.classList.contains("active") &&
-            menuButton.classList.contains("active") &&
-            dimmer.classList.contains("active")
-        ) {
-            menu.classList.remove("active");
-            menuButton.classList.remove("active");
-            dimmer.classList.remove("active");
-        }
+    function variableResize() {
+        var containerWidth = $("div.container").width();
+        root.style.setProperty("--fontSize20", containerWidth * 0.008 + "px");
     }
-};
 
-menu.addEventListener("click", function (event) {
-    event.stopPropagation();
+    function toggleMenu() {
+        menu.toggleClass("active");
+        menuButton.toggleClass("active");
+        dimmer.toggleClass("active");
+    }
+
+    $(window).on("click", function (event) {
+        if (
+            !$(event.target).is(".menuButton") &&
+            !$(event.target).closest(".menuButton")
+        ) {
+            if (
+                menu.hasClass("active") &&
+                menuButton.hasClass("active") &&
+                dimmer.hasClass("active")
+            ) {
+                menu.removeClass("active");
+                menuButton.removeClass("active");
+                dimmer.removeClass("active");
+            }
+        }
+    });
+
+    menu.on("click", function (event) {
+        event.stopPropagation();
+    });
 });

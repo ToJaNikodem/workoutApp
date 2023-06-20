@@ -1,26 +1,23 @@
 reloadWorkouts();
 
 $(document).ready(function() {
-  $(document).on('click', '.favorite', function() {
+  $(document).on('click', '.star', function() {
     var workoutId = $(this).closest('.workout').data('workout-id');
-    console.log(workoutId);
-
+    var favorite = $(this).data('favorite');
     $.ajax({
-      url: '/src/php/content/makeFavorite',
+      url: '/src/php/content/toggleFavorite',
       type: 'POST',
-      data: { workoutId: workoutId },
+      data: { workoutId: workoutId, favorite: favorite },
       success: function(response) {
-        console.log(response);
-        //reloadWorkouts();
+        reloadWorkouts();
       }
     });
   });
 });
 
-
 function reloadWorkouts() {
   $.ajax({
-    url: '/src/php/content/workouts.php',
+    url: '/src/php/content/workouts',
     type: 'POST',
     success: function (response) {
       $('.workoutsList').html(response);

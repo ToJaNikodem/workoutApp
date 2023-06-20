@@ -49,9 +49,9 @@ function displayWorkouts($workouts) {
     foreach ($workouts as $workout) {
         echo '<div class="workout whiteWindow" data-workout-id="' . $workout['workoutId'] . '">';
         if ($workout['favorite'] == 1) {
-            echo '<img src="/src/img/star.svg" class="favorite">';
+            echo '<img src="/src/img/star.svg" class="favorite star" data-favorite="1">';
         } else {
-            echo '<img src="/src/img/starEmpty.svg">';
+            echo '<img src="/src/img/starEmpty.svg" class="star" data-favorite="0">';
         }
         if (!empty($workout['userWorkoutName'])) {
             echo $workout['userWorkoutName'];
