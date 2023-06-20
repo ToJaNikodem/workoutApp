@@ -8,7 +8,7 @@
 
 .authorizationBox h2 {
     margin: 0.8em 0 1.8em;
-    font-size: calc(var(--fontSize20) * 2);
+    font-size: calc(1rem * 2);
     color: var(--mainDetail);
 }
 
@@ -59,7 +59,7 @@
     padding: 0.3rem 0.9rem;
     background-color: var(--secondaryBackground);
     border-radius: 0.4rem;
-    font-size: calc(var(--fontSize20) * 0.8);
+    font-size: calc(1rem * 0.8);
     color: var(--font);
     text-align: center;
 }

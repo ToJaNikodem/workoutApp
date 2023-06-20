@@ -11,6 +11,9 @@ $(document).ready(function () {
     const warningMessageCloseButton = $(".warningMessage .closeButton");
     const warningMessage = $(".warningMessage");
 
+    const addWorkout = $('.addWorkout');
+    const addWorkoutButton = $('.addWorkoutButton');
+
     editNameIcon.click(toggleChangeNameBox);
     changeNameCloseButton.click(toggleChangeNameBox);
 
@@ -30,5 +33,11 @@ $(document).ready(function () {
 
     function toggleBox() {
         sendFeedbackBox.toggleClass("active");
+    }
+
+    addWorkoutButton.click(toggleAddWorkout);
+
+    function toggleAddWorkout() {
+        addWorkout.toggleClass("active");
     }
 });

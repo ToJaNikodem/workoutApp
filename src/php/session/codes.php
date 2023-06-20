@@ -20,3 +20,4 @@ $emailSendSuccessfully = '503';
 $feedbackSendSuccessfully = '504';
 $usernameChangedSuccessfully = '505';
 $passwordChangedSuccessfully = '506';
+$workoutAddedSuccessfully = '507';

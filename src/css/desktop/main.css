@@ -28,6 +28,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-size: 14px;
     font-size: var(--fontSize20);
     font-family: 'Inter', sans-serif;
     font-weight: 700;
@@ -35,7 +36,7 @@
 }
 
 *:focus {
-    outline: calc(var(--fontSize20) * 0.15) var(--font) solid;
+    outline: calc(1rem * 0.15) var(--font) solid;
 }
 
 body {
@@ -80,7 +81,7 @@ textarea {
     padding: 0 0.8em;
     background-color: var(--secondaryDetail);
     border-radius: 0.5rem;
-    font-size: calc(var(--fontSize20) * 1.3);
+    font-size: calc(1rem * 1.3);
 }
 
 .textLabel {
@@ -110,7 +111,7 @@ textarea {
     padding: 0 1.5em;
     background-color: var(--mainDetail);
     border-radius: 0.4rem;
-    font-size: calc(var(--fontSize20) * 1.6);
+    font-size: calc(1rem * 1.6);
     color: white;
     text-align: center;
 }
@@ -329,12 +330,12 @@ textarea {
 }
 
 .insideMenuButton p {
-    font-size: calc(var(--fontSize20) * 1.2);
+    font-size: calc(1rem * 1.2);
 }
 
 .menuInside h3 {
     margin: 0.5em 0 0.3em 1.5em;
-    font-size: calc(var(--fontSize20) * 3);
+    font-size: calc(1rem * 3);
     color: var(--font);
     text-shadow: 0.1rem 0.1rem 0 var(--mainDetail);
 }
@@ -348,11 +349,10 @@ textarea {
 .signState .username {
     opacity: 0.7;
     margin: 0.8em 0 0 1em;
-    font-size: calc(var(--fontSize20) * 1.6);
+    font-size: calc(1rem * 1.6);
 }
 
 .deleteAccountButton p {
-    font-size: var(--fontSize20);
     color: var(--mainDetail);
 }
 
@@ -361,7 +361,7 @@ textarea {
     bottom: 1.5em;
     right: -1em;
     cursor: pointer;
-    font-size: calc(var(--fontSize20) * 1.6);
+    font-size: calc(1rem * 1.6);
     color: var(--mainDetail);
 }
 
@@ -380,7 +380,7 @@ textarea {
 }
 
 .signState p {
-    font-size: calc(var(--fontSize20) * 1.8);
+    font-size: calc(1rem * 1.8);
 }
 
 .languageButtons {

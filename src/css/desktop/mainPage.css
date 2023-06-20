@@ -22,7 +22,7 @@
 
 .changeNameBox .mainText {
     margin: 2rem 0 0 3rem;
-    font-size: calc(var(--fontSize20) * 2);
+    font-size: calc(1rem * 2);
     color: var(--mainDetail);
 }
 
@@ -52,13 +52,13 @@
 
 .warningMessage .mainText {
     margin: 2rem 0 0 3rem;
-    font-size: calc(var(--fontSize20) * 2);
+    font-size: calc(1rem * 2);
     color: var(--mainDetail);
 }
 
 .warningMessage p {
     margin: 1rem 0 0 3.5rem;
-    font-size: calc(var(--fontSize20) * 1.2);
+    font-size: calc(1rem * 1.2);
 }
 
 .warningMessage .information {
@@ -86,7 +86,7 @@
 
 .sendFeedbackBox .mainText {
     margin: 2rem 0 0 3rem;
-    font-size: calc(var(--fontSize20) * 2);
+    font-size: calc(1rem * 2);
     color: var(--mainDetail);
 }
 
@@ -120,7 +120,7 @@
 .workouts h1 {
     color: var(--font);
     text-shadow: 0.1rem 0.1rem 0 var(--mainDetail);
-    font-size: calc(var(--fontSize20) * 3);
+    font-size: calc(1rem * 3);
 }
 
 .workoutsList {
@@ -129,7 +129,7 @@
 }
 
 .workout {
-    font-size: calc(var(--fontSize20) *1.8);
+    font-size: calc(1rem *1.8);
     width: 28rem;
     overflow: hidden;
     white-space: nowrap;
@@ -206,18 +206,48 @@
     width: 6em;
     height: 4em;
     margin: 1em 0 0 0;
-    transition: 0.3s;
+    transition: 0.2s ease-in-out;
+}
+
+.addWorkout form {
+    display: none;
+}
+
+.addWorkout.active form {
+    display: block;
 }
 
 .addWorkout.active {
-    
+    width: 28rem;
+    height: 17rem;
+    overflow: hidden;
+}
+
+.addWorkout.active .addWorkoutButton {
+    top: 15%;
+    left: 90%;
+    height: 3em;
+    width: 3em;
+}
+
+.addWorkout.active span {
+    width: 3em;
+    box-shadow: 0.05rem 0.05rem 0 0 var(--mainDetail);
+}
+
+.addWorkout.active span:nth-child(1) {
+    rotate: -45deg;
+}
+
+.addWorkout.active span:nth-child(2) {
+    rotate: 45deg;
 }
 
 .addWorkout:hover {
     box-shadow: 0px 0px 0.3rem 0.3rem var(--secondaryDetail);
 }
 
-.addWorkout span {
+.addWorkoutButton span {
     position: absolute;
     height: 0.5em;
     width: 2em;
@@ -228,6 +258,28 @@
     translate: -50% -50%;
 }
 
-.addWorkout span:nth-child(1) {
+.addWorkoutButton span:nth-child(1) {
     rotate: 90deg;
+}
+
+.addWorkoutButton {
+    position: absolute;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    display: block;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.addWorkout h2 {
+    text-align: left;
+    margin: 0.8em 0 1em 1.5em;
+    font-size: calc(1rem * 2);
+    color: var(--mainDetail);
+}
+
+.addWorkout .submitButton {
+    margin: 1.5em auto 0 auto;
 }

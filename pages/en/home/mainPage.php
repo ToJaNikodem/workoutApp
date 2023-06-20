@@ -30,8 +30,15 @@ notSignedIn();
             <div class="workoutsList">
             </div>
             <div class="addWorkout whiteWindow">
-                <span></span>
-                <span></span>
+                <div class="addWorkoutButton">
+                    <span></span>
+                    <span></span>
+                </div>
+                <form action="/src/php/account/addNewWorkout" method="post">
+                    <h2>Add new workout</h2>
+                    <input type="text" class="standardInput" name="workoutName" minlength="1" maxlength="64" required>
+                    <input type="submit" value="Add Workout" class="submitButton">
+                </form>
             </div>
         </section>
         <main></main>

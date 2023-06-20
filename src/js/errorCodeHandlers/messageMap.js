@@ -5,8 +5,8 @@ const messageMap = {
       type: 'error',
     },
     '101': {
-      en: 'Invalid login data',
-      pl: 'Nieprawidłowe dane logowania',
+      en: 'Invalid data',
+      pl: 'Nieprawidłowe dane',
       type: 'error',
     },
     '102': {
@@ -67,6 +67,11 @@ const messageMap = {
     '506': {
       en: 'Password changed successfully',
       pl: 'Hasło zmienione pomyślnie',
+      type: 'success',
+    },
+    '507': {
+      en: 'Workout added successfully',
+      pl: 'Trening dodany pomyślnie',
       type: 'success',
     },
   };
