@@ -145,7 +145,7 @@ notSignedIn();
         <span></span>
         <span></span>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="/src/jQuery/jQuery.js"></script>
     <script src="/src/js/style.js"></script>
     <script src="/src/js/content/content.js"></script>
     <script src="/src/js/errorCodeHandlers/messageMap.js"></script>
