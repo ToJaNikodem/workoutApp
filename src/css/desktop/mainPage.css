@@ -1,3 +1,26 @@
+main {
+    position: absolute;
+    top: 13.9%;
+    left: 28%;
+    width: 86rem;
+    height: 50rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main p {
+    color: var(--font70);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+main .submitButton {
+    line-height: 2.1em;
+    margin: unset;
+}
+
 .changeNameBox {
     translate: -100% -50%;
     position: absolute;
@@ -109,12 +132,16 @@
 .workouts {
     position: absolute;
     width: 33rem;
+    height: 60rem;
     top: 2em;
     left: 1em;
     display: flex;
     align-items: center;
     flex-direction: column;
     text-align: center;
+    padding: 0 0 0.5rem 0;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .workouts h1 {
@@ -129,15 +156,34 @@
 }
 
 .workout {
-    font-size: calc(1rem *1.8);
     width: 28rem;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    padding: 0.7em 2.5em;
     margin: 1rem 0 0 0;
     position: relative;
     height: 5rem;
+    transition: 0.2s ease-in-out;
+}
+
+.workout p {
+    font-size: calc(1rem *1.8);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 5rem;
+    width: 18rem;
+    margin: auto;
+}
+
+.workout.active {
+    height: unset;
+    padding-bottom: 1.5rem;
+}
+
+.workout.active .workoutVariant {
+    display: block;
+}
+
+.workout.active .arrow {
+    rotate: 180deg;
 }
 
 .workout img {
@@ -167,6 +213,7 @@
 }
 
 .arrow {
+    transition: 0.2s ease-in-out;
     position: absolute;
     right: 1.4em;
     top: 1.3em;
@@ -209,18 +256,10 @@
     transition: 0.2s ease-in-out;
 }
 
-.addWorkout form {
-    display: none;
-}
-
-.addWorkout.active form {
-    display: block;
-}
-
 .addWorkout.active {
     width: 28rem;
     height: 17rem;
-    overflow: hidden;
+    padding: 0 0 1rem 0;
 }
 
 .addWorkout.active .addWorkoutButton {
@@ -228,6 +267,24 @@
     left: 90%;
     height: 3em;
     width: 3em;
+}
+
+.addWorkout input,
+.addWorkout h2 {
+    height: 0;
+}
+
+.addWorkout.active input,
+.addWorkout.active h2 {
+    height: unset;
+}
+
+.addWorkout form {
+    visibility: hidden;
+}
+
+.addWorkout.active form {
+    visibility: visible;
 }
 
 .addWorkout.active span {
@@ -265,8 +322,8 @@
 .addWorkoutButton {
     position: absolute;
     cursor: pointer;
-    height: 100%;
-    width: 100%;
+    width: 6rem;
+    height: 4rem;
     display: block;
     top: 50%;
     left: 50%;
@@ -282,4 +339,93 @@
 
 .addWorkout .submitButton {
     margin: 1.5em auto 0 auto;
+}
+
+.workoutVariant {
+    background-color: var(--secondaryDetail);
+    border-radius: 0.5rem;
+    display: none;
+    width: 25rem;
+    height: 5rem;
+    margin: 1rem auto 0 auto;
+    position: relative;
+}
+
+.workoutVariant .submitButton {
+    position: absolute;
+    top: 50%;
+    right: 4%;
+    translate: 0 -50%;
+    width: 7rem;
+}
+
+.workoutVariant p {
+    font-size: calc(1rem *1.6);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 5rem;
+    width: 15rem;
+    text-align: left;
+    margin: 0 0 0 1.1rem;
+}
+
+.showWorkoutVariant {
+    width: 8.5rem;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    padding: unset;
+    margin: unset;
+}
+
+.addWorkoutVariant {
+    background-color: var(--font);
+    box-shadow: 0.1em 0.1em 0 0 var(--mainDetail);
+    width: 4em;
+    height: 4em;
+    border-radius: 0.5em;
+    position: relative;
+    display: none;
+    margin: 1rem auto 0 auto;
+    cursor: pointer;
+}
+
+.addWorkoutVariant:hover {
+    box-shadow: inset 0px 0.15em 0.15em rgba(0, 0, 0, 0.25);
+}
+
+.workout.active .addWorkoutVariant {
+    display: block;
+}
+
+.addWorkoutVariant span {
+    display: block;
+    position: absolute;
+    width: 2em;
+    height: 0.5em;
+    border-radius: 0.5em;
+    background-color: #FFF;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.addWorkoutVariant span:nth-child(1) {
+    rotate: 90deg;
+}
+
+.buttons {
+    position: absolute;
+    top: 2%;
+    left: 60%;
+    height: 4rem;
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons img {
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
 }

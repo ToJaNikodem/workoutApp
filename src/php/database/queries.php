@@ -33,5 +33,8 @@ $validateToken = 'SELECT user_id, expiry_date FROM reset_tokens WHERE token = ?'
 $workoutsDataQuery = 'SELECT workout_names.default_workout_name_en, workout_names.default_workout_name_pl, workout_names.user_workout_name, workouts.favorite, workouts.workout_id FROM workouts INNER JOIN workout_names ON workouts.workout_name_id = workout_names.workout_name_id INNER JOIN users ON workouts.user_id = users.user_id WHERE workouts.user_id = ? ORDER BY workouts.favorite DESC';
 $checkWorkoutOwnership = 'SELECT workouts.user_id FROM workouts INNER JOIN users ON workouts.user_id = users.user_id WHERE workouts.workout_id = ?';
 $changeWorkoutFavorite = 'UPDATE workouts SET favorite = ? WHERE workout_id = ?';
+$workoutVariantsDataQuery = 'SELECT workout_variant_names.default_workout_variant_name_en, workout_variant_names.default_workout_variant_name_pl, workout_variant_names.user_workout_variant_name, workout_variants.workout_variant_id FROM workout_variants INNER JOIN workout_variant_names ON workout_variants.workout_variant_name_id = workout_variant_names.workout_variant_name_id WHERE workout_variants.workout_id = ? ORDER BY workout_variant_names.user_workout_variant_name ASC';
+
+// addNewWorkout.php
 $addWorkoutName = 'INSERT INTO workout_names (user_workout_name) VALUES (?)';
 $addWorkoutQuery = 'INSERT INTO workouts (user_id, workout_name_id) VALUES (?, ?)';

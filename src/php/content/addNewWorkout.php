@@ -55,8 +55,6 @@ if (!$stmt2 = $conn->prepare($addWorkoutQuery)) {
     exit;
 }
 
-echo $userId . ' : ' . $workoutNameId;
-
 $stmt2->bind_param('ss', $userId, $workoutNameId);
 $stmt2Result = $stmt2->execute();
 

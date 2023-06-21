@@ -40,4 +40,8 @@ $(document).ready(function () {
     function toggleAddWorkout() {
         addWorkout.toggleClass("active");
     }
+
+    $(document).on('click', '.arrow', function () {
+        $(this).parent().toggleClass("active");
+    });
 });

@@ -23,7 +23,9 @@ notSignedIn();
     <div class="container">
         <div class="alert"></div>
         <div class="buttons">
-
+            <img src="/src/img/list.svg" alt="list" class="exerciseList">
+            <img src="/src/img/stopwatch.svg" alt="stopwatch" class="timers">
+            <img src="/src/img/calendar.svg" alt="calendar" class="history">
         </div>
         <section class="workouts">
             <h1>Your workouts</h1>
@@ -34,14 +36,18 @@ notSignedIn();
                     <span></span>
                     <span></span>
                 </div>
-                <form action="/src/php/account/addNewWorkout" method="post">
+                <form action="/src/php/content/addNewWorkout" method="post">
                     <h2>Add new workout</h2>
                     <input type="text" class="standardInput" name="workoutName" minlength="1" maxlength="64" required>
                     <input type="submit" value="Add Workout" class="submitButton">
                 </form>
             </div>
         </section>
-        <main></main>
+        <main>
+            <p>Select workout to see exercises</p>
+            <p>OR</p>
+            <div class="submitButton logExercise">Log exercise</div>
+        </main>
     </div>
     <aside class="menu">
         <div class="menuInside">
@@ -141,6 +147,7 @@ notSignedIn();
     </div>
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="/src/js/style.js"></script>
+    <script src="/src/js/content/content.js"></script>
     <script src="/src/js/errorCodeHandlers/messageMap.js"></script>
     <script src="/src/js/errorCodeHandlers/alertsHandler.js"></script>
     <script src="/src/js/mainPageHandler.js"></script>
