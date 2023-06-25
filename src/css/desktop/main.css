@@ -44,9 +44,12 @@ body {
     width: 100%;
     height: 100%;
     background-color: var(--background);
+    font-size: 14px;
+    font-size: var(--fontSize20);
 }
 
-input {
+input,
+button {
     outline: none;
     border: none;
 }

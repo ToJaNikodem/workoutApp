@@ -36,10 +36,10 @@ notSignedIn();
                     <span></span>
                     <span></span>
                 </div>
-                <form action="/src/php/content/addNewWorkout" method="post">
+                <form class="addWorkoutForm" action="/src/php/content/addNewWorkout" method="post">
                     <h2>Add new workout</h2>
                     <input type="text" class="standardInput" name="workoutName" minlength="1" maxlength="64" required>
-                    <input type="submit" value="Add Workout" class="submitButton">
+                    <button type="submit" class="submitButton">Add workout</button>
                 </form>
             </div>
         </section>

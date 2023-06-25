@@ -3,11 +3,13 @@ main {
     top: 13.9%;
     left: 28%;
     width: 86rem;
-    height: 50rem;
+    height: 52rem;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 main p {
@@ -19,6 +21,43 @@ main p {
 main .submitButton {
     line-height: 2.1em;
     margin: unset;
+}
+
+main h2 {
+    color: var(--mainDetail);
+    font-size: 2.5rem;
+    margin: 1.7rem 0 0 3rem;
+}
+
+main h3 {
+    font-size: 2rem;
+}
+
+main h4 {
+    font-size: 1.2rem;
+    color: var(--mainDetail);
+    margin: 1rem 0 0 1rem;
+    display: inline-block;
+}
+
+main.active {
+    display: block;
+    justify-content: unset;
+    align-items: unset;
+}
+
+main.active p {
+    margin-bottom: unset;
+    color: unset;
+}
+
+main hr {
+    background-color: var(--font);
+    border-radius: 0.4rem;
+    height: 0.15rem;
+    width: 83rem;
+    margin: 1.3rem auto 0 auto;
+    border: 0;
 }
 
 .changeNameBox {
@@ -274,7 +313,9 @@ main .submitButton {
     height: 0;
 }
 
-.addWorkout.active input,
+.addWorkout.active input {
+    height: 2em;
+}
 .addWorkout.active h2 {
     height: unset;
 }
@@ -428,4 +469,348 @@ main .submitButton {
     width: 4rem;
     height: 4rem;
     cursor: pointer;
+}
+
+.closeButtonSmall {
+    width: 3.5rem;
+    height: 3.5rem;
+    position: absolute;
+    cursor: pointer;
+    top: 1.3rem;
+    left: 81rem;
+}
+
+.closeButtonSmall span {
+    width: 4.4rem;
+    height: 0.7rem;
+    display: block;
+    position: absolute;
+    border-radius: 0.4rem;
+    background-color: var(--mainDetail);
+    box-shadow: 0.1em 0.1em 0 0 var(--font);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.closeButtonSmall span:nth-child(1) {
+    rotate: -45deg;
+}
+
+.closeButtonSmall span:nth-child(2) {
+    rotate: 45deg;
+}
+
+.closeButtonSmall:hover span {
+    box-shadow: inset 0px 0.15em 0.15em rgba(0, 0, 0, 0.25);
+}
+
+.timer {
+    display: block;
+    margin: 3rem 0;
+    width: 24rem;
+    text-align: center;
+    height: 10rem;
+    line-height: 10rem;
+    font-size: 7rem;
+    padding: unset;
+    box-shadow: 0 0.3rem 0.3rem 0 rgba(0, 0, 0, 0.25) inset;
+}
+
+.addTime,
+.subtractTime {
+    width: 5rem;
+    height: 4.3rem;
+    background-color: var(--font);
+    box-shadow: 0.1em 0.1em 0 0 var(--mainDetail);
+    border-radius: 0.5rem;
+    position: relative;
+}
+
+.addTime:hover,
+.subtractTime:hover {
+    box-shadow: 0 0.3rem 0.3rem 0 rgba(0, 0, 0, 0.25) inset;
+}
+
+.addTime span,
+.subtractTime span {
+    display: block;
+    background-color: #FFF;
+    width: 2.5rem;
+    height: 0.7rem;
+    border-radius: 0.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.addTime span:nth-child(1) {
+    rotate: 90deg;
+}
+
+.timerMiddle {
+    margin: 0 auto;
+    width: 55%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.start {
+    width: 10rem;
+    height: 4rem;
+    margin: 0 auto !important;
+    font-size: 2rem;
+    line-height: 4rem;
+    padding: unset;
+}
+
+.pause {
+    margin: 0 auto !important;
+    font-size: 0;
+    width: 4.4rem;
+    height: 4.4rem;
+    position: relative;
+    box-shadow: 0.1em 0.1em 0 0 var(--font);
+}
+
+.pause span {
+    display: block;
+    background-color: #FFF;
+    width: 0.5rem;
+    height: 2.3rem;
+    border-radius: 0.4rem;
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+}
+
+.pause span:nth-child(1) {
+    left: 1.44rem;
+}
+
+.pause span:nth-child(2) {
+    right: 1.44rem;
+}
+
+.exercise {
+    background-color: var(--secondaryBackground);
+    border-radius: 0.5rem;
+    height: 6.25rem;
+    width: 94%;
+    margin: 1rem auto;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.exercise h3 {
+    font-size: 2rem;
+    margin-left: 1em;
+}
+
+.exercise img {
+    width: 3.125rem;
+    height: 3.125rem;
+    margin-left: 2rem;
+}
+
+.exercise .arrow {
+    rotate: -90deg;
+    top: 50%;
+    translate: 0 -50%;
+}
+
+.exercise hr {
+    width: 0.25rem;
+    height: 4rem;
+    margin: unset;
+}
+
+.exercise p {
+    font-size: 1.8rem;
+    position: absolute;
+    top: 50%;
+    translate: -50% -50%;
+}
+
+.exercise hr {
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+}
+
+.exercise hr:nth-of-type(1) {
+    left: 65%;
+}
+
+.exercise hr:nth-of-type(2) {
+    left: 79%;
+}
+
+.exercise p:nth-of-type(1) {
+    left: 63%;
+    translate: -100% -50%;
+}
+
+.exercise p:nth-of-type(2) {
+    left: 72%;
+}
+
+.exercise p:nth-of-type(3) {
+    left: 86%;
+}
+
+.set {
+    left: 70% !important;
+    translate: -100% -50% !important;
+    font-size: 1.4rem !important;
+}
+
+.set:nth-of-type(1) {
+    top: 25%;
+}
+
+.set:nth-of-type(5) {
+    top: 75%;
+}
+
+.exercise hr.weight {
+    left: 72%;
+}
+
+.setWeight {
+    left: 74% !important;
+    translate: 0% -50% !important;
+    font-size: 1.4rem !important;
+}
+
+.setWeight:nth-of-type(2) {
+    top: 25%;
+}
+
+.setWeight:nth-of-type(6) {
+    top: 75%;
+}
+
+.exercise p img {
+    height: 1.1rem;
+    width: 1.1rem;
+    position: absolute;
+    top: 60%;
+    right: -2rem;
+    translate: 0 -50%;
+}
+
+.exercise p:nth-of-type(n+7) {
+    display: none;
+}
+
+.variantNotes {
+    position: absolute;
+    top: 1.3rem;
+    left: 69rem;
+    cursor : pointer;
+    height: 3.4rem;
+    width: 3.4rem;
+}
+
+.variantSettings {
+    position: absolute;
+    top: 1.3rem;
+    left: 75rem;
+    cursor: pointer;
+    height: 3.4rem;
+    width: 3.4rem;
+}
+
+.notes {
+    background-color: var(--secondaryBackground);
+    border-radius: 0.5rem;
+    width: 94%;
+    margin: 1rem auto 1rem auto;
+    position: relative;
+}
+
+.notes hr {
+    background-color: var(--mainDetail);
+    height: 0.125rem;
+    width: 76rem;
+    border: 0;
+    border-radius: 0.5rem;
+}
+
+.notesHeader {
+    margin: 1.5rem 0 0 3rem;
+    display: inline-block;
+}
+
+.workoutVariantNotes {
+    background-color: var(--background);
+    border-radius: 0.5rem;
+    width: 45%;
+    max-height: 20rem;
+    margin: 1rem 2.5rem;
+    position: relative;
+    padding-bottom: 5rem;
+}
+
+.workoutVariantNotes p {
+    font-size: 1.1rem;
+    margin: 1rem 2rem 1rem 2rem;
+    max-width: 30rem;
+}
+
+.workoutVariantNotes img,
+.exerciseNote img {
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    bottom: 1rem;
+    left: 91%;
+    cursor: pointer;
+}
+
+.exerciseNote {
+    background-color: var(--background);
+    border-radius: 0.5rem;
+    position: relative;
+    padding-bottom: 5rem;
+    margin: 1rem 0;
+}
+
+.exerciseNotes {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin: 0 2.5rem 1rem 2.5rem;
+}
+
+.innerNotes {
+    display: flex;
+    flex-direction: row;
+}
+
+.exerciseNote p {
+    font-size: 1.1rem;
+    margin: 1rem 2rem 1rem 2rem;
+}
+
+.activePage {
+    position: absolute;
+    top: 5rem;
+    left: 69.5rem;
+    width: 1.875rem;
+    height: 0.375rem;
+    background-color: var(--mainDetail);
+    box-shadow: 0.1em 0.1em 0 0 var(--font);
+    border-radius: 0.5rem;
+}
+
+.notes .arrow {
+    top: 1.5rem;
+    rotate: 90deg;
 }
