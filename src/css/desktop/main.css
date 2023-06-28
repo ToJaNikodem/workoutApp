@@ -39,6 +39,12 @@
     outline: calc(1rem * 0.15) var(--font) solid;
 }
 
+*::-webkit-inner-spin-button,
+*::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 body {
     overflow-x: hidden;
     width: 100%;

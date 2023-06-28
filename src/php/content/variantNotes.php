@@ -50,16 +50,18 @@ if (!$stmt2 = $conn->prepare($strengthExerciseNotesDataQuery)) {
 $stmt2->bind_param("s", $workoutVariantId);
 $stmt2->execute();
 $stmt2->store_result();
-$stmt2->bind_result($exerciseNote, $exerciseNameEN, $exerciseNamePL, $userExerciseName);
+$stmt2->bind_result($exerciseNote, $exerciseNameEN, $exerciseNamePL, $userExerciseName, $exerciseId);
 
 $strengthExerciseNotes = array();
 
-while($stmt2->fetch()) {
+while ($stmt2->fetch()) {
     $strengthExerciseNote = array(
+        'exerciseId' => $exerciseId,
         'exerciseNote' => $exerciseNote,
         'exerciseNameEN' => $exerciseNameEN,
         'exerciseNamePL' => $exerciseNamePL,
         'userExerciseName' => $userExerciseName,
+        'strengthExercise' => 1,
     );
     $strengthExerciseNotes[] = $strengthExerciseNote;
 }
@@ -76,7 +78,7 @@ $stmt3->bind_result($exerciseNote, $exerciseNameEN, $exerciseNamePL, $userExerci
 
 $cardioExerciseNotes = array();
 
-while($stmt3->fetch()) {
+while ($stmt3->fetch()) {
     $cardioExerciseNote = array(
         'exerciseNote' => $exerciseNote,
         'exerciseNameEN' => $exerciseNameEN,
@@ -98,7 +100,7 @@ $stmt4->bind_result($exerciseNote, $exerciseNameEN, $exerciseNamePL, $userExerci
 
 $otherExerciseNotes = array();
 
-while($stmt4->fetch()) {
+while ($stmt4->fetch()) {
     $otherExerciseNote = array(
         'exerciseNote' => $exerciseNote,
         'exerciseNameEN' => $exerciseNameEN,
@@ -120,7 +122,13 @@ usort($exercises, function ($a, $b) {
 $content .= '<div class="exerciseNotes">';
 foreach ($exercises as $exercise) {
     if (!empty($exercise['exerciseNote'])) {
-        $content .= '<div class="exerciseNote"><h4>' . exerciseName($exercise) . '</h4><p>' . $exercise['exerciseNote'] . '</p><img class="editExerciseNotes" src="/src/img/edit.svg" alt="edit"></div>';
+        $content .= '<div class="exerciseNote"><h4>' . exerciseName($exercise) . '</h4><p>' . $exercise['exerciseNote'] . '<img class="editExerciseNotes" src="/src/img/edit.svg" alt="edit"></p>';
+        if (!empty($exercise['strengthExercise'])) { 
+            if ($exercise['strengthExercise'] == 1) {
+                $content .= fetchSets($exercise['exerciseId']);
+            }
+        }
+        $content .= '</div>';
     }
 }
 $content .= '</div><div class="arrow variantNotesBack"></div></div>';
@@ -140,4 +148,51 @@ function exerciseName($exercise) {
     } else {
         return $exercise['exerciseNameEN'];
     }
+}
+
+function fetchSets($workoutVariantId) {
+    $sets = array();
+    $content = '';
+    global $databaseError;
+    global $setNotesDataQuery;
+    global $conn;
+    if (!$stmt7 = $conn->prepare($setNotesDataQuery)) {
+        mainPageHeader($databaseError);
+        exit;
+    }
+
+    $setNumber = 0;
+    $setNotes = '';
+
+    $stmt7->bind_param("s", $workoutVariantId);
+    $stmt7->execute();
+    $stmt7->store_result();
+    $stmt7->bind_result($setNumber, $setNotes);
+
+    while ($stmt7->fetch()) {
+        $set = array(
+            "setNumber" => $setNumber,
+            "setNotes" => $setNotes,
+        );
+        $sets[] = $set;
+    }
+    if (isColumnEmpty($sets, 'setNotes')) {
+        return $content;
+    }
+    $content .= '<hr>';
+    foreach ($sets as $set) {
+        if (!empty($set['setNotes'])) {
+            $content .= '<div class="setNote"><p><span> Set ' . $set['setNumber'] . '. </span>' . $set['setNotes'] . '</p><div class="arrow setNoteArrow"></div></div>';
+        }
+    }
+    return $content;
+}
+
+function isColumnEmpty($array, $columnName) {
+    foreach ($array as $row) {
+        if (!empty($row[$columnName])) {
+            return false;
+        }
+    }
+    return true;
 }

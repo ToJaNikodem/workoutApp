@@ -8,7 +8,7 @@ main {
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    overflow-y: auto;
+    overflow-y: hidden;
     overflow-x: hidden;
 }
 
@@ -731,7 +731,10 @@ main hr {
     background-color: var(--secondaryBackground);
     border-radius: 0.5rem;
     width: 94%;
-    margin: 1rem auto 1rem auto;
+    height: 42em;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 2rem auto 1rem auto;
     position: relative;
 }
 
@@ -774,12 +777,16 @@ main hr {
     cursor: pointer;
 }
 
+.exerciseNote img {
+    bottom: 0 !important;
+}
+
 .exerciseNote {
     background-color: var(--background);
     border-radius: 0.5rem;
     position: relative;
-    padding-bottom: 5rem;
     margin: 1rem 0;
+    padding-bottom: 1rem;
 }
 
 .exerciseNotes {
@@ -797,6 +804,8 @@ main hr {
 .exerciseNote p {
     font-size: 1.1rem;
     margin: 1rem 2rem 1rem 2rem;
+    padding-bottom: 4rem;
+    position: relative;
 }
 
 .activePage {
@@ -813,4 +822,97 @@ main hr {
 .notes .arrow {
     top: 1.5rem;
     rotate: 90deg;
+}
+
+.exerciseNote hr {
+    background-color: var(--font);
+    width: 33rem;
+    height: 0.1rem;
+    
+}
+
+.setNote {
+    position: relative;
+}
+
+.setNote span {
+    color: var(--mainDetail);
+}
+
+.setNote p {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 30rem;
+    padding-bottom: unset;
+}
+
+.setNote .arrow {
+    rotate: 0deg;
+    top: -0.6rem;
+    right: 0.5rem;
+    scale: 0.5;
+}
+
+.setNote.active .arrow {
+    rotate: 180deg;
+}
+
+.setNote.active p {
+    text-overflow: unset;
+    white-space: unset;
+}
+
+.exercises {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 45rem;
+}
+
+.exerciseBox {
+    background-color: var(--secondaryBackground);
+    border-radius: 0.5rem;
+    width: 94%;
+    height: 42em;
+    margin: 2rem auto 1rem auto;
+    position: relative;
+}
+
+.exerciseBox img {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    height: 3rem;
+    width: 3rem;
+}
+
+.exerciseBox h3 {
+    margin: 1.5rem 0 0 6rem;
+}
+
+.closeExercise {
+    rotate: 90deg;
+}
+
+.logExercise {
+    width: 25rem;
+}
+
+.addSuperset {
+    width: 11rem;
+    padding: unset;
+}
+
+.logExercise input {
+    width: 8rem;
+    height: 3rem;
+}
+
+.logExercise p {
+    font-size: 1rem;
+    color: var(--font70);
+}
+
+.logExercise .dropset {
+    
 }

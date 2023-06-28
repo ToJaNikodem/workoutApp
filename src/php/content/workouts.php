@@ -64,7 +64,7 @@ function displayWorkouts($workouts) {
             echo $workout['defaultWorkoutNameEN'];
         }
         echo '</p>';
-        echo '<div class="arrow"></div>';
+        echo '<div class="arrow showWorkout"></div>';
         $workoutVariants = fetchWorkoutVariants($conn, $workout['workoutId']);
         displayWorkoutVariants($workoutVariants);
         echo '<div class="addWorkoutVariant"><span></span><span></span></div>';

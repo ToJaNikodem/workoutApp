@@ -59,7 +59,7 @@ $response = array('variantName' => $variantName, 'content' => $content);
 echo json_encode($response);
 
 function response($exercises) {
-    $content = '';
+    $content = '<div class="exercises">';
     foreach ($exercises as $exercise) {
         $content .= '<div class="exercise" data-exercise-id="' . $exercise['exerciseId'] . '" data-exercise-type="' . $exercise['exerciseType'] . '">';
         if ($exercise['exerciseType'] == 1) {
@@ -109,8 +109,9 @@ function response($exercises) {
                 $content .= '<p> - </p>&nbsp';
             }
         }
-        $content .= '<div class="arrow"></div></div>';
+        $content .= '<div class="arrow showExerciseArrow"></div></div>';
     }
+    $content .= '</div>';
     return $content;
 }
 

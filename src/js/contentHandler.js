@@ -25,6 +25,28 @@ $(document).ready(function () {
     });
   });
 
+  $(document).on('click', '.closeExercise', function () {
+    showWorkoutVariants(workoutVariantId);
+  });
+
+  $(document).on('click', '.showExerciseArrow', function () {
+    var exerciseId = $(this).closest('.exercise').data('exercise-id');
+    var exerciseType = $(this).closest('.exercise').data('exercise-type');
+    $.ajax({
+      url: '/src/php/content/exercise',
+      type: 'POST',
+      data: { exerciseId: exerciseId, exerciseType: exerciseType },
+      success: function (response) {
+        activeMain(variantName);
+        main.append(contents['workoutVariantsPage']);
+        main.append(response);
+      },
+      error: function (error) {
+        console.log(error.responseText);
+      },
+    });
+  });
+
   $('.addWorkoutForm').submit(function (event) {
     event.preventDefault();
     var formData = $(this).serialize();
@@ -57,14 +79,15 @@ $(document).ready(function () {
         $('.notes').append(response.content);
         $('.notesHeader').html(response.header);
       },
-      error: function (error) {
-        console.log(error.responseText);
-      },
     });
   });
 
   $(document).on('click', '.variantNotesBack', function () {
     showWorkoutVariants(workoutVariantId);
+  });
+
+  $(document).on('click', '.setNoteArrow', function () {
+    $(this).toggleClass('active');
   });
 
   $(document).on('click', '.timers', function () {

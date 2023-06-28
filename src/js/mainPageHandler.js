@@ -41,7 +41,7 @@ $(document).ready(function () {
         addWorkout.toggleClass("active");
     }
 
-    $(document).on('click', '.arrow', function () {
+    $(document).on('click', '.showWorkout', function () {
         $(this).parent().toggleClass("active");
     });
 });
