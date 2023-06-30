@@ -46,7 +46,7 @@ notSignedIn();
         <main>
             <p>Select workout to see exercises</p>
             <p>OR</p>
-            <div class="submitButton logExercise">Log exercise</div>
+            <div class="submitButton logExerciseButton">Log exercise</div>
         </main>
     </div>
     <aside class="menu">

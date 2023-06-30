@@ -58,8 +58,46 @@ if (!empty($userExerciseName)) {
 }
 $content .= '</h3><div class="innerExercise">';
 
-$content .= '<div class="logExercise"><form method="post" action="/TODO.TODO"><p>Weight (kg)</p><div class="exerciseLogInputWrapper"><div class="subtractWeight"></div><input class="standardInput" name="weight" type="number" max="9999" step="0.01"><div class="addWeight"></div></div><p>Reps</p><div class="exerciseLogInputWrapper"><div class="subtractReps"></div><input class="standardInput" name="reps" type="number" max="65535"><div class="addReps"></div></div><button class="submitButton" type="submit">Save</button><input class="dropset" name="dropset" type="checkbox"></form><div class="addSuperset submitButton">Superset</div></div>';
-$content .= '<div class="exerciseTabs"></div></div>';
+$content .= '<div class="logExercise"><form method="post" action="/TODO.TODO"><p>Weight (kg)</p><div class="exerciseLogInputWrapper"><div class="subtractWeight"></div><input class="standardInput weight" name="weight" type="number" min="0" max="9999" step="0.01" value="0.0"><div class="addWeight"></div></div><p>Reps</p><div class="exerciseLogInputWrapper"><div class="subtractReps"></div><input class="standardInput reps" name="reps" type="number" min="0" max="65535" value="0" step="1"><div class="addReps"></div></div><button class="submitButton" type="submit">Save</button><div class="dropset"><img src="/src/img/down-arrow-white.svg" alt="dropset"></div><input class="dropsetInput" name="dropset" type="hidden" value="0"></form><div class="addSuperset submitButton">Superset</div></div>';
+
+$content .= '<div class="exerciseTabs"><h4>Sets</h4><div class="tabs"><img class="exerciseSetsTabButton" src="/src/img/planning.svg" alt="plan"><img class="exerciseHistoryTabButton" src="/src/img/book.svg" alt="history"><img class="exericseGraphTabButton" src="/src/img/diagram.svg" alt="graph"><img class="exercisePRsTabButton" src="/src/img/trophy.svg" alt="PRs"><img class="exericseMusclesTabButton" src="/src/img/muscle.svg" alt="muscles"><img class="exerciseNotesTabButton" src="/src/img/file2.svg" alt="notes"><div class="activeTab"></div></div><hr><div class="innerTabs">';
+
+if ($exerciseType == 1) {
+
+    if (!$stmt2 = $conn->prepare($setsDataQueryShortPlus)) {
+        mainPageHeader($databaseError);
+        exit;
+    }
+
+    $stmt2->bind_param("s", $exerciseId);
+    $stmt2->execute();
+    $stmt2->store_result();
+    $stmt2->bind_result($repCount, $weight, $dropset, $setNumber);
+
+    $sets = array();
+
+    while ($stmt2->fetch()) {
+        $set = array(
+            'repCount' => $repCount,
+            'weight' => $weight,
+            'dropset' => $dropset,
+            'setNumber' => $setNumber,
+        );
+        $sets[] = $set;
+    }
+
+    foreach ($sets as $set) {
+        $content .= '<div class="exerciseSet"><p><span>Set ' . $set['setNumber'] . '.</span> &nbsp&nbsp&nbsp&nbsp' . $set['repCount'] . '&nbsp reps &nbsp&nbsp&nbsp&nbsp' . $set['weight'] . ' kg' . dropset($set['dropset']) . '</p></div>';
+    }
+}
+
+$content .= '</div></div>';
 
 $content .= '<div class="arrow closeExercise"></div></div>';
 echo $content;
+
+function dropset($dropset) {
+    if ($dropset == 1) {
+        return '<img src="/src/img/down-arrow.svg" alt="dropset">';
+    }
+}

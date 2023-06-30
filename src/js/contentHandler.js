@@ -29,6 +29,47 @@ $(document).ready(function () {
     showWorkoutVariants(workoutVariantId);
   });
 
+  $(document).on('click', '.addWeight', function () {
+    $weight = parseInt($('.weight').val());
+    if ($weight < 9999) {
+      $('.weight').val($weight + 1);
+    }
+  });
+
+  $(document).on('click', '.subtractWeight', function () {
+    $weight = parseInt($('.weight').val());
+    if ($weight >= 1) {
+      $('.weight').val($weight - 1);
+    } else {
+      $('.weight').val(0);
+    }
+  });
+
+  $(document).on('click', '.addReps', function () {
+    $reps = parseInt($('.reps').val());
+    if ($reps < 65535) {
+      $('.reps').val($reps + 1);
+    }
+  });
+
+  $(document).on('click', '.subtractReps', function () {
+    $reps = parseInt($('.reps').val());
+    if ($reps >= 1) {
+      $('.reps').val($reps - 1);
+    } else {
+      $('.reps').val(0);
+    }
+  });
+
+  $(document).on('click', '.dropset', function () {
+    $(this).toggleClass('active');
+    if ($('.dropsetInput').val() == 0) {
+      $('.dropsetInput').val('1');
+    } else {
+      $('.dropsetInput').val('0');
+    }
+  });
+
   $(document).on('click', '.showExerciseArrow', function () {
     var exerciseId = $(this).closest('.exercise').data('exercise-id');
     var exerciseType = $(this).closest('.exercise').data('exercise-type');
@@ -87,7 +128,7 @@ $(document).ready(function () {
   });
 
   $(document).on('click', '.setNoteArrow', function () {
-    $(this).toggleClass('active');
+    $(this).parent().toggleClass('active');
   });
 
   $(document).on('click', '.timers', function () {

@@ -895,17 +895,21 @@ main hr {
 }
 
 .logExercise {
-    width: 25rem;
+    width: 20rem;
+    padding-top: 5rem;
+    position: relative;
 }
 
 .addSuperset {
     width: 11rem;
     padding: unset;
+    margin: 2rem 0 0 6rem !important;
 }
 
 .logExercise input {
     width: 8rem;
     height: 3rem;
+    text-align: center;
 }
 
 .logExercise p {
@@ -913,6 +917,179 @@ main hr {
     color: var(--font70);
 }
 
-.logExercise .dropset {
-    
+.dropset,
+.addWeight,
+.addReps,
+.subtractWeight,
+.subtractReps {
+    width: 2.4rem;
+    height: 2rem;
+    background-color: var(--font);
+    box-shadow: 0.1em 0.1em 0 0 var(--mainDetail);
+    border-radius: 0.5rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.dropset:hover,
+.addWeight:hover,
+.addReps:hover,
+.subtractWeight:hover,
+.subtractReps:hover {
+    box-shadow: inset 0px 0.15em 0.15em rgba(0, 0, 0, 0.25);
+}
+
+.addWeight::after,
+.addReps::after,
+.addWeight::before,
+.addReps::before,
+.subtractWeight::after,
+.subtractReps::after {
+    content: '';
+    height: 1.3rem;
+    width: 0.3rem;
+    background-color: #FFF;
+    border-radius: 0.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    rotate: 90deg;
+}
+
+.addWeight::before,
+.addReps::before {
+    rotate: 0deg;
+}
+
+.exerciseLogInputWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 3rem;
+    width: 17rem;
+}
+
+.logExercise p {
+    margin: 1rem 0 0.5rem 5rem !important;
+    color: var(--font70) !important;
+}
+
+
+.logExercise button.submitButton {
+    width: 8rem;
+    padding: unset;
+    margin: 2rem 0 0 7.5rem;
+}
+
+.dropset {
+    position: absolute;
+    top: 19rem;
+    left: 17.5rem;
+}
+
+.dropset img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 1.1rem;
+    height: 1.1rem;
+    opacity: 0.5;
+}
+
+.dropset.active img {
+    opacity: 1;
+}
+
+.exerciseTabs {
+    width: 52rem;
+    height: 34rem;
+    margin: 2rem 0 0 5rem;
+    position: relative;
+}
+
+.exerciseTabs h4 {
+    color: var(--font);
+    font-size: 1.7rem;
+    margin: 1rem 0 0 2rem;
+}
+
+.exerciseTabs hr {
+    background-color: var(--mainDetail);
+    height: 0.1rem;
+    width: 50rem;
+    margin: 1rem auto 0 auto;
+}
+
+.innerExercise {
+    display: flex;
+    flex-direction: row;
+}
+
+.exerciseTabs img {
+    position: unset;
+    height: 2.5rem;
+    width: 2.5rem;
+    cursor: pointer;
+}
+
+.tabs {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 25rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.activeTab {
+    position: absolute;
+    top: -1rem;
+    left: 1rem;
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 1rem;
+    background-color: var(--mainDetail);
+    box-shadow: 0.1em 0.1em 0 0 var(--font);
+}
+
+.exerciseSet {
+    background-color: var(--background);
+    border-radius: 0.5rem;
+    height: 3rem;
+    margin: 0.75rem 0 0 0;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.exerciseSet span {
+    color: var(--mainDetail);
+    font-size: 1.3rem;
+}
+
+.exerciseSet p {
+    font-size: 1.3rem;
+}
+
+.exerciseSet img {
+    position: absolute;
+    top: 50%;
+    left: unset;
+    right: 1.5rem;
+    translate: 0 -50%;
+    height: 1.2rem;
+    width: 1.2rem;
+}
+
+.innerTabs {
+    height: 30rem;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
