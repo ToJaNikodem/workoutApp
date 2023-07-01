@@ -7,6 +7,9 @@ var main = $('main');
 var variantName = '';
 var workoutVariantId = null;
 
+var exerciseId = 0;
+var exerciseType = 0;
+
 $(document).ready(function () {
   $(document).on('click', '.closeButtonSmall', function () {
     notActiveMain();
@@ -21,6 +24,90 @@ $(document).ready(function () {
       data: { workoutId: workoutId, favorite: favorite },
       success: function (response) {
         reloadWorkouts();
+      }
+    });
+  });
+
+  $(document).on('click', '.exerciseSetsTabButton', function () {
+    $.ajax({
+      url: '/src/php/content/exerciseSetsTab',
+      type: 'POST',
+      data: { exerciseId: exerciseId, exerciseType: exerciseType },
+      success: function (response) {
+        $('.innerTabs').html(response);
+        $(".activeTab").css({
+          left: '1rem',
+        });
+      }
+    });
+  });
+
+  $(document).on('click', '.exerciseHistoryTabButton', function () {
+    $.ajax({
+      url: '/src/php/content/exerciseHistoryTab',
+      type: 'POST',
+      data: { exerciseId: exerciseId, exerciseType: exerciseType },
+      success: function (response) {
+        $('.innerTabs').html(response);
+        $(".activeTab").css({
+          left: '5.5rem',
+        });
+      }
+    });
+  });
+
+  $(document).on('click', '.exerciseGraphTabButton', function () {
+    $.ajax({
+      url: '/src/php/content/exerciseGraphTab',
+      type: 'POST',
+      data: { exerciseId: exerciseId, exerciseType: exerciseType },
+      success: function (response) {
+        $('.innerTabs').html(response);
+        $(".activeTab").css({
+          left: '10rem',
+        });
+      }
+    });
+  });
+
+  $(document).on('click', '.exercisePRsTabButton', function () {
+    $.ajax({
+      url: '/src/php/content/exercisePRsTab',
+      type: 'POST',
+      data: { exerciseId: exerciseId, exerciseType: exerciseType },
+      success: function (response) {
+        $('.innerTabs').html(response);
+        $(".activeTab").css({
+          left: '14.5rem',
+        });
+      }
+    });
+  });
+
+  $(document).on('click', '.exerciseMusclesTabButton', function () {
+    $.ajax({
+      url: '/src/php/content/exericseMusclesTab',
+      type: 'POST',
+      data: { exerciseId: exerciseId, exerciseType: exerciseType },
+      success: function (response) {
+        $('.innerTabs').html(response);
+        $(".activeTab").css({
+          left: '19rem',
+        });
+      }
+    });
+  });
+
+  $(document).on('click', '.exerciseNotesTabButton', function () {
+    $.ajax({
+      url: '/src/php/content/exerciseNotesTab',
+      type: 'POST',
+      data: { exerciseId: exerciseId, exerciseType: exerciseType },
+      success: function (response) {
+        $('.innerTabs').html(response);
+        $(".activeTab").css({
+          left: '23.5rem',
+        });
       }
     });
   });
@@ -71,8 +158,8 @@ $(document).ready(function () {
   });
 
   $(document).on('click', '.showExerciseArrow', function () {
-    var exerciseId = $(this).closest('.exercise').data('exercise-id');
-    var exerciseType = $(this).closest('.exercise').data('exercise-type');
+    exerciseId = $(this).closest('.exercise').data('exercise-id');
+    exerciseType = $(this).closest('.exercise').data('exercise-type');
     $.ajax({
       url: '/src/php/content/exercise',
       type: 'POST',

@@ -32,6 +32,10 @@ $strengthExerciseNotesDataQuery = 'SELECT strength_exercises.strength_exercise_n
 $cardioExerciseNotesDataQuery = 'SELECT cardio_exercises.cardio_exercise_notes, cardio_exercise_names.default_cardio_exercise_name_en, cardio_exercise_names.default_cardio_exercise_name_pl, cardio_exercise_names.user_cardio_exercise_name FROM cardio_exercises INNER JOIN cardio_exercise_names ON cardio_exercises.cardio_exercise_name_id = cardio_exercise_names.cardio_exercise_name_id INNER JOIN cardio_exercise_workout_variant ON cardio_exercise_workout_variant.cardio_exercise_id = cardio_exercises.cardio_exercise_id WHERE cardio_exercise_workout_variant.workout_variant_id = ? ORDER BY cardio_exercise_workout_variant.exercise_order';
 $otherExerciseNotesDataQuery = 'SELECT other_exercises.other_exercise_notes, other_exercise_names.default_other_exercise_name_en, other_exercise_names.default_other_exercise_name_pl, other_exercise_names.user_other_exercise_name FROM other_exercises INNER JOIN other_exercise_names ON other_exercises.other_exercise_name_id = other_exercise_names.other_exercise_name_id INNER JOIN other_exercise_workout_variant ON other_exercise_workout_variant.other_exercise_id = other_exercises.other_exercise_id WHERE other_exercise_workout_variant.workout_variant_id = ? ORDER BY other_exercise_workout_variant.exercise_order';
 $setNotesDataQuery = 'SELECT sets.set_number, sets.set_notes FROM sets WHERE sets.strength_exercise_id = ? ORDER BY sets.set_number'; 
+$strengthExerciseNoteDataQuery = 'SELECT strength_exercises.strength_exercise_notes, strength_exercises.strength_exercise_id FROM strength_exercises WHERE strength_exercises.strength_exercise_id = ?';
+$cardioExerciseNoteDataQuery = 'SELECT cardio_exercises.cardio_exercise_notes FROM cardio_exercises WHERE cardio_exercises.cardio_exercise_id = ?';
+$otherExerciseNoteDataQuery = 'SELECT other_exercises.other_exercise_notes FROM other_exercises WHERE other_exercises.other_exercise_id = ?';
+
 
 // resetPasswordValidator.php
 $tokenQuery = 'INSERT INTO reset_tokens (user_id, token, expiry_date) VALUES (?, ?, ?)';

@@ -1093,3 +1093,15 @@ main hr {
     overflow-y: auto;
     overflow-x: hidden;
 }
+
+.innerTabs .exerciseNote img {
+    position: absolute;
+    top: unset;
+    bottom: 1rem;
+    left: 96%;
+}
+
+.innerTabs .exerciseNote .mainNote {
+    margin-top: 1rem;
+    display: inline-block;
+}
